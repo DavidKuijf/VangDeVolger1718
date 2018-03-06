@@ -1,4 +1,5 @@
 *.sln
 .vs/
 *.cache
-obj/Debug/
+VangDeVolger/obj/
+VangDeVolger/bin/

@@ -62,6 +62,9 @@
     <Compile Include="Static.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="Wall.cs" />
+	<Compile Include="Button.cs" />
+	<Compile Include="Restart.cs" />
+	<Compile Include="Pause.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

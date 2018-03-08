@@ -8,6 +8,6 @@ namespace VangdeVolger
 {
     class Timer
     {
-        int gameDuration = 0;
+        public int _gameDuration = 0;
     }
 }

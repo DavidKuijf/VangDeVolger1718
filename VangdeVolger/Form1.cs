@@ -12,9 +12,18 @@ namespace VangdeVolger
 {
     public partial class Form1 : Form
     {
+        Timer gameTimer = new Timer();
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Draw(object sender, PaintEventArgs e)
+        {
+            gameTimer._gameDuration++;
+            lblTime.Text = gameTimer._gameDuration.ToString();
+            Application.Idle += delegate { Invalidate(); };
         }
     }
 }

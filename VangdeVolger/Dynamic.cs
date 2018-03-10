@@ -8,11 +8,39 @@ namespace VangdeVolger
 {
     class Dynamic : Object
     {
-        int speed;
+        protected int _speed = 10;
 
-        void Move()
+        public void Move(int Direction)
         {
-
+            switch (Direction)
+            {
+                case 0:
+                    if (!(_position.Y - _speed < 0))
+                    {
+                        _position.Y -= _speed;
+                    }
+                    break;
+                case 3:
+                    if (!(_position.X - _speed < 0))
+                    {
+                        _position.X -= _speed;
+                    }
+                    break;
+                case 2:
+                    if (!(_position.Y + _speed > 499))
+                    {
+                        _position.Y += _speed;
+                    }
+                   
+                    break;
+                case 1:
+                    if (!(_position.X + _speed > 499))
+                    {
+                        _position.X += _speed;
+                    }
+                    break;
+            }
+           
         }
     }
 }

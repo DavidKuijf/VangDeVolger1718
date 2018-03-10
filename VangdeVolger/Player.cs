@@ -8,7 +8,7 @@ namespace VangdeVolger
 {
     class Player : Dynamic
     {
-        int health = 10;
+        private int health = 10;
         
         void Push()
         {
@@ -23,6 +23,10 @@ namespace VangdeVolger
         void Die()
         {
 
+        }
+        public Player()
+        {
+            this._image = @"C: \Users\davic\Pictures\Player.png";
         }
     }
 }

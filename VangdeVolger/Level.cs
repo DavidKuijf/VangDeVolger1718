@@ -10,6 +10,12 @@ namespace VangdeVolger
 {
     class Level
     {
+        private Image _image;
+        private Bitmap _buffer;
+        private Size _bufferSize;
+
+
+
         object[,] levelLayout = new object[50,50];
         int sizeX = 50;
         int sizeY = 50;
@@ -42,7 +48,7 @@ namespace VangdeVolger
                 using (Graphics graphics = Graphics.FromImage(_buffer))
                 {
 
-                    graphics.DrawImage(toBeDrawn, location.X, location.Y, _image.Size.Width, _image.Size.Height);
+                    graphics.DrawImage(toBeDrawn, location.X, location.Y, toBeDrawn.Size.Width, toBeDrawn.Size.Height);
                 }
 
                 Frame.Image = _buffer;

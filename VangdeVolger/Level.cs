@@ -39,18 +39,18 @@ namespace VangdeVolger
             }
         }
 
-        public void Draw(Image toBeDrawn, Point location, PictureBox Frame)
+        public void Draw(Image toBeDrawn, Point location, PictureBox Frame) //takes an image a place and a place to draw and then draws that image
         {
-           
+                //make a bitmap that we can draw to before displaying
                 _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
 
-           
+                
                 using (Graphics graphics = Graphics.FromImage(_buffer))
                 {
-
+                    //draw the actual image
                     graphics.DrawImage(toBeDrawn, location.X, location.Y, toBeDrawn.Size.Width, toBeDrawn.Size.Height);
                 }
-
+                //set the given picture box to the buffer
                 Frame.Image = _buffer;
            
             
@@ -58,8 +58,9 @@ namespace VangdeVolger
 
         public Level()
         {
+            //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
-            _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
+            
         }
     }
 }

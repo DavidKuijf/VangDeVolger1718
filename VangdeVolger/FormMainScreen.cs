@@ -13,44 +13,22 @@ namespace VangdeVolger
     public partial class FormMainScreen : Form
     {
         Timer gameTimer = new Timer();
-        private Image _image;
-        private Bitmap _buffer;
-        private int _speed;
-        private Size _bufferSize;
         Player player1 = new Player();
+        Level level1 = new Level();
 
         public FormMainScreen()
         {
             InitializeComponent();
             
-            
-            
-            
-           
-            _bufferSize = new Size(500, 500);
-            _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
-
-            Draw();
         }
 
-        private void Draw()
-
-        {
-            _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
-
-            using (Graphics graphics = Graphics.FromImage(_buffer))
-            {
-                _image = Image.FromFile(player1._image);
-                graphics.DrawImage(_image, player1._position.X, player1._position.Y, _image.Size.Width, _image.Size.Height);
-            }
-
-            pictureBoxMain.Image = _buffer;
-        }
+        
 
         private void Draw(object sender, PaintEventArgs e)
         {
             gameTimer._gameDuration++;
             lblTime.Text = gameTimer._gameDuration.ToString();
+
             Application.Idle += delegate { Invalidate(); };
         }
 
@@ -73,8 +51,8 @@ namespace VangdeVolger
                     player1.Move(1);
                     break;
             }
-            //After handling the input redraw the screen
-            Draw();
+            level1.Draw(Image.FromFile(@"C:\Users\davic\Pictures\Player.png"), player1._position, pictureBoxMain);
+            
         }
     }
 }

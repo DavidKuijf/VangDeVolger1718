@@ -9,6 +9,7 @@ namespace VangdeVolger
     class Dynamic : Object
     {
         protected int _speed = 10;
+        public enum Directions { Up, Right, Down, Left };
 
         public void Move(int Direction)
         {

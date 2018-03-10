@@ -14,9 +14,10 @@ namespace VangdeVolger
         {
 
         }
-        Box()
+
+        public Box()
         {
-            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
+            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Box.png");
         }
     }
 }

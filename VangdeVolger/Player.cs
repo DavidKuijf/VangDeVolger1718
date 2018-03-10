@@ -11,7 +11,6 @@ namespace VangdeVolger
     class Player : Dynamic
     {
         private int health = 10;
-        string imagePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
         void Push()
         {
@@ -27,9 +26,10 @@ namespace VangdeVolger
         {
 
         }
+
         public Player()
         {
-            this._image = imagePath;
+            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
         }
     }
 }

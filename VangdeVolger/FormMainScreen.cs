@@ -61,16 +61,16 @@ namespace VangdeVolger
             switch (e.KeyCode)
             {
                 case Keys.W:
-                    player1.Move(0);
+                    player1.Move((int)Dynamic.Directions.Up);
                     break;
                 case Keys.A:
-                    player1.Move(3);
+                    player1.Move((int)Dynamic.Directions.Left);
                     break;
                 case Keys.S:
-                    player1.Move(2);
+                    player1.Move((int)Dynamic.Directions.Down);
                     break;
                 case Keys.D:
-                    player1.Move(1);
+                    player1.Move((int)Dynamic.Directions.Right);
                     break;
             }
             //After handling the input redraw the screen

@@ -15,25 +15,31 @@ namespace VangdeVolger
         private Size _bufferSize;
         private Random _random = new Random();
 
-        object[,] levelLayout = new object[50,50];
         int sizeX = 50;
         int sizeY = 50;
+
+        Object[,] levelLayout = new Object[50, 50];
 
         void Read()
         {
 
         }
 
-        void Generate()
+        public void Generate()
         {
             // Booleans to track if player and enemy have been placed yet.
-            bool _playerPlaced = false; 
-            bool _enemyPlaced = false;
+            int playerX = _random.Next(1, 50);
+            int playerY = _random.Next(1, 50);
+            int enemyX = _random.Next(1, 50);
+            int enemyY = _random.Next(1, 50);
+
+            levelLayout[playerX, playerY] = new Player();
+            levelLayout[enemyX, enemyY] = new Enemy();
 
             // Iterate over 2D array levelLayout.
-            for (int x = 0; x < levelLayout.Length; x++)
+            for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
-                for (int y = 0; y < levelLayout.Length; y++)
+                for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
                     // Assign the Wall object to the borders of the map.
                     if (x == 0 || y == 0 || x == sizeX || y == sizeY)
@@ -45,40 +51,42 @@ namespace VangdeVolger
                         // Generate a pseudo-random number to decide object placement.
                         int percentChance = _random.Next(100);
 
-                        if (percentChance < 10)
+                        if (percentChance < 10 && levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = new Wall();
                         }
-                        if (percentChance > 10 && percentChance < 20)
+                        if (percentChance > 10 && percentChance < 20 && levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = new Box();
                         }
-                        // Player placement. Needs change to guarantee that the player gets placed.
-                        if (percentChance > 20 && percentChance < 30 && !_playerPlaced)
-                        {
-                            levelLayout[x, y] = new Player();
-                            _playerPlaced = true;
-                        }
-                        // Enemy placement. Needs change to guarantee that the enemy gets placed.
-                        if (percentChance > 30 && percentChance < 40 && !_enemyPlaced)
-                        {
-                            levelLayout[x, y] = new Enemy();
-                            _enemyPlaced = false;
-                        }
-                        if (percentChance > 40 && percentChance < 50)
+                        if (percentChance > 30 && percentChance < 40 && levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = new Powerup();
                         }
-                        if (percentChance > 50)
+                        if (percentChance > 40 && levelLayout[x, y] == null)
                         {
-                            levelLayout[x, y] = 0;
+                            levelLayout[x, y] = null;
                         }
                     }
                 }
             }
+
+            // DEBUG ARRAY CHECKING
+            int rowLength = levelLayout.GetLength(0);
+            int colLength = levelLayout.GetLength(1);
+
+            for (int i = 0; i < rowLength; i++)
+            {
+                for (int j = 0; j < colLength; j++)
+                {
+                    Console.Write(string.Format("{0} ", levelLayout[i, j]));
+                }
+                Console.Write(Environment.NewLine + Environment.NewLine);
+            }
         }
 
-        public void Draw(Image toBeDrawn, Point location, PictureBox Frame) //takes an image a place and a place to draw and then draws that image
+        //takes an image a place and a place to draw and then draws that image
+        public void Draw(Image toBeDrawn, Point location, PictureBox Frame)
         {
                 //make a bitmap that we can draw to before displaying
                 _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
@@ -99,7 +107,6 @@ namespace VangdeVolger
         {
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
-            
         }
     }
 }

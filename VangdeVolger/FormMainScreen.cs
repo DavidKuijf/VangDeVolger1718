@@ -19,7 +19,7 @@ namespace VangdeVolger
         public FormMainScreen()
         {
             InitializeComponent();
-            
+            level1.Generate();
         }
 
         

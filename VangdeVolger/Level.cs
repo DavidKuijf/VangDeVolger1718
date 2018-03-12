@@ -20,6 +20,7 @@ namespace VangdeVolger
 
         Object[,] levelLayout = new Object[50, 50];
 
+
         void Read()
         {
 
@@ -27,6 +28,7 @@ namespace VangdeVolger
 
         public void Generate()
         {
+            Point location = new Point(0, 0);
             // Booleans to track if player and enemy have been placed yet.
             int playerX = _random.Next(1, 50);
             int playerY = _random.Next(1, 50);
@@ -41,8 +43,10 @@ namespace VangdeVolger
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
+                    location.X = x * 10;
+                    location.Y = y * 10;
                     // Assign the Wall object to the borders of the map.
-                    if (x == 0 || y == 0 || x == sizeX || y == sizeY)
+                    if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
                     {
                         levelLayout[x, y] = new Wall();
                     }
@@ -87,36 +91,42 @@ namespace VangdeVolger
 
         public void Draw(PictureBox Frame) //takes an object array then draws all the objects
         {
-                //make a bitmap that we can draw to before displaying
-                _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
+            //make a bitmap that we can draw to before displaying
+            _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
+
+
+            using (Graphics graphics = Graphics.FromImage(_buffer))
+            { 
 
                 
-                using (Graphics graphics = Graphics.FromImage(_buffer))
+                for (int x = 0; x < sizeX; x++)
                 {
-
-                //draw the actual image
-                foreach (Object item in levelLayout)
-                {
-                    if (!(item == null))
+                    for (int y = 0; y < sizeY; y++)
                     {
-                        Image toBeDrawn = Image.FromFile(item._image);
-                        graphics.DrawImage(toBeDrawn, item._position.X, item._position.Y, toBeDrawn.Size.Width, toBeDrawn.Size.Height);
+                        if (levelLayout[x,y] is Object)
+                        {
+                            Image toBeDrawn = Image.FromFile(levelLayout[x, y]._image);
+                            graphics.DrawImage(toBeDrawn, x * 10, y * 10, toBeDrawn.Size.Height, toBeDrawn.Width);
+                        }
+                        
                     }
-                   
-                }
-                    
                 }
 
-                //set the given picture box to the buffer
-                Frame.Image = _buffer;
-           
-            
+            }
+
+            //set the given picture box to the buffer
+            Frame.Image = _buffer;
+
+
         }
 
         public Level()
         {
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
+
+
+
         }
     }
 }

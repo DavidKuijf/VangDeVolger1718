@@ -51,7 +51,7 @@ namespace VangdeVolger
                     player1.Move((int)Dynamic.Directions.Right);
                     break;
             }
-            level1.Draw(Image.FromFile(@"C:\Users\davic\Pictures\Player.png"), player1._position, pictureBoxMain);
+            level1.Draw(pictureBoxMain);
             
         }
     }

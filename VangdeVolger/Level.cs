@@ -15,7 +15,8 @@ namespace VangdeVolger
         private Size _bufferSize;
         private Random _random = new Random();
 
-        object[,] levelLayout = new object[50,50];
+        Object[,] levelLayout;
+
         int sizeX = 50;
         int sizeY = 50;
 
@@ -71,14 +72,14 @@ namespace VangdeVolger
                         }
                         if (percentChance > 50)
                         {
-                            levelLayout[x, y] = 0;
+                            levelLayout[x, y] = null;
                         }
                     }
                 }
             }
         }
 
-        public void Draw(Image toBeDrawn, Point location, PictureBox Frame) //takes an image a place and a place to draw and then draws that image
+        public void Draw(PictureBox Frame) //takes an object array then draws all the objects
         {
                 //make a bitmap that we can draw to before displaying
                 _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
@@ -86,9 +87,20 @@ namespace VangdeVolger
                 
                 using (Graphics graphics = Graphics.FromImage(_buffer))
                 {
-                    //draw the actual image
-                    graphics.DrawImage(toBeDrawn, location.X, location.Y, toBeDrawn.Size.Width, toBeDrawn.Size.Height);
+
+                //draw the actual image
+                foreach (Object item in levelLayout)
+                {
+                    if (!(item == null))
+                    {
+                        Image toBeDrawn = Image.FromFile(item._image);
+                        graphics.DrawImage(toBeDrawn, item._position.X, item._position.Y, toBeDrawn.Size.Width, toBeDrawn.Size.Height);
+                    }
+                   
                 }
+                    
+                }
+
                 //set the given picture box to the buffer
                 Frame.Image = _buffer;
            
@@ -99,6 +111,8 @@ namespace VangdeVolger
         {
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
+            levelLayout = new Object[50, 50];
+            Generate();
             
         }
     }

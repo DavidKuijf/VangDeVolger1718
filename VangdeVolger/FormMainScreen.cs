@@ -20,6 +20,7 @@ namespace VangdeVolger
         {
             InitializeComponent();
             level1.Generate();
+            level1.Draw(pictureBoxMain);
         }
 
         

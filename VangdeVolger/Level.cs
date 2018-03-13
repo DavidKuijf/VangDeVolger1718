@@ -29,7 +29,12 @@ namespace VangdeVolger
         public void Generate()
         {
             Point location = new Point(0, 0);
-            // Booleans to track if player and enemy have been placed yet.
+
+            /* 
+             * Generate random positions for player and enemy. 
+             * We do this to make sure they are actually in the game, 
+             * since the for-loop generator might not hit the numbers needed to generate them.
+             */
             int playerX = _random.Next(1, 50);
             int playerY = _random.Next(1, 50);
             int enemyX = _random.Next(1, 50);
@@ -45,6 +50,7 @@ namespace VangdeVolger
                 {
                     location.X = x * 10;
                     location.Y = y * 10;
+
                     // Assign the Wall object to the borders of the map.
                     if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
                     {
@@ -54,20 +60,20 @@ namespace VangdeVolger
                     {
                         // Generate a pseudo-random number to decide object placement.
                         int percentChance = _random.Next(100);
-
-                        if (percentChance < 10 && levelLayout[x, y] == null)
+                        
+                        if (percentChance < 20 && levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = new Wall();
                         }
-                        if (percentChance > 10 && percentChance < 20 && levelLayout[x, y] == null)
+                        else if (percentChance > 20 && percentChance < 22 && levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = new Box();
                         }
-                        if (percentChance > 30 && percentChance < 40 && levelLayout[x, y] == null)
+                        else if (percentChance > 50 && percentChance < 60 && levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = new Powerup();
                         }
-                        if (percentChance > 40 && levelLayout[x, y] == null)
+                        else if (levelLayout[x, y] == null)
                         {
                             levelLayout[x, y] = null;
                         }
@@ -75,7 +81,7 @@ namespace VangdeVolger
                 }
             }
 
-            // DEBUG ARRAY CHECKING
+            /* DEBUG ARRAY CHECKING
             int rowLength = levelLayout.GetLength(0);
             int colLength = levelLayout.GetLength(1);
 
@@ -87,6 +93,7 @@ namespace VangdeVolger
                 }
                 Console.Write(Environment.NewLine + Environment.NewLine);
             }
+            */
         }
 
         public void Draw(PictureBox Frame) //takes an object array then draws all the objects

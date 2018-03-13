@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Wall : Static
+    class Wall : Unmovable
     {
 
         public Wall()

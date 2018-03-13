@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Enemy : Dynamic
+    class Enemy : Movable
     {
         void Decide()
         {

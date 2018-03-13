@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Box.cs" />
     <Compile Include="ScoreBoard.cs" />
-    <Compile Include="Dynamic.cs" />
+    <Compile Include="Movable.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="FormMainScreen.cs">
       <SubType>Form</SubType>
@@ -55,12 +55,12 @@
       <DependentUpon>FormMainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Level.cs" />
-    <Compile Include="Object.cs" />
+    <Compile Include="GameObject.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Powerup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Static.cs" />
+    <Compile Include="Unmovable.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="Button.cs" />

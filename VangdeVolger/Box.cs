@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Box : Dynamic
+    class Box : Movable
     {
         void Pushed()
         {

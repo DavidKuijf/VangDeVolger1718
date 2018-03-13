@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Powerup : Static
+    class Powerup : Unmovable
     {
         int age = 0;
         bool isActive = false;

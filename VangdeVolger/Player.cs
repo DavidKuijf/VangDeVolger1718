@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Player : Dynamic
+    class Player : Movable
     {
         private int health = 10;
 

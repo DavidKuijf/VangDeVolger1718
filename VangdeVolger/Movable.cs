@@ -10,6 +10,10 @@ namespace VangdeVolger
     {
         protected int _speed ;
         public enum Directions { Up, Right, Down, Left };
+        /*
+         *     0
+         *  3  2  1
+         */
 
         public void Move(int Direction)
         {

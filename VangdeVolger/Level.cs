@@ -14,48 +14,41 @@ namespace VangdeVolger
         private Bitmap _buffer;
         private Size _bufferSize;
         private Random _random = new Random();
+        
+        private static int sizeX = 50;
+        private static int sizeY = 50;
 
-        // PUSH TEST
-        static int sizeX = 50;
-        static int sizeY = 50;
+        GameField[,] levelLayout = new GameField[sizeX, sizeY];
 
-        GameObject[,] levelLayout = new GameObject[sizeX, sizeY];
-
-
-        void Read()
+        private void Read()
         {
 
         }
 
         public void Generate()
         {
-            Point location = new Point(0, 0);
-
             /* 
              * Generate random positions for player and enemy. 
              * We do this to make sure they are actually in the game, 
              * since the for-loop generator might not hit the numbers needed to generate them.
              */
-            int playerX = _random.Next(1, sizeX);
-            int playerY = _random.Next(1, sizeY);
-            int enemyX = _random.Next(1, sizeX);
-            int enemyY = _random.Next(1, sizeY);
+            int playerX = _random.Next(1, sizeX-1);
+            int playerY = _random.Next(1, sizeY-1);
+            int enemyX = _random.Next(1, sizeX-1);
+            int enemyY = _random.Next(1, sizeY-1);
 
-            levelLayout[playerX, playerY] = new Player();
-            levelLayout[enemyX, enemyY] = new Enemy();
+            levelLayout[playerX, playerY].contains = new Player();
+            levelLayout[enemyX, enemyY].contains = new Enemy();
 
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
-                    location.X = x * 10;
-                    location.Y = y * 10;
-
                     // Assign the Wall object to the borders of the map.
                     if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
                     {
-                        levelLayout[x, y] = new Wall();
+                        levelLayout[x, y].contains = new Wall();
                     }
                     else
                     {
@@ -64,19 +57,19 @@ namespace VangdeVolger
                         
                         if (percentChance < 20 && levelLayout[x, y] == null)
                         {
-                            levelLayout[x, y] = new Wall();
+                            levelLayout[x, y].contains = new Wall();
                         }
                         else if (percentChance > 20 && percentChance < 22 && levelLayout[x, y] == null)
                         {
-                            levelLayout[x, y] = new Box();
+                            levelLayout[x, y].contains = new Box();
                         }
                         else if (percentChance > 50 && percentChance < 60 && levelLayout[x, y] == null)
                         {
-                            levelLayout[x, y] = new Powerup();
+                            levelLayout[x, y].contains = new Powerup();
                         }
                         else if (levelLayout[x, y] == null)
                         {
-                            levelLayout[x, y] = null;
+                            levelLayout[x, y].contains = null;
                         }
                     }
                 }
@@ -111,9 +104,9 @@ namespace VangdeVolger
                 {
                     for (int y = 0; y < sizeY; y++)
                     {
-                        if (levelLayout[x,y] is Object)
+                        if (levelLayout[x,y].contains is GameObject)
                         {
-                            Image toBeDrawn = Image.FromFile(levelLayout[x, y]._image);
+                            Image toBeDrawn = Image.FromFile(levelLayout[x, y].contains._image);
                             graphics.DrawImage(toBeDrawn, x * 10, y * 10, toBeDrawn.Size.Height, toBeDrawn.Width);
                         }
                         
@@ -132,8 +125,14 @@ namespace VangdeVolger
         {
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
-
-
+            
+            for (int x = 0; x < levelLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < levelLayout.GetLength(1); y++)
+                {
+                    levelLayout[x,y] = new GameField();
+                }
+            }
 
         }
     }

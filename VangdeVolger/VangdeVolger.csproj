@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Box.cs" />
+    <Compile Include="GameField.cs" />
     <Compile Include="ScoreBoard.cs" />
     <Compile Include="Movable.cs" />
     <Compile Include="Enemy.cs" />

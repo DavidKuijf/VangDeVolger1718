@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Movable : Object
+    class Movable : GameObject
     {
         protected int _speed ;
         public enum Directions { Up, Right, Down, Left };

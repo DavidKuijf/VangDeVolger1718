@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Object : Level
+    class GameObject : Level
     {
         
         public string _image { get; set; }
-        protected Object()
+        protected GameObject()
         {
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Box.png");
         }

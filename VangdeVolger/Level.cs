@@ -90,7 +90,8 @@ namespace VangdeVolger
             */
         }
 
-        public void Draw(PictureBox Frame) //takes an object array then draws all the objects
+        //takes an object array then draws all the objects
+        public void Draw(PictureBox Frame) 
         {
             //make a bitmap that we can draw to before displaying
             _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);

@@ -15,10 +15,11 @@ namespace VangdeVolger
         private Size _bufferSize;
         private Random _random = new Random();
 
-        int sizeX = 50;
-        int sizeY = 50;
+        // PUSH TEST
+        static int sizeX = 50;
+        static int sizeY = 50;
 
-        Object[,] levelLayout = new Object[50, 50];
+        GameObject[,] levelLayout = new GameObject[sizeX, sizeY];
 
 
         void Read()
@@ -35,10 +36,10 @@ namespace VangdeVolger
              * We do this to make sure they are actually in the game, 
              * since the for-loop generator might not hit the numbers needed to generate them.
              */
-            int playerX = _random.Next(1, 50);
-            int playerY = _random.Next(1, 50);
-            int enemyX = _random.Next(1, 50);
-            int enemyY = _random.Next(1, 50);
+            int playerX = _random.Next(1, sizeX);
+            int playerY = _random.Next(1, sizeY);
+            int enemyX = _random.Next(1, sizeX);
+            int enemyY = _random.Next(1, sizeY);
 
             levelLayout[playerX, playerY] = new Player();
             levelLayout[enemyX, enemyY] = new Enemy();

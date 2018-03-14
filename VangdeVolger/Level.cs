@@ -13,7 +13,6 @@ namespace VangdeVolger
         private Image _image;
         private Bitmap _buffer;
         private Size _bufferSize;
-        private Random _random = new Random();
         
         private static int sizeX = 50;
         private static int sizeY = 50;
@@ -27,6 +26,8 @@ namespace VangdeVolger
 
         public void Generate()
         {
+            Random _random = new Random();
+            
             /* 
              * Generate random positions for player and enemy. 
              * We do this to make sure they are actually in the game, 

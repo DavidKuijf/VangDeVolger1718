@@ -13,7 +13,7 @@ namespace VangdeVolger
     public partial class FormMainScreen : Form
     {
         Timer gameTimer = new Timer();
-        Player player1 = new Player();
+        Player player = new Player();
         Level level1 = new Level();
 
         public FormMainScreen()
@@ -40,16 +40,16 @@ namespace VangdeVolger
             switch (e.KeyCode)
             {
                 case Keys.W:
-                    player1.Move((int)Movable.Directions.Up);
+                    player.Move((int)Movable.Directions.Up);
                     break;
                 case Keys.A:
-                    player1.Move((int)Movable.Directions.Left);
+                    player.Move((int)Movable.Directions.Left);
                     break;
                 case Keys.S:
-                    player1.Move((int)Movable.Directions.Down);
+                    player.Move((int)Movable.Directions.Down);
                     break;
                 case Keys.D:
-                    player1.Move((int)Movable.Directions.Right);
+                    player.Move((int)Movable.Directions.Right);
                     break;
             }
             level1.Draw(pictureBoxMain);

@@ -19,26 +19,26 @@ namespace VangdeVolger
         {
             switch (Direction)
             {
-                case 0:
+                case (int)Directions.Up:
                     if (!(false))
                     {
                         // -= _speed;
                     }
                     break;
-                case 3:
+                case (int)Directions.Left:
                     if (!(false))
                     {
                         // -= _speed;
                     }
                     break;
-                case 2:
+                case (int)Directions.Down:
                     if (!(false))
                     {
                         //+= _speed;
                     }
                    
                     break;
-                case 1:
+                case (int)Directions.Right:
                     if (!(false))
                     {
                          //+= _speed;

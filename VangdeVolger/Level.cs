@@ -13,9 +13,13 @@ namespace VangdeVolger
         private Image _image;
         private Bitmap _buffer;
         private Size _bufferSize;
-        
+        private Random _random = new Random();
+
         private static int sizeX = 50;
         private static int sizeY = 50;
+
+        public int playerX;
+        public int playerY;
 
         public GameField[,] levelLayout = new GameField[sizeX, sizeY];
 
@@ -26,33 +30,19 @@ namespace VangdeVolger
 
         public void Generate()
         {
-            Random _random = new Random();
-            
-            /* 
-             * Generate random positions for player and enemy. 
-             * We do this to make sure they are actually in the game, 
-             * since the for-loop generator might not hit the numbers needed to generate them.
-             */
-            int playerX = _random.Next(1, sizeX-1);
-            int playerY = _random.Next(1, sizeY-1);
-            int enemyX = _random.Next(1, sizeX-1);
-            int enemyY = _random.Next(1, sizeY-1);
-
-            levelLayout[playerX, playerY].contains = new Player();
-            levelLayout[enemyX, enemyY].contains = new Enemy();
-
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
                     // Assign the Wall object to the borders of the map.
-                    if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
+                    // TODO: Remove this and reimplement in a different way. Can't be a game object.
+                    /*if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
                     {
                         levelLayout[x, y].contains = new Wall();
-                    }
-                    else
-                    {
+                    }*/
+                    //else
+                    //{
                         // Generate a pseudo-random number to decide object placement.
                         int percentChance = _random.Next(100);
                         
@@ -72,9 +62,22 @@ namespace VangdeVolger
                         {
                             levelLayout[x, y].contains = null;
                         }*/
-                    }
+                    //}
                 }
             }
+
+            /* 
+            * Generate random positions for player and enemy. 
+            * We do this to make sure they are actually in the game, 
+            * since the for-loop generator might not hit the numbers needed to generate them.
+            */
+            playerX = _random.Next(1, sizeX - 1);
+            playerY = _random.Next(1, sizeY - 1);
+            int enemyX = _random.Next(1, sizeX - 1);
+            int enemyY = _random.Next(1, sizeY - 1);
+
+            levelLayout[playerX, playerY].contains = new Player();
+            levelLayout[enemyX, enemyY].contains = new Enemy();
 
             /* DEBUG ARRAY CHECKING
             int rowLength = levelLayout.GetLength(0);
@@ -149,6 +152,8 @@ namespace VangdeVolger
                 }
             }
 
+            playerX = _random.Next(1, sizeX - 1);
+            playerY = _random.Next(1, sizeY - 1);
         }
     }
 }

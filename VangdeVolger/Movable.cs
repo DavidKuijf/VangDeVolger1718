@@ -47,9 +47,12 @@ namespace VangdeVolger
             }
            
         }
+        
         protected Movable()
         {
             _speed = 1;
         }
+
+        
     }
 }

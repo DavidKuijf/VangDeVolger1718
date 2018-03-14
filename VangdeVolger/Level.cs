@@ -109,7 +109,7 @@ namespace VangdeVolger
                         if (levelLayout[x,y].contains is GameObject)
                         {
                             Image toBeDrawn = Image.FromFile(levelLayout[x, y].contains._image);
-                            graphics.DrawImage(toBeDrawn, x * 10, y * 10, toBeDrawn.Size.Height, toBeDrawn.Width);
+                            graphics.DrawImage(toBeDrawn, x * toBeDrawn.Width, y * toBeDrawn.Size.Height, toBeDrawn.Width, toBeDrawn.Size.Height );
                         }
                         
                     }
@@ -121,6 +121,19 @@ namespace VangdeVolger
             Frame.Image = _buffer;
 
 
+        }
+        public void getPlayerPosition()
+        {
+            for (int x = 0; x < levelLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < levelLayout.GetLength(1); y++)
+                {
+                    if (levelLayout[x,y].contains is Player)
+                    { 
+
+                    }
+                }
+            }
         }
 
         public Level()

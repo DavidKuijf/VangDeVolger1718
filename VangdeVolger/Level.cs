@@ -28,7 +28,7 @@ namespace VangdeVolger
 
         }
 
-        public void Generate()
+        public void Generate(Level level)
         {
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
@@ -76,7 +76,7 @@ namespace VangdeVolger
             int enemyX = _random.Next(1, sizeX - 1);
             int enemyY = _random.Next(1, sizeY - 1);
 
-            levelLayout[playerX, playerY].contains = new Player();
+            levelLayout[playerX, playerY].contains = new Player(level);
             levelLayout[enemyX, enemyY].contains = new Enemy();
 
             /* DEBUG ARRAY CHECKING
@@ -151,9 +151,6 @@ namespace VangdeVolger
                     levelLayout[x,y] = new GameField();
                 }
             }
-
-            playerX = _random.Next(1, sizeX - 1);
-            playerY = _random.Next(1, sizeY - 1);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace VangdeVolger
     {
         private int _health;
         private int _speed;
+        private int x;
+        private int y;
 
         private void move(int direction)
         {
@@ -38,13 +40,20 @@ namespace VangdeVolger
 
         }
 
-        public Player()
+        public Player(Level level)
         {
             _health = 10;
             _speed = 1;
+
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
-            levelLayout[playerX, playerY].neighbor = new GameField[] { levelLayout[playerX, playerY - 1], levelLayout[playerX + 1, playerY], levelLayout[playerX, playerY + 1], levelLayout[playerX - 1, playerY] };
+           level.levelLayout[level.playerX, level.playerY].neighbor = new GameField[] { level.levelLayout[level.playerX, level.playerY - 1], level.levelLayout[level.playerX + 1, level.playerY], level.levelLayout[level.playerX, level.playerY + 1], level.levelLayout[level.playerX - 1, level.playerY] };
+
+            // Debug printing
+            for (int i = 0; i < level.levelLayout[level.playerX, level.playerY].neighbor.Length; i++)
+            {
+                if (level.levelLayout[level.playerX, level.playerY].neighbor[i].contains != null) Console.WriteLine(level.levelLayout[level.playerX, level.playerY].neighbor[i].contains.ToString());
+            }
         }
     }
 }

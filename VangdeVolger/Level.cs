@@ -13,12 +13,11 @@ namespace VangdeVolger
         private Image _image;
         private Bitmap _buffer;
         private Size _bufferSize;
-        private Random _random = new Random();
         
         private static int sizeX = 50;
         private static int sizeY = 50;
 
-        GameField[,] levelLayout = new GameField[sizeX, sizeY];
+        public GameField[,] levelLayout = new GameField[sizeX, sizeY];
 
         private void Read()
         {
@@ -27,6 +26,8 @@ namespace VangdeVolger
 
         public void Generate()
         {
+            Random _random = new Random();
+            
             /* 
              * Generate random positions for player and enemy. 
              * We do this to make sure they are actually in the game, 
@@ -55,22 +56,22 @@ namespace VangdeVolger
                         // Generate a pseudo-random number to decide object placement.
                         int percentChance = _random.Next(100);
                         
-                        if (percentChance < 20 && levelLayout[x, y] == null)
+                        if (percentChance < 30 && levelLayout[x, y].contains == null)
                         {
                             levelLayout[x, y].contains = new Wall();
                         }
-                        else if (percentChance > 20 && percentChance < 22 && levelLayout[x, y] == null)
+                        else if (percentChance > 30 && percentChance < 40 && levelLayout[x, y].contains == null)
                         {
                             levelLayout[x, y].contains = new Box();
                         }
-                        else if (percentChance > 50 && percentChance < 60 && levelLayout[x, y] == null)
+                        else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                         {
                             levelLayout[x, y].contains = new Powerup();
                         }
-                        else if (levelLayout[x, y] == null)
+                        /*else if (levelLayout[x, y].contains == null)
                         {
                             levelLayout[x, y].contains = null;
-                        }
+                        }*/
                     }
                 }
             }

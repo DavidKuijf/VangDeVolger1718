@@ -13,14 +13,14 @@ namespace VangdeVolger
     public partial class FormMainScreen : Form
     {
         Timer gameTimer = new Timer();
-        Player player = new Player();
-        Level level1 = new Level();
+
+        private Level _level = new Level();
 
         public FormMainScreen()
         {
             InitializeComponent();
-            level1.Generate();
-            level1.Draw(pictureBoxMain);
+            _level.Generate(_level);
+            _level.Draw(pictureBoxMain);
         }
 
         
@@ -37,7 +37,7 @@ namespace VangdeVolger
 
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            switch (e.KeyCode)
+            /*switch (e.KeyCode)
             {
                 case Keys.W:
                     player.Move((int)Movable.Directions.Up);
@@ -51,8 +51,8 @@ namespace VangdeVolger
                 case Keys.D:
                     player.Move((int)Movable.Directions.Right);
                     break;
-            }
-            level1.Draw(pictureBoxMain);
+            }*/
+            _level.Draw(pictureBoxMain);
             
         }
     }

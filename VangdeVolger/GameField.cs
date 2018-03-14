@@ -9,7 +9,7 @@ namespace VangdeVolger
     class GameField
     {
         // Up, Right, Down, Left.
-        public GameObject[] neighboor;
+        public GameField[] neighbor;
         // The object it holds.
         public GameObject contains;
     }

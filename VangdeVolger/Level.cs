@@ -79,15 +79,7 @@ namespace VangdeVolger
             levelLayout[playerX, playerY].contains = new Player(level);
             levelLayout[enemyX, enemyY].contains = new Enemy();
 
-            // Set neighbors for every GameField
-            for (int x = 0; x < levelLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < levelLayout.GetLength(1); y++)
-                {
-                    levelLayout[x, y].neighbor = new GameField[] { levelLayout[x, y - 1], levelLayout[x + 1, y], levelLayout[x, y + 1], levelLayout[x - 1, y] };
-                }
-            }
-
+            SetNeighbors();
             /* DEBUG ARRAY CHECKING
             int rowLength = levelLayout.GetLength(0);
             int colLength = levelLayout.GetLength(1);
@@ -143,6 +135,35 @@ namespace VangdeVolger
                     if (levelLayout[x,y].contains is Player)
                     { 
 
+                    }
+                }
+            }
+        }
+
+        private void SetNeighbors()
+        {
+            // Set neighbors for every GameField
+            for (int x = 0; x < levelLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < levelLayout.GetLength(1); y++)
+                {
+                    // Create a new GameField array in the neighbor variable of the GameField.
+                    levelLayout[x, y].neighbor = new GameField[4];
+
+                    // Check for every side if it goes out of range and add it to the array. ('null' if out of range).
+                    for (int i = 0; i < levelLayout[x,y].neighbor.Length; i++)
+                    {
+                        try
+                        {
+                            if (i == 0) levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
+                            if (i == 1) levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
+                            if (i == 2) levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
+                            if (i == 3) levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
+                        }
+                        catch (System.IndexOutOfRangeException e)
+                        {
+                            Console.WriteLine($"IndexOutOfRangeException! This means we're probably trying to add a square that doesn't exist to the neighbor array... Stacktrace: {e.StackTrace}");
+                        }
                     }
                 }
             }

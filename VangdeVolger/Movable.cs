@@ -36,7 +36,6 @@ namespace VangdeVolger
                     {
                         //+= _speed;
                     }
-                   
                     break;
                 case (int)Directions.Right:
                     if (!(false))

@@ -79,6 +79,15 @@ namespace VangdeVolger
             levelLayout[playerX, playerY].contains = new Player(level);
             levelLayout[enemyX, enemyY].contains = new Enemy();
 
+            // Set neighbors for every GameField
+            for (int x = 0; x < levelLayout.GetLength(0); x++)
+            {
+                for (int y = 0; y < levelLayout.GetLength(1); y++)
+                {
+                    levelLayout[x, y].neighbor = new GameField[] { levelLayout[x, y - 1], levelLayout[x + 1, y], levelLayout[x, y + 1], levelLayout[x - 1, y] };
+                }
+            }
+
             /* DEBUG ARRAY CHECKING
             int rowLength = levelLayout.GetLength(0);
             int colLength = levelLayout.GetLength(1);

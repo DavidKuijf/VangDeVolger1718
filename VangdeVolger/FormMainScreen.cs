@@ -12,7 +12,7 @@ namespace VangdeVolger
 {
     public partial class FormMainScreen : Form
     {
-        Timer gameTimer = new Timer();
+        
         Player player1 = new Player();
         Level level1 = new Level();
 
@@ -27,8 +27,8 @@ namespace VangdeVolger
 
         private void Draw(object sender, PaintEventArgs e)
         {
-            gameTimer._gameDuration++;
-            lblTime.Text = gameTimer._gameDuration.ToString();
+            level1.gameTimer._gameDuration++;
+            lblTime.Text = level1.gameTimer._gameDuration.ToString();
 
             Application.Idle += delegate { Invalidate(); };
         }

@@ -10,7 +10,7 @@ namespace VangdeVolger
 {
     class Player : Movable
     {
-        private int health = 10;
+        private int health;
 
         void Push()
         {
@@ -29,7 +29,8 @@ namespace VangdeVolger
 
         public Player()
         {
-            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
+            _image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
+            health = 10;
         }
     }
 }

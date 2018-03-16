@@ -14,12 +14,12 @@ namespace VangdeVolger
         private Bitmap _buffer;
         private Size _bufferSize;
         private Random _random = new Random();
-        
         private static int sizeX = 50;
         private static int sizeY = 50;
+        public Timer gameTimer;
 
         public GameField[,] levelLayout = new GameField[sizeX, sizeY];
-
+        
         private void Read()
         {
 
@@ -27,6 +27,7 @@ namespace VangdeVolger
 
         public void Generate()
         {
+            gameTimer = new Timer();
             /* 
              * Generate random positions for player and enemy. 
              * We do this to make sure they are actually in the game, 
@@ -65,7 +66,7 @@ namespace VangdeVolger
                         }
                         else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                         {
-                            levelLayout[x, y].contains = new Powerup();
+                            levelLayout[x, y].contains = new Powerup(5, gameTimer._gameDuration);
                         }
                         /*else if (levelLayout[x, y].contains == null)
                         {
@@ -124,6 +125,7 @@ namespace VangdeVolger
 
         public Level()
         {
+
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
             

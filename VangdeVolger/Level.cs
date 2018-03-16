@@ -14,35 +14,45 @@ namespace VangdeVolger
         private Bitmap _buffer;
         private Size _bufferSize;
         private Random _random = new Random();
-
         private static int sizeX = 50;
         private static int sizeY = 50;
-
-        public int playerX;
-        public int playerY;
+        public Timer gameTimer;
 
         public GameField[,] levelLayout = new GameField[sizeX, sizeY];
-
+        
         private void Read()
         {
 
         }
 
-        public void Generate(Level level)
+        public void Generate()
         {
+            gameTimer = new Timer();
+            /* 
+             * Generate random positions for player and enemy. 
+             * We do this to make sure they are actually in the game, 
+             * since the for-loop generator might not hit the numbers needed to generate them.
+             */
+            int playerX = _random.Next(1, sizeX-1);
+            int playerY = _random.Next(1, sizeY-1);
+            int enemyX = _random.Next(1, sizeX-1);
+            int enemyY = _random.Next(1, sizeY-1);
+
+            levelLayout[playerX, playerY].contains = new Player();
+            levelLayout[enemyX, enemyY].contains = new Enemy();
+
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
                     // Assign the Wall object to the borders of the map.
-                    // TODO: Remove this and reimplement in a different way. Can't be a game object.
-                    /*if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
+                    if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
                     {
                         levelLayout[x, y].contains = new Wall();
-                    }*/
-                    //else
-                    //{
+                    }
+                    else
+                    {
                         // Generate a pseudo-random number to decide object placement.
                         int percentChance = _random.Next(100);
                         
@@ -56,30 +66,16 @@ namespace VangdeVolger
                         }
                         else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                         {
-                            levelLayout[x, y].contains = new Powerup();
+                            levelLayout[x, y].contains = new Powerup(5, gameTimer._gameDuration);
                         }
                         /*else if (levelLayout[x, y].contains == null)
                         {
                             levelLayout[x, y].contains = null;
                         }*/
-                    //}
+                    }
                 }
             }
 
-            /* 
-            * Generate random positions for player and enemy. 
-            * We do this to make sure they are actually in the game, 
-            * since the for-loop generator might not hit the numbers needed to generate them.
-            */
-            playerX = _random.Next(1, sizeX - 1);
-            playerY = _random.Next(1, sizeY - 1);
-            int enemyX = _random.Next(1, sizeX - 1);
-            int enemyY = _random.Next(1, sizeY - 1);
-
-            levelLayout[playerX, playerY].contains = new Player(level);
-            levelLayout[enemyX, enemyY].contains = new Enemy();
-
-            SetNeighbors();
             /* DEBUG ARRAY CHECKING
             int rowLength = levelLayout.GetLength(0);
             int colLength = levelLayout.GetLength(1);
@@ -113,7 +109,7 @@ namespace VangdeVolger
                         if (levelLayout[x,y].contains is GameObject)
                         {
                             Image toBeDrawn = Image.FromFile(levelLayout[x, y].contains._image);
-                            graphics.DrawImage(toBeDrawn, x * toBeDrawn.Width, y * toBeDrawn.Size.Height, toBeDrawn.Width, toBeDrawn.Size.Height );
+                            graphics.DrawImage(toBeDrawn, x * 10, y * 10, toBeDrawn.Size.Height, toBeDrawn.Width);
                         }
                         
                     }
@@ -126,51 +122,10 @@ namespace VangdeVolger
 
 
         }
-        public void getPlayerPosition()
-        {
-            for (int x = 0; x < levelLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < levelLayout.GetLength(1); y++)
-                {
-                    if (levelLayout[x,y].contains is Player)
-                    { 
-
-                    }
-                }
-            }
-        }
-
-        private void SetNeighbors()
-        {
-            // Set neighbors for every GameField
-            for (int x = 0; x < levelLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < levelLayout.GetLength(1); y++)
-                {
-                    // Create a new GameField array in the neighbor variable of the GameField.
-                    levelLayout[x, y].neighbor = new GameField[4];
-
-                    // Check for every side if it goes out of range and add it to the array. ('null' if out of range).
-                    for (int i = 0; i < levelLayout[x,y].neighbor.Length; i++)
-                    {
-                        try
-                        {
-                            if (i == 0) levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
-                            if (i == 1) levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
-                            if (i == 2) levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
-                            if (i == 3) levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
-                        }
-                        catch (System.IndexOutOfRangeException e)
-                        {
-                            Console.WriteLine($"IndexOutOfRangeException! This means we're probably trying to add a square that doesn't exist to the neighbor array... Stacktrace: {e.StackTrace}");
-                        }
-                    }
-                }
-            }
-        }
 
         public Level()
         {
+
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
             
@@ -181,6 +136,7 @@ namespace VangdeVolger
                     levelLayout[x,y] = new GameField();
                 }
             }
+
         }
     }
 }

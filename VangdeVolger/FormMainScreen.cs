@@ -12,23 +12,23 @@ namespace VangdeVolger
 {
     public partial class FormMainScreen : Form
     {
-        Timer gameTimer = new Timer();
-
-        private Level _level = new Level();
+        
+        Player player1 = new Player();
+        Level level1 = new Level();
 
         public FormMainScreen()
         {
             InitializeComponent();
-            _level.Generate(_level);
-            _level.Draw(pictureBoxMain);
+            level1.Generate();
+            level1.Draw(pictureBoxMain);
         }
 
         
 
         private void Draw(object sender, PaintEventArgs e)
         {
-            gameTimer._gameDuration++;
-            lblTime.Text = gameTimer._gameDuration.ToString();
+            level1.gameTimer._gameDuration++;
+            lblTime.Text = level1.gameTimer._gameDuration.ToString();
 
             Application.Idle += delegate { Invalidate(); };
         }
@@ -37,22 +37,22 @@ namespace VangdeVolger
 
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            /*switch (e.KeyCode)
+            switch (e.KeyCode)
             {
                 case Keys.W:
-                    player.Move((int)Movable.Directions.Up);
+                    player1.Move((int)Movable.Directions.Up);
                     break;
                 case Keys.A:
-                    player.Move((int)Movable.Directions.Left);
+                    player1.Move((int)Movable.Directions.Left);
                     break;
                 case Keys.S:
-                    player.Move((int)Movable.Directions.Down);
+                    player1.Move((int)Movable.Directions.Down);
                     break;
                 case Keys.D:
-                    player.Move((int)Movable.Directions.Right);
+                    player1.Move((int)Movable.Directions.Right);
                     break;
-            }*/
-            _level.Draw(pictureBoxMain);
+            }
+            level1.Draw(pictureBoxMain);
             
         }
     }

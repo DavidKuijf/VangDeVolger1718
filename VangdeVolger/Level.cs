@@ -77,7 +77,7 @@ namespace VangdeVolger
             int enemyX = _random.Next(1, sizeX - 1);
             int enemyY = _random.Next(1, sizeY - 1);
 
-            levelLayout[playerX, playerY].contains = new Player(level);
+            levelLayout[playerX, playerY].contains = new Player(level, levelLayout[playerX, playerY]);
             levelLayout[enemyX, enemyY].contains = new Enemy();
 
             SetNeighbors();

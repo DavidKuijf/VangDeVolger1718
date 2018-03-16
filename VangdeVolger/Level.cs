@@ -14,12 +14,14 @@ namespace VangdeVolger
         private Bitmap _buffer;
         private Size _bufferSize;
         private Random _random = new Random();
-        private int sizeX;
-        private int sizeY;
+        private static int sizeX = 50;
+        private static int sizeY = 50;
         public Timer gameTimer;
 
         public int playerX;
         public int playerY;
+
+        private Player playerOne;
 
         public GameField[,] levelLayout;
         
@@ -77,7 +79,8 @@ namespace VangdeVolger
             int enemyX = _random.Next(1, sizeX - 1);
             int enemyY = _random.Next(1, sizeY - 1);
 
-            levelLayout[playerX, playerY].contains = new Player(level, levelLayout[playerX, playerY]);
+            levelLayout[playerX, playerY].contains = playerOne;
+            playerOne.GetLocation(levelLayout[playerX,playerY]);
             levelLayout[enemyX, enemyY].contains = new Enemy();
 
             SetNeighbors();
@@ -170,16 +173,13 @@ namespace VangdeVolger
             }
         }
 
-        public Level()
+        public Level(Player player)
         {
-            // Set the level size.
-            sizeX = 50;
-            sizeY = 50;
-            levelLayout = new GameField[sizeX, sizeY];
 
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
-            
+            levelLayout = new GameField[sizeX, sizeY];
+            this.playerOne = player;
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)

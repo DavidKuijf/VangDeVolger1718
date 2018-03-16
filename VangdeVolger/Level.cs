@@ -14,8 +14,8 @@ namespace VangdeVolger
         private Bitmap _buffer;
         private Size _bufferSize;
         private Random _random = new Random();
-        private static int sizeX = 50;
-        private static int sizeY = 50;
+        private int sizeX;
+        private int sizeY;
         public Timer gameTimer;
 
         public int playerX;
@@ -175,6 +175,10 @@ namespace VangdeVolger
 
         public Level(Player player)
         {
+            // Set the level size.
+            sizeX = 50;
+            sizeY = 50;
+            levelLayout = new GameField[sizeX, sizeY];
 
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);

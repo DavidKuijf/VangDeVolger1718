@@ -14,21 +14,28 @@ namespace VangdeVolger
     {
         Timer gameTimer = new Timer();
 
-        private Level _level = new Level();
+        private Player _playerOne;
+        private Level _level;
 
         public FormMainScreen()
         {
+
             InitializeComponent();
+
+            _playerOne = new Player();
+            _level = new Level(_playerOne);
             _level.Generate(_level);
+
             _level.Draw(pictureBoxMain);
+
         }
 
         
 
         private void Draw(object sender, PaintEventArgs e)
         {
-            _level.gameTimer._gameDuration++;
-            lblTime.Text = _level.gameTimer._gameDuration.ToString();
+            //_level.gameTimer._gameDuration++;
+            //lblTime.Text = _level.gameTimer._gameDuration.ToString();
 
             Application.Idle += delegate { Invalidate(); };
         }
@@ -37,21 +44,24 @@ namespace VangdeVolger
 
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            /*switch (e.KeyCode)
+            
+
+            switch (e.KeyCode)
             {
                 case Keys.W:
-                    player.Move((int)Movable.Directions.Up);
+                    _playerOne.Move((int)Movable.Directions.Up);
                     break;
                 case Keys.A:
-                    player.Move((int)Movable.Directions.Left);
+                    _playerOne.Move((int)Movable.Directions.Left);
                     break;
                 case Keys.S:
-                    player.Move((int)Movable.Directions.Down);
+                    _playerOne.Move((int)Movable.Directions.Down);
                     break;
                 case Keys.D:
-                    player.Move((int)Movable.Directions.Right);
+                    _playerOne.Move((int)Movable.Directions.Right);
                     break;
-            }*/
+            }
+
             _level.Draw(pictureBoxMain);
             
         }

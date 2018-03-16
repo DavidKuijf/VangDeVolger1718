@@ -27,8 +27,8 @@ namespace VangdeVolger
 
         private void Draw(object sender, PaintEventArgs e)
         {
-            level1.gameTimer._gameDuration++;
-            lblTime.Text = level1.gameTimer._gameDuration.ToString();
+            _level.gameTimer._gameDuration++;
+            lblTime.Text = _level.gameTimer._gameDuration.ToString();
 
             Application.Idle += delegate { Invalidate(); };
         }

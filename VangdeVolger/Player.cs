@@ -10,8 +10,9 @@ namespace VangdeVolger
 {
     class Player : Movable
     {
-        private int _health;
-        private int _speed;
+        private GameField location;
+        private int health;
+        private int speed;
         private int x;
         private int y;
 
@@ -30,10 +31,12 @@ namespace VangdeVolger
 
         }
 
-        public Player(Level level)
+        public Player(Level level, GameField playerlocation)
         {
-            _health = 10;
-            _speed = 1;
+            health = 10;
+            speed = 1;
+            this.location = playerlocation;
+            
 
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 

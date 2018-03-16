@@ -21,42 +21,13 @@ namespace VangdeVolger
         }
         public void Move(int Direction)
         {
-            switch (Direction)
+            if (!(this.location.neighbor[Direction].contains is Wall))
             {
-                case (int)Directions.Up:
-                    if (!(this.location.neighbor[0].contains is Wall))
-                    {
-                        this.location.neighbor[0].contains = this;
-                        this.location = this.location.neighbor[0];
-                        
-                    }
-                    break;
-                case (int)Directions.Left:
-                    if (!(this.location.neighbor[3].contains is Wall))
-                    {
-                        this.location.neighbor[3].contains = this;
-                        this.location = this.location.neighbor[3];
-                       
-                    }
-                    break;
-                case (int)Directions.Down:
-                    if (!(this.location.neighbor[2].contains is Wall))
-                    {
-                        this.location.neighbor[2].contains = this;
-                        this.location = this.location.neighbor[2];
-                        
-                    }
-                    break;
-                case (int)Directions.Right:
-                    if (!(this.location.neighbor[1].contains is Wall))
-                    {
-                        this.location.neighbor[1].contains = this;
-                        this.location = this.location.neighbor[1];
-                        
-                    }
-                    break;
+                this.location.neighbor[Direction].contains = this;
+                this.location = this.location.neighbor[Direction];
+
             }
-           
+
         }
         
         protected Movable()

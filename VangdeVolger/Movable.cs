@@ -6,46 +6,35 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Movable : Object
+    class Movable : GameObject
     {
+        protected GameField location;
         protected int _speed ;
         public enum Directions { Up, Right, Down, Left };
-
+        /*
+         *     0
+         *  3  2  1
+         */
+        public void GetLocation(GameField ObjectLocation)
+        {
+            this.location = ObjectLocation;
+        }
         public void Move(int Direction)
         {
-            switch (Direction)
+            if (!(this.location.neighbor[Direction].contains is Wall))
             {
-                case 0:
-                    if (!(false))
-                    {
-                        // -= _speed;
-                    }
-                    break;
-                case 3:
-                    if (!(false))
-                    {
-                        // -= _speed;
-                    }
-                    break;
-                case 2:
-                    if (!(false))
-                    {
-                        //+= _speed;
-                    }
-                   
-                    break;
-                case 1:
-                    if (!(false))
-                    {
-                         //+= _speed;
-                    }
-                    break;
+                this.location.neighbor[Direction].contains = this;
+                this.location = this.location.neighbor[Direction];
+
             }
-           
+
         }
+        
         protected Movable()
         {
             _speed = 1;
         }
+
+        
     }
 }

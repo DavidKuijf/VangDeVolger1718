@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    abstract class GameObject
+    class GameField
     {
-        
-        public string _image { get; set; }
+        // Up, Right, Down, Left.
+        public GameField[] neighbor;
+        // The object it holds.
+        public GameObject contains;
     }
 }

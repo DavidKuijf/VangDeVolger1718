@@ -30,6 +30,7 @@ namespace VangdeVolger
 
         public void Generate(Level level)
         {
+            gameTimer = new Timer();
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {

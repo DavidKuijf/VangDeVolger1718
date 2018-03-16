@@ -24,31 +24,35 @@ namespace VangdeVolger
             switch (Direction)
             {
                 case (int)Directions.Up:
-                    if (!(false))
+                    if (!(this.location.neighbor[0].contains is Wall))
                     {
                         this.location.neighbor[0].contains = this;
                         this.location = this.location.neighbor[0];
+                        
                     }
                     break;
                 case (int)Directions.Left:
-                    if (!(false))
+                    if (!(this.location.neighbor[3].contains is Wall))
                     {
                         this.location.neighbor[3].contains = this;
                         this.location = this.location.neighbor[3];
+                       
                     }
                     break;
                 case (int)Directions.Down:
-                    if (!(false))
+                    if (!(this.location.neighbor[2].contains is Wall))
                     {
                         this.location.neighbor[2].contains = this;
                         this.location = this.location.neighbor[2];
+                        
                     }
                     break;
                 case (int)Directions.Right:
-                    if (!(false))
+                    if (!(this.location.neighbor[1].contains is Wall))
                     {
                         this.location.neighbor[1].contains = this;
                         this.location = this.location.neighbor[1];
+                        
                     }
                     break;
             }

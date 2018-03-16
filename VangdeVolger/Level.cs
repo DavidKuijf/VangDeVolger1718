@@ -80,7 +80,7 @@ namespace VangdeVolger
             int enemyY = _random.Next(1, sizeY - 1);
 
             levelLayout[playerX, playerY].contains = playerOne;
-            playerOne.GetLocation(levelLayout[playerX,playerY]);
+            playerOne.SetLocation(levelLayout[playerX,playerY]);
             levelLayout[enemyX, enemyY].contains = new Enemy();
 
             SetNeighbors();
@@ -157,12 +157,16 @@ namespace VangdeVolger
                     // Check for every side if it goes out of range and add it to the array. ('null' if out of range).
                     for (int i = 0; i < levelLayout[x,y].neighbor.Length; i++)
                     {
-                        try
+                        try  // try catch has to be removed.
                         {
-                            if (i == 0) levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
-                            if (i == 1) levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
-                            if (i == 2) levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
-                            if (i == 3) levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
+                            if (i == 0)
+                                levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
+                            if (i == 1)
+                                levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
+                            if (i == 2)
+                                levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
+                            if (i == 3)
+                                levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
                         }
                         catch (System.IndexOutOfRangeException e)
                         {

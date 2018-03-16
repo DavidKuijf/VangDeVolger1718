@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    abstract class GameObject : Level
+    abstract class GameObject
     {
         
         public string _image { get; set; }

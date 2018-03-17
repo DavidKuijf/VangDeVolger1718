@@ -23,12 +23,14 @@ namespace VangdeVolger
 
         public void Move(Directions direction)
         {
-            if (!(_location.neighbor[(int)direction].contains is Wall)) //check if the field in the specified direction is a wall.
+            //check if the field in the specified direction is a wall.
+            if (!(_location.neighbor[(int)direction].contains is Wall)) 
             {
-
-                _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
+                // set the gametile in the specified direction equal to this object.
+                _location.neighbor[(int)direction].contains = this;  
                 _location.contains = null;
-                _location = this._location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
+                // set the location of this object to the tile in the specified direction.
+                _location = this._location.neighbor[(int)direction]; 
 
 
             }

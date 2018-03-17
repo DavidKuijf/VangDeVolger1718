@@ -15,6 +15,7 @@ namespace VangdeVolger
         Timer gameTimer = new Timer();
 
         private Player _playerOne;
+        private Enemy _enemy;
         private Level _level;
 
         public FormMainScreen()
@@ -23,7 +24,8 @@ namespace VangdeVolger
             InitializeComponent();
 
             _playerOne = new Player();
-            _level = new Level(_playerOne);
+            _enemy = new Enemy();
+            _level = new Level(_playerOne, _enemy);
             _level.Generate(_level);
 
             _level.Draw(pictureBoxMain);

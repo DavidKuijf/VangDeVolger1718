@@ -14,14 +14,15 @@ namespace VangdeVolger
         private Bitmap _buffer;
         private Size _bufferSize;
         private Random _random = new Random();
-        private static int sizeX = 50;
-        private static int sizeY = 50;
+        private int _sizeX = 50;
+        private int _sizeY = 50;
         public Timer gameTimer;
 
         public int playerX;
         public int playerY;
 
-        private Player playerOne;
+        private Player _playerOne;
+        private Enemy _enemy;
 
         public GameField[,] levelLayout;
 
@@ -74,14 +75,15 @@ namespace VangdeVolger
             * We do this to make sure they are actually in the game, 
             * since the for-loop generator might not hit the numbers needed to generate them.
             */
-            playerX = _random.Next(1, sizeX - 1);
-            playerY = _random.Next(1, sizeY - 1);
-            int enemyX = _random.Next(1, sizeX - 1);
-            int enemyY = _random.Next(1, sizeY - 1);
+            playerX = _random.Next(1, _sizeX - 1);
+            playerY = _random.Next(1, _sizeY - 1);
+            int enemyX = _random.Next(1, _sizeX - 1);
+            int enemyY = _random.Next(1, _sizeY - 1);
 
-            levelLayout[playerX, playerY].contains = playerOne;
-            playerOne.SetLocation(levelLayout[playerX, playerY]);
-            levelLayout[enemyX, enemyY].contains = new Enemy();
+            levelLayout[playerX, playerY].contains = _playerOne;
+            _playerOne.SetLocation(levelLayout[playerX, playerY]);
+            levelLayout[enemyX, enemyY].contains = _enemy;
+            _enemy.SetLocation(levelLayout[enemyX, enemyY]);
 
             SetNeighbors();
             /* DEBUG ARRAY CHECKING
@@ -110,9 +112,9 @@ namespace VangdeVolger
             {
 
 
-                for (int x = 0; x < sizeX; x++)
+                for (int x = 0; x < _sizeX; x++)
                 {
-                    for (int y = 0; y < sizeY; y++)
+                    for (int y = 0; y < _sizeY; y++)
                     {
                         if (levelLayout[x, y].contains is GameObject)
                         {
@@ -157,13 +159,16 @@ namespace VangdeVolger
             }
         }
 
-        public Level(Player player)
+        public Level(Player player, Enemy enemy)
         {
 
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
-            levelLayout = new GameField[sizeX, sizeY];
-            this.playerOne = player;
+            _sizeX = 50;
+            _sizeY = 50;
+            levelLayout = new GameField[_sizeX, _sizeY];
+            this._playerOne = player;
+            this._enemy = enemy;
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)

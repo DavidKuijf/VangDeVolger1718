@@ -31,8 +31,6 @@ namespace VangdeVolger
                 _location.contains = null;
                 // set the location of this object to the tile in the specified direction.
                 _location = this._location.neighbor[(int)direction]; 
-
-
             }
 
         }

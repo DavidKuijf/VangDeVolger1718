@@ -49,16 +49,16 @@ namespace VangdeVolger
             switch (e.KeyCode)
             {
                 case Keys.W:
-                    _playerOne.Move((int)Movable.Directions.Up);
+                    _playerOne.Move(Movable.Directions.Up);
                     break;
                 case Keys.A:
-                    _playerOne.Move((int)Movable.Directions.Left);
+                    _playerOne.Move(Movable.Directions.Left);
                     break;
                 case Keys.S:
-                    _playerOne.Move((int)Movable.Directions.Down);
+                    _playerOne.Move(Movable.Directions.Down);
                     break;
                 case Keys.D:
-                    _playerOne.Move((int)Movable.Directions.Right);
+                    _playerOne.Move(Movable.Directions.Right);
                     break;
             }
 

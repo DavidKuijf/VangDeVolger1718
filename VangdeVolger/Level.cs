@@ -161,7 +161,7 @@ namespace VangdeVolger
 
         public Level(Player player, Enemy enemy)
         {
-
+            //
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
             _sizeX = 50;

@@ -81,9 +81,11 @@ namespace VangdeVolger
             return path;
         }
 
-        void Decide()
+        void Decide(GameField[] level)
         {
-            // AddNodes()
+            foreach(GameField gameField in level)
+            {
+            }
             // FindPath()
         }
 

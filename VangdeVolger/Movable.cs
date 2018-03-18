@@ -21,9 +21,9 @@ namespace VangdeVolger
             this._location = ObjectLocation;
         }
 
-        public void Move(Directions direction)
+        virtual public void Move(Directions direction)
         {
-            if (!(_location.neighbor[(int)direction].contains is Wall)) //check if the field in the specified direction is a wall.
+            if (_location.neighbor[(int)direction].contains == null) //check if the field in the specified direction is empty
             {
 
                 _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
@@ -32,6 +32,7 @@ namespace VangdeVolger
 
 
             }
+           
 
         }
         

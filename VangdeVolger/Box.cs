@@ -10,14 +10,30 @@ namespace VangdeVolger
 {
     class Box : Movable
     {
-        void Pushed()
+        public bool Push(Box Target, Directions direction)
         {
+            bool success = false;
 
+            if (Target is Box)
+            {
+                success = true;//Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);
+            }
+            else if (Target == null)
+            {
+                success = true;
+            }
+
+            if (success)
+            {
+                Target.Move(direction);
+            }
+            return success;
         }
 
-        public Box()
+        public Box(GameField location)
         {
-            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Box.png");
+            _image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Box.png");
+            _location = location;
         }
     }
 }

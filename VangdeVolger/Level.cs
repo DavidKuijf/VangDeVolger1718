@@ -55,7 +55,8 @@ namespace VangdeVolger
                         }
                         else if (percentChance > 30 && percentChance < 40 && levelLayout[x, y].contains == null)
                         {
-                            levelLayout[x, y].contains = new Box();
+                            levelLayout[x, y].contains = new Box(levelLayout[x,y]);
+                            
                         }
                         else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                         {
@@ -130,7 +131,7 @@ namespace VangdeVolger
 
 
         }
-        public void getPlayerPosition()
+        public void GetPlayerPosition()
         {
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {

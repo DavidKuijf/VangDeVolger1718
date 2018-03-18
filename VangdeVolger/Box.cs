@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace VangdeVolger
 {
@@ -13,19 +9,23 @@ namespace VangdeVolger
         public bool Push(Box Target, Directions direction)
         {
             bool success = false;
+            if (!(Target._location.neighbor[(int)direction] == null))                                           //check if we are trying to push the box off the map
+            {
 
-            if (Target._location.neighbor[(int)direction].contains is Box)
-            {
-                success = Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);
-            }
-            else if (Target._location.neighbor[(int)direction].contains == null)
-            {
-                success = true;
-            }
+                if (Target._location.neighbor[(int)direction].contains is Box)                                  //Check if the field we are trying to push to contains another box
+                {
+                    success = Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);  // if it does push that box
+                }
+                else if (Target._location.neighbor[(int)direction].contains == null)                            //check if the square is empty
+                {
+                    success = true;                                                                             //if it is set success to true
+                }
 
-            if (success)
-            {
-                Target.Move(direction);
+                if (success)                                                                                    
+                {
+                    Target.Move(direction);                                                                     //move the box in the specified direction
+                }
+                return success;                                                                                 
             }
             return success;
         }

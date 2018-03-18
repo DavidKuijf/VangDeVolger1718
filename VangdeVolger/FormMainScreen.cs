@@ -67,5 +67,21 @@ namespace VangdeVolger
             _level.Draw(pictureBoxMain);
 
         }
+
+        private void ResetPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PausePictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OptionpictureBox_Click(object sender, EventArgs e)
+        {
+            OptionForm TempForm = new OptionForm();
+            TempForm.Show();
+        }
     }
 }

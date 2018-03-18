@@ -22,24 +22,29 @@ namespace VangdeVolger
 
                 _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
                 _location.contains = null;
-                _location = this._location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
+                _location = _location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
 
 
             }
-            else if (_location.neighbor[(int)direction].contains is Box)
+            else if (_location.neighbor[(int)direction].contains is Box)            //if the neigbour in the direction is a Box
             {
-                this.Push((Box)_location.neighbor[(int)direction].contains, direction);
+                Push((Box)_location.neighbor[(int)direction].contains, direction);  //push that box
+            }
+
+            else if (_location.neighbor[(int)direction].contains is Powerup)        // if the neighbour in that direction 
+            {
+                PickUp(direction);                                                           // pick that powerup up
             }
 
         }
-        void Push(Box target, Directions direction)
+        void Push(Box target, Directions direction)                                 
         {
-            target.Push(target , direction);
+            target.Push(target , direction);                                       //push the specified box
         }
 
-        void PickUp()
+        void PickUp(Directions direction)
         {
-
+            _location.neighbor[(int)direction].contains = null;
         }
 
         void Die()

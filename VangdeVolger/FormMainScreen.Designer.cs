@@ -30,7 +30,13 @@
         {
             this.lblTime = new System.Windows.Forms.Label();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
+            this.ResetPictureBox = new System.Windows.Forms.PictureBox();
+            this.PausePictureBox = new System.Windows.Forms.PictureBox();
+            this.OptionpictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OptionpictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -50,13 +56,44 @@
             this.pictureBoxMain.Size = new System.Drawing.Size(500, 500);
             this.pictureBoxMain.TabIndex = 1;
             this.pictureBoxMain.TabStop = false;
-         
+            // 
+            // ResetPictureBox
+            // 
+            this.ResetPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ResetPictureBox.Location = new System.Drawing.Point(518, 30);
+            this.ResetPictureBox.Name = "ResetPictureBox";
+            this.ResetPictureBox.Size = new System.Drawing.Size(142, 86);
+            this.ResetPictureBox.TabIndex = 2;
+            this.ResetPictureBox.TabStop = false;
+            this.ResetPictureBox.Click += new System.EventHandler(this.ResetPictureBox_Click);
+            // 
+            // PausePictureBox
+            // 
+            this.PausePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PausePictureBox.Location = new System.Drawing.Point(518, 122);
+            this.PausePictureBox.Name = "PausePictureBox";
+            this.PausePictureBox.Size = new System.Drawing.Size(142, 86);
+            this.PausePictureBox.TabIndex = 3;
+            this.PausePictureBox.TabStop = false;
+            this.PausePictureBox.Click += new System.EventHandler(this.PausePictureBox_Click);
+            // 
+            // OptionpictureBox
+            // 
+            this.OptionpictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.OptionpictureBox.Location = new System.Drawing.Point(518, 214);
+            this.OptionpictureBox.Name = "OptionpictureBox";
+            this.OptionpictureBox.Size = new System.Drawing.Size(142, 86);
+            this.OptionpictureBox.TabIndex = 4;
+            this.OptionpictureBox.TabStop = false;
+            this.OptionpictureBox.Click += new System.EventHandler(this.OptionpictureBox_Click);
             // 
             // FormMainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 542);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(672, 542);
+            this.Controls.Add(this.OptionpictureBox);
+            this.Controls.Add(this.PausePictureBox);
+            this.Controls.Add(this.ResetPictureBox);
             this.Controls.Add(this.pictureBoxMain);
             this.Controls.Add(this.lblTime);
             this.KeyPreview = true;
@@ -65,6 +102,9 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Draw);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FormMainScreen_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OptionpictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -73,6 +113,9 @@
 
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.PictureBox pictureBoxMain;
+        private System.Windows.Forms.PictureBox ResetPictureBox;
+        private System.Windows.Forms.PictureBox PausePictureBox;
+        private System.Windows.Forms.PictureBox OptionpictureBox;
     }
 }
 

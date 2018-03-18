@@ -10,16 +10,18 @@ using System.Windows.Forms;
 
 namespace VangdeVolger
 {
-    public partial class OptionForm : Form
+    partial class OptionForm : Form
     {
-        public OptionForm()
+        private Level _level;
+        public OptionForm(Level level)
         {
             InitializeComponent();
+            _level = level;
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-
+            _level.SetSize(Int32.Parse(LevelSizeTextboxX.Text), Int32.Parse(LevelSizeTextboxY.Text)) ;
         }
     }
 }

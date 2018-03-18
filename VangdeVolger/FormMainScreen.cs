@@ -70,6 +70,8 @@ namespace VangdeVolger
 
         private void ResetPictureBox_Click(object sender, EventArgs e)
         {
+            _level.Generate(_level);
+            _level.Draw(pictureBoxMain);
 
         }
 
@@ -80,7 +82,7 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm TempForm = new OptionForm();
+            OptionForm TempForm = new OptionForm(_level);
             TempForm.Show();
         }
     }

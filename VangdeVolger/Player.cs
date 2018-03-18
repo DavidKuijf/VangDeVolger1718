@@ -17,24 +17,28 @@ namespace VangdeVolger
 
         override public void Move(Directions direction)
         {
-            if (_location.neighbor[(int)direction].contains == null) //check if the field in the specified direction is empty
+            if (!(_location.neighbor[(int)direction] == null))              //are we walking to the edge of the map
             {
+                if (_location.neighbor[(int)direction].contains == null) //check if the field in the specified direction is empty
+                {
 
-                _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
-                _location.contains = null;
-                _location = _location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
+                    _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
+                    _location.contains = null;
+                    _location = _location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
 
 
+                }
+                else if (_location.neighbor[(int)direction].contains is Box)            //if the neigbour in the direction is a Box
+                {
+                    Push((Box)_location.neighbor[(int)direction].contains, direction);  //push that box
+                }
+
+                else if (_location.neighbor[(int)direction].contains is Powerup)        // if the neighbour in that direction 
+                {
+                    PickUp(direction);                                                           // pick that powerup up
+                }
             }
-            else if (_location.neighbor[(int)direction].contains is Box)            //if the neigbour in the direction is a Box
-            {
-                Push((Box)_location.neighbor[(int)direction].contains, direction);  //push that box
-            }
-
-            else if (_location.neighbor[(int)direction].contains is Powerup)        // if the neighbour in that direction 
-            {
-                PickUp(direction);                                                           // pick that powerup up
-            }
+            
 
         }
         void Push(Box target, Directions direction)                                 

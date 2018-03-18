@@ -39,7 +39,9 @@ namespace VangdeVolger
 
         public void Generate(Level level)
         {
+
             gameTimer = new Timer();
+            EmptyLevel();
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
@@ -166,31 +168,21 @@ namespace VangdeVolger
                     // Check for every side if it goes out of range and add it to the array. ('null' if out of range).
                     for (int i = 0; i < levelLayout[x, y].neighbor.Length; i++)
                     {
-                        if (i == 0 && y - 1 > 0)
+                        if (i == 0 && y - 1 >= 0)
                             levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
                         if (i == 1 && x + 1 < levelLayout.GetLength(0))
                             levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
                         if (i == 2 && y + 1 < levelLayout.GetLength(1))
                             levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
-                        if (i == 3 && x - 1 > 0)
+                        if (i == 3 && x - 1 >= 0)
                             levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
                     }
                 }
             }
         }
 
-        public Level(Player player, Enemy enemy)
+        private void EmptyLevel()
         {
-            //
-            //make sure out buffer is equal to the playingfield
-           
-
-
-            _bufferSize = new Size(_sizeX * 10, _sizeY * 10);
-            levelLayout = new GameField[_sizeX, _sizeY];
-
-            this._playerOne = player;
-            this._enemy = enemy;
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
@@ -198,6 +190,29 @@ namespace VangdeVolger
                     levelLayout[x, y] = new GameField();
                 }
             }
+        }
+
+        public void SetSize(int X, int Y)
+        {
+            _sizeX = X;
+            _sizeY = Y;
+            
+        }
+
+        public Level(Player player, Enemy enemy)
+        {
+            //
+            //make sure out buffer is equal to the playingfield
+            _sizeX = 50;
+            _sizeY = 50;
+
+
+            _bufferSize = new Size(_sizeX * 10, _sizeY * 10);
+            levelLayout = new GameField[_sizeX, _sizeY];
+
+            this._playerOne = player;
+            this._enemy = enemy;
+            EmptyLevel();
         }
     }
 }

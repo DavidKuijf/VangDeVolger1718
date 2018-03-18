@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainScreen));
             this.lblTime = new System.Windows.Forms.Label();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.ResetPictureBox = new System.Windows.Forms.PictureBox();
@@ -60,9 +61,10 @@
             // ResetPictureBox
             // 
             this.ResetPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ResetPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ResetPictureBox.BackgroundImage")));
             this.ResetPictureBox.Location = new System.Drawing.Point(518, 30);
             this.ResetPictureBox.Name = "ResetPictureBox";
-            this.ResetPictureBox.Size = new System.Drawing.Size(142, 86);
+            this.ResetPictureBox.Size = new System.Drawing.Size(150, 90);
             this.ResetPictureBox.TabIndex = 2;
             this.ResetPictureBox.TabStop = false;
             this.ResetPictureBox.Click += new System.EventHandler(this.ResetPictureBox_Click);
@@ -70,9 +72,10 @@
             // PausePictureBox
             // 
             this.PausePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PausePictureBox.Location = new System.Drawing.Point(518, 122);
+            this.PausePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PausePictureBox.BackgroundImage")));
+            this.PausePictureBox.Location = new System.Drawing.Point(518, 126);
             this.PausePictureBox.Name = "PausePictureBox";
-            this.PausePictureBox.Size = new System.Drawing.Size(142, 86);
+            this.PausePictureBox.Size = new System.Drawing.Size(150, 90);
             this.PausePictureBox.TabIndex = 3;
             this.PausePictureBox.TabStop = false;
             this.PausePictureBox.Click += new System.EventHandler(this.PausePictureBox_Click);
@@ -80,9 +83,10 @@
             // OptionpictureBox
             // 
             this.OptionpictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.OptionpictureBox.Location = new System.Drawing.Point(518, 214);
+            this.OptionpictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OptionpictureBox.BackgroundImage")));
+            this.OptionpictureBox.Location = new System.Drawing.Point(518, 222);
             this.OptionpictureBox.Name = "OptionpictureBox";
-            this.OptionpictureBox.Size = new System.Drawing.Size(142, 86);
+            this.OptionpictureBox.Size = new System.Drawing.Size(150, 90);
             this.OptionpictureBox.TabIndex = 4;
             this.OptionpictureBox.TabStop = false;
             this.OptionpictureBox.Click += new System.EventHandler(this.OptionpictureBox_Click);
@@ -90,7 +94,7 @@
             // FormMainScreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(672, 542);
+            this.ClientSize = new System.Drawing.Size(673, 542);
             this.Controls.Add(this.OptionpictureBox);
             this.Controls.Add(this.PausePictureBox);
             this.Controls.Add(this.ResetPictureBox);

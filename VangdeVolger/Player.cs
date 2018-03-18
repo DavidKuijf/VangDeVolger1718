@@ -15,9 +15,26 @@ namespace VangdeVolger
         private int x;
         private int y;
 
-        void Push()
+        override public void Move(Directions direction)
         {
+            if (_location.neighbor[(int)direction].contains == null) //check if the field in the specified direction is empty
+            {
 
+                _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
+                _location.contains = null;
+                _location = this._location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
+
+
+            }
+            else if (_location.neighbor[(int)direction].contains is Box)
+            {
+                this.Push((Box)_location.neighbor[(int)direction].contains, direction);
+            }
+
+        }
+        void Push(Box target, Directions direction)
+        {
+            target.Push(target , direction);
         }
 
         void PickUp()

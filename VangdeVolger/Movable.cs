@@ -21,17 +21,18 @@ namespace VangdeVolger
             this._location = ObjectLocation;
         }
 
-        public void Move(Directions direction)
+        virtual public void Move(Directions direction)
         {
-            //check if the field in the specified direction is a wall.
-            if (!(_location.neighbor[(int)direction].contains is Wall)) 
+            if (_location.neighbor[(int)direction].contains == null) //check if the field in the specified direction is empty
             {
-                // set the gametile in the specified direction equal to this object.
-                _location.neighbor[(int)direction].contains = this;  
+
+                _location.neighbor[(int)direction].contains = this;  // set the gametile in the specified direction equal to this object.
                 _location.contains = null;
-                // set the location of this object to the tile in the specified direction.
-                _location = this._location.neighbor[(int)direction]; 
+                _location = this._location.neighbor[(int)direction]; // set the location of this object to the tile in the sepcified direction.
+
+
             }
+           
 
         }
         

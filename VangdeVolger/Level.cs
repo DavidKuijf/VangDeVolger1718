@@ -25,7 +25,7 @@ namespace VangdeVolger
         private Enemy _enemy;
 
         public GameField[,] levelLayout;
-        
+
         private void Read()
         {
 
@@ -47,26 +47,26 @@ namespace VangdeVolger
                     }*/
                     //else
                     //{
-                        // Generate a pseudo-random number to decide object placement.
-                        int percentChance = _random.Next(100);
-                        
-                        if (percentChance < 30 && levelLayout[x, y].contains == null)
-                        {
-                            levelLayout[x, y].contains = new Wall();
-                        }
-                        else if (percentChance > 30 && percentChance < 40 && levelLayout[x, y].contains == null)
-                        {
-                            levelLayout[x, y].contains = new Box(levelLayout[x,y]);
-                            
-                        }
-                        else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
-                        {
-                            levelLayout[x, y].contains = new Powerup(5, gameTimer._gameDuration);
-                        }
-                        /*else if (levelLayout[x, y].contains == null)
-                        {
-                            levelLayout[x, y].contains = null;
-                        }*/
+                    // Generate a pseudo-random number to decide object placement.
+                    int percentChance = _random.Next(100);
+
+                    if (percentChance < 30 && levelLayout[x, y].contains == null)
+                    {
+                        levelLayout[x, y].contains = new Wall();
+                    }
+                    else if (percentChance > 30 && percentChance < 40 && levelLayout[x, y].contains == null)
+                    {
+                        levelLayout[x, y].contains = new Box(levelLayout[x, y]);
+
+                    }
+                    else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
+                    {
+                        levelLayout[x, y].contains = new Powerup(5, gameTimer._gameDuration);
+                    }
+                    /*else if (levelLayout[x, y].contains == null)
+                    {
+                        levelLayout[x, y].contains = null;
+                    }*/
                     //}
                 }
             }
@@ -82,7 +82,7 @@ namespace VangdeVolger
             int enemyY = _random.Next(1, sizeY - 1);
 
             levelLayout[playerX, playerY].contains = _playerOne;
-            _playerOne.SetLocation(levelLayout[playerX,playerY]);
+            _playerOne.SetLocation(levelLayout[playerX, playerY]);
             levelLayout[enemyX, enemyY].contains = _enemy;
             _enemy.SetLocation(levelLayout[enemyX, enemyY]);
 
@@ -103,26 +103,26 @@ namespace VangdeVolger
         }
 
         //takes an object array then draws all the objects
-        public void Draw(PictureBox Frame) 
+        public void Draw(PictureBox Frame)
         {
             //make a bitmap that we can draw to before displaying
             _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
 
 
             using (Graphics graphics = Graphics.FromImage(_buffer))
-            { 
+            {
 
-                
+
                 for (int x = 0; x < sizeX; x++)
                 {
                     for (int y = 0; y < sizeY; y++)
                     {
-                        if (levelLayout[x,y].contains is GameObject)
+                        if (levelLayout[x, y].contains is GameObject)
                         {
                             Image toBeDrawn = Image.FromFile(levelLayout[x, y].contains._image);
-                            graphics.DrawImage(toBeDrawn, x * toBeDrawn.Width, y * toBeDrawn.Size.Height, toBeDrawn.Width, toBeDrawn.Size.Height );
+                            graphics.DrawImage(toBeDrawn, x * toBeDrawn.Width, y * toBeDrawn.Size.Height, toBeDrawn.Width, toBeDrawn.Size.Height);
                         }
-                        
+
                     }
                 }
 
@@ -139,8 +139,8 @@ namespace VangdeVolger
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
-                    if (levelLayout[x,y].contains is Player)
-                    { 
+                    if (levelLayout[x, y].contains is Player)
+                    {
 
                     }
                 }
@@ -158,23 +158,16 @@ namespace VangdeVolger
                     levelLayout[x, y].neighbor = new GameField[4];
 
                     // Check for every side if it goes out of range and add it to the array. ('null' if out of range).
-                    for (int i = 0; i < levelLayout[x,y].neighbor.Length; i++)
+                    for (int i = 0; i < levelLayout[x, y].neighbor.Length; i++)
                     {
-                        try  // try catch has to be removed.
-                        {
-                            if (i == 0)
-                                levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
-                            if (i == 1)
-                                levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
-                            if (i == 2)
-                                levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
-                            if (i == 3)
-                                levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
-                        }
-                        catch (System.IndexOutOfRangeException e)
-                        {
-                            Console.WriteLine($"IndexOutOfRangeException! This means we're probably trying to add a square that doesn't exist to the neighbor array... Stacktrace: {e.StackTrace}");
-                        }
+                        if (i == 0 && y - 1 > 0)
+                            levelLayout[x, y].neighbor[i] = levelLayout[x, y - 1];
+                        if (i == 1 && x + 1 < levelLayout.GetLength(0))
+                            levelLayout[x, y].neighbor[i] = levelLayout[x + 1, y];
+                        if (i == 2 && y + 1 < levelLayout.GetLength(1))
+                            levelLayout[x, y].neighbor[i] = levelLayout[x, y + 1];
+                        if (i == 3 && x - 1 > 0)
+                            levelLayout[x, y].neighbor[i] = levelLayout[x - 1, y];
                     }
                 }
             }
@@ -192,7 +185,7 @@ namespace VangdeVolger
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
-                    levelLayout[x,y] = new GameField();
+                    levelLayout[x, y] = new GameField();
                 }
             }
         }

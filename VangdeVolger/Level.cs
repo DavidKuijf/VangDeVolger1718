@@ -21,7 +21,8 @@ namespace VangdeVolger
         public int playerX;
         public int playerY;
 
-        private Player playerOne;
+        private Player _playerOne;
+        private Enemy _enemy;
 
         public GameField[,] levelLayout;
         
@@ -80,9 +81,10 @@ namespace VangdeVolger
             int enemyX = _random.Next(1, sizeX - 1);
             int enemyY = _random.Next(1, sizeY - 1);
 
-            levelLayout[playerX, playerY].contains = playerOne;
-            playerOne.SetLocation(levelLayout[playerX,playerY]);
-            levelLayout[enemyX, enemyY].contains = new Enemy();
+            levelLayout[playerX, playerY].contains = _playerOne;
+            _playerOne.SetLocation(levelLayout[playerX,playerY]);
+            levelLayout[enemyX, enemyY].contains = _enemy;
+            _enemy.SetLocation(levelLayout[enemyX, enemyY]);
 
             SetNeighbors();
             /* DEBUG ARRAY CHECKING
@@ -178,13 +180,14 @@ namespace VangdeVolger
             }
         }
 
-        public Level(Player player)
+        public Level(Player player, Enemy enemy)
         {
             //
             //make sure out buffer is equal to the playingfield
             _bufferSize = new Size(500, 500);
             levelLayout = new GameField[sizeX, sizeY];
-            this.playerOne = player;
+            this._playerOne = player;
+            this._enemy = enemy;
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)

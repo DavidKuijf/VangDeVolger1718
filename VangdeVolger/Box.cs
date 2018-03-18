@@ -14,11 +14,11 @@ namespace VangdeVolger
         {
             bool success = false;
 
-            if (Target is Box)
+            if (Target._location.neighbor[(int)direction].contains is Box)
             {
-                success = true;//Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);
+                success = Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);
             }
-            else if (Target == null)
+            else if (Target._location.neighbor[(int)direction].contains == null)
             {
                 success = true;
             }

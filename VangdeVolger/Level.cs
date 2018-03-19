@@ -15,12 +15,12 @@ namespace VangdeVolger
         private Size _bufferSize;
         private Size _defaultSize;
 
+        float _imageSizeX;
+        float _imageSizeY;
+
         private Random _random = new Random();
         private int _sizeX = 50;
         private int _sizeY = 50;
-        
-        public int sizeX;
-        public int sizeY;
 
         public Timer gameTimer;
 
@@ -39,7 +39,6 @@ namespace VangdeVolger
 
         public void Generate(Level level)
         {
-
             gameTimer = new Timer();
             EmptyLevel();
             // Iterate over 2D array levelLayout.
@@ -86,8 +85,15 @@ namespace VangdeVolger
             */
             playerX = _random.Next(1, _sizeX - 1);
             playerY = _random.Next(1, _sizeY - 1);
-            int enemyX = _random.Next(1, _sizeX - 1);
-            int enemyY = _random.Next(1, _sizeY - 1);
+            int enemyX = -1;
+            int enemyY = -1;
+
+            // Make sure the player and the enemy do not get generated in the same spots.
+            while ((enemyX == -1 && enemyY == -1) || (enemyX == playerX && enemyY == playerY))
+            {
+                enemyX = _random.Next(1, _sizeX - 1);
+                enemyY = _random.Next(1, _sizeY - 1);
+            }
 
             levelLayout[playerX, playerY].contains = _playerOne;
             _playerOne.SetLocation(levelLayout[playerX, playerY]);
@@ -116,11 +122,13 @@ namespace VangdeVolger
             //make a bitmap that we can draw to before displaying
             _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
 
+            float imageSizeX = Frame.Width / _sizeX;
+            float imageSizeY = Frame.Height / _sizeY;
 
             using (Graphics graphics = Graphics.FromImage(_buffer))
             {
 
-                
+
                 for (int x = 0; x < _sizeX; x++)
                 {
                     for (int y = 0; y < _sizeY; y++)
@@ -128,7 +136,7 @@ namespace VangdeVolger
                         if (levelLayout[x, y].contains is GameObject)
                         {
                             Image toBeDrawn = Image.FromFile(levelLayout[x, y].contains._image);
-                            graphics.DrawImage(toBeDrawn, x * toBeDrawn.Width, y * toBeDrawn.Size.Height, toBeDrawn.Width, toBeDrawn.Size.Height);
+                            graphics.DrawImage(toBeDrawn, x * imageSizeX, y * imageSizeY, imageSizeX, imageSizeY);
                         }
 
                     }
@@ -183,6 +191,7 @@ namespace VangdeVolger
         
         private void EmptyLevel()
         {
+            levelLayout = new GameField[_sizeX, _sizeY];
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
@@ -196,7 +205,7 @@ namespace VangdeVolger
         {
             _sizeX = X;
             _sizeY = Y;
-            
+
         }
 
         public Level(Player player, Enemy enemy)
@@ -206,9 +215,10 @@ namespace VangdeVolger
             _sizeX = 50;
             _sizeY = 50;
 
+            _imageSizeX = _defaultSize.Width;
+            _imageSizeY = _defaultSize.Height;
 
             _bufferSize = new Size(_sizeX * 10, _sizeY * 10);
-            levelLayout = new GameField[_sizeX, _sizeY];
 
             this._playerOne = player;
             this._enemy = enemy;

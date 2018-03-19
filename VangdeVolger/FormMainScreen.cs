@@ -82,8 +82,8 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm TempForm = new OptionForm(_level);
-            TempForm.Show();
+            OptionForm optionForm = new OptionForm(_level);
+            optionForm.Show();
         }
     }
 }

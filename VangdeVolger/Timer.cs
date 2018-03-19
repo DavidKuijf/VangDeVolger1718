@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Timer
+    public class Timer
     {
-        public int _gameDuration;
+        public int gameDuration;
     }
 }

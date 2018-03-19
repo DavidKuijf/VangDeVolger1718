@@ -68,7 +68,7 @@ namespace VangdeVolger
                     }
                     else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                     {
-                        levelLayout[x, y].contains = new Powerup(5, gameTimer._gameDuration);
+                        levelLayout[x, y].contains = new Powerup(5, gameTimer.gameDuration);
                     }
                     /*else if (levelLayout[x, y].contains == null)
                     {
@@ -225,13 +225,13 @@ namespace VangdeVolger
         {
             //
             //make sure out buffer is equal to the playingfield
-            _sizeX = 50;
-            _sizeY = 50;
+            _sizeX = 10;
+            _sizeY = 10;
 
             _imageSizeX = _defaultSize.Width;
             _imageSizeY = _defaultSize.Height;
 
-            _bufferSize = new Size(_sizeX * 10, _sizeY * 10);
+            _bufferSize = new Size(500, 500);
 
             this.gameTimer = timer;
             this._playerOne = player;

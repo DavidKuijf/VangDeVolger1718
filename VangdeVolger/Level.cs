@@ -180,7 +180,7 @@ namespace VangdeVolger
                 }
             }
         }
-
+        
         private void EmptyLevel()
         {
             for (int x = 0; x < levelLayout.GetLength(0); x++)

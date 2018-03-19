@@ -13,24 +13,41 @@ namespace VangdeVolger
         //born is timer on creation
         private int born;
         //is active on player?
-        bool isActive;
+        public bool isActive;
         //duration on the player
-        int playerDuration;
+        public int playerDuration;
         //powerUp duration
-        int activeUntill;
+        public int activeUntill;
+
+        //private Timer gameDuration;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="givenLife">Int that assigns the time that the powerup will be alive</param>
-        public Powerup(int givenLife, int gameDuration)
+        /// <param name="gameDuration">Timestamp of creation from Timer class</param>
+        public Powerup(int givenLife, int timer)
         {
+            //gameDuration = Timer;
             //get powerUp image
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Powerup.png");
             isActive = false;
-            born = gameDuration;
+            born = timer;
             activeUntill = givenLife;
-            
+
+            //random number for duration
+            Random rnd = new Random();
+            activeUntill = rnd.Next(2, 5);
+
         }
+
+        public void countDown()
+        {
+
+        }
+
+
+
+
     }
 }

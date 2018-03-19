@@ -15,8 +15,8 @@ namespace VangdeVolger
         private Size _bufferSize;
         private Size _defaultSize;
 
-        float _imageSizeX;
-        float _imageSizeY;
+        private float _imageSizeX;
+        private float _imageSizeY;
 
         private Random _random = new Random();
         private int _sizeX = 50;
@@ -24,8 +24,8 @@ namespace VangdeVolger
 
         public Timer gameTimer;
 
-        public int playerX;
-        public int playerY;
+        private int playerX;
+        private int playerY;
 
         private Player _playerOne;
         private Enemy _enemy;
@@ -125,8 +125,8 @@ namespace VangdeVolger
             //make a bitmap that we can draw to before displaying
             _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
 
-            float imageSizeX = Frame.Width / _sizeX;
-            float imageSizeY = Frame.Height / _sizeY;
+            _imageSizeX = Frame.Width / _sizeX;
+            _imageSizeY = Frame.Height / _sizeY;
 
             using (Graphics graphics = Graphics.FromImage(_buffer))
             {
@@ -139,7 +139,7 @@ namespace VangdeVolger
                         if (levelLayout[x, y].contains is GameObject)
                         {
                             Image toBeDrawn = Image.FromFile(levelLayout[x, y].contains._image);
-                            graphics.DrawImage(toBeDrawn, x * imageSizeX, y * imageSizeY, imageSizeX, imageSizeY);
+                            graphics.DrawImage(toBeDrawn, x * _imageSizeX, y * _imageSizeY, _imageSizeX, _imageSizeY);
                         }
 
                     }

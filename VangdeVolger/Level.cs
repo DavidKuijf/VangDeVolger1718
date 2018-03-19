@@ -37,10 +37,10 @@ namespace VangdeVolger
 
         }
 
-        public void Generate(Level level)
+        public void Generate(Level level, Timer timer)
         {
 
-            gameTimer = new Timer();
+            gameTimer = timer;
             EmptyLevel();
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
@@ -110,7 +110,10 @@ namespace VangdeVolger
             */
         }
 
-        //takes an object array then draws all the objects
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Frame"></param>
         public void Draw(PictureBox Frame)
         {
             //make a bitmap that we can draw to before displaying
@@ -192,13 +195,23 @@ namespace VangdeVolger
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
         public void SetSize(int X, int Y)
         {
             _sizeX = X;
             _sizeY = Y;
             
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="enemy"></param>
         public Level(Player player, Enemy enemy)
         {
             //

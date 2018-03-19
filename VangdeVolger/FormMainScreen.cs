@@ -25,7 +25,7 @@ namespace VangdeVolger
 
             _playerOne = new Player();
             _enemy = new Enemy();
-            _level = new Level(_playerOne, _enemy);
+            _level = new Level(_playerOne, _enemy, gameTimer);
             _level.Generate(_level);
 
             _level.Draw(pictureBoxMain);
@@ -36,9 +36,9 @@ namespace VangdeVolger
 
         private void Draw(object sender, PaintEventArgs e)
         {
-            //_level.gameTimer._gameDuration++;
-            //lblTime.Text = _level.gameTimer._gameDuration.ToString();
-
+            _level.gameTimer._gameDuration++;
+            lblTime.Text = _level.gameTimer._gameDuration.ToString();
+            
             Application.Idle += delegate { Invalidate(); };
         }
 

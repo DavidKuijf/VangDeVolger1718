@@ -37,10 +37,9 @@ namespace VangdeVolger
 
         }
 
-        public void Generate(Level level, Timer timer)
+        public void Generate(Level level)
         {
 
-            gameTimer = timer;
             EmptyLevel();
             // Iterate over 2D array levelLayout.
             for (int x = 0; x < levelLayout.GetLength(0); x++)
@@ -222,7 +221,7 @@ namespace VangdeVolger
         /// </summary>
         /// <param name="player"></param>
         /// <param name="enemy"></param>
-        public Level(Player player, Enemy enemy)
+        public Level(Player player, Enemy enemy, Timer timer)
         {
             //
             //make sure out buffer is equal to the playingfield
@@ -234,6 +233,7 @@ namespace VangdeVolger
 
             _bufferSize = new Size(_sizeX * 10, _sizeY * 10);
 
+            this.gameTimer = timer;
             this._playerOne = player;
             this._enemy = enemy;
             EmptyLevel();

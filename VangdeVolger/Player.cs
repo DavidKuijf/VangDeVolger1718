@@ -7,9 +7,7 @@ namespace VangdeVolger
     class Player : Movable
     {
         private int _health;
-        protected int _speed;
-        private int x;
-        private int y;
+        private int _speed;
 
         override public void Move(Directions direction)
         {

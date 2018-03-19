@@ -57,11 +57,11 @@ namespace VangdeVolger
                     // Generate a pseudo-random number to decide object placement.
                     int percentChance = _random.Next(100);
 
-                    if (percentChance < 30 && levelLayout[x, y].contains == null)
+                    if (percentChance < 5 && levelLayout[x, y].contains == null)
                     {
                         levelLayout[x, y].contains = new Wall();
                     }
-                    else if (percentChance > 30 && percentChance < 40 && levelLayout[x, y].contains == null)
+                    else if (percentChance > 5 && percentChance < 25 && levelLayout[x, y].contains == null)
                     {
                         levelLayout[x, y].contains = new Box(levelLayout[x, y]);
 

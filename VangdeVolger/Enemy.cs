@@ -12,8 +12,12 @@ namespace VangdeVolger
     class Enemy : Movable
     {
         Random random = new Random();
-        DialogResult winBox;
-        //
+        
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool CheckWin()
         {
             int winCount = 0;
@@ -28,6 +32,10 @@ namespace VangdeVolger
                         winCount++;
                     }
                 }
+                else
+                {
+                    winCount++;
+                }
             }
 
             if (winCount == _location.neighbor.Length)
@@ -37,13 +45,13 @@ namespace VangdeVolger
             
         }
 
-        public void Decide()
+        public bool Decide()
         {
             Movable.Directions direction = (Movable.Directions)random.Next(4);
             Move(direction);
 
-            if (CheckWin())
-                winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return CheckWin();
+                
         }
 
         public Enemy()

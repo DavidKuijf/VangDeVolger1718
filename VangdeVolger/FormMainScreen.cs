@@ -10,6 +10,8 @@ namespace VangdeVolger
         private Player _playerOne;
         private Enemy _enemy;
         private Level _level;
+        DialogResult winBox;
+
 
         public FormMainScreen()
         {
@@ -45,23 +47,27 @@ namespace VangdeVolger
             {
                 case Keys.W:
                     _playerOne.Move(Movable.Directions.Up);
-                    _enemy.Decide();
+                    
                     break;
                 case Keys.A:
                     _playerOne.Move(Movable.Directions.Left);
-                    _enemy.Decide();
+                    
                     break;
                 case Keys.S:
                     _playerOne.Move(Movable.Directions.Down);
-                    _enemy.Decide();
+                  
                     break;
                 case Keys.D:
                     _playerOne.Move(Movable.Directions.Right);
-                    _enemy.Decide();
+                    
                     break;
             }
-            
+            bool win = _enemy.Decide();
             _level.Draw(pictureBoxMain);
+            if (win)
+            {
+                winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 

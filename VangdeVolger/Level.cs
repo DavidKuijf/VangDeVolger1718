@@ -34,6 +34,8 @@ namespace VangdeVolger
 
         public GameField[,] levelLayout;
 
+       
+
         private void Read()
         {
 

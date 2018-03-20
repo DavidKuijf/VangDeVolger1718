@@ -56,7 +56,7 @@ namespace VangdeVolger
                     _playerOne.Move(Movable.Directions.Right);
                     break;
             }
-
+            
             _level.Draw(pictureBoxMain);
 
         }

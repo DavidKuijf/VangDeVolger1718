@@ -9,7 +9,7 @@ namespace VangdeVolger
     {
         Random random = new Random();
 
-        private void Decide(GameField[] level)
+        public void Decide(GameField[] level)
         {
             Movable.Directions direction = (Movable.Directions)random.Next(5);
             Move(direction);

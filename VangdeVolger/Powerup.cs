@@ -21,6 +21,14 @@ namespace VangdeVolger
 
         //private Timer gameDuration;
 
+      
+
+        public void countDown()
+        {
+
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -40,14 +48,6 @@ namespace VangdeVolger
             activeUntill = rnd.Next(2, 5);
 
         }
-
-        public void countDown()
-        {
-
-        }
-
-
-
 
     }
 }

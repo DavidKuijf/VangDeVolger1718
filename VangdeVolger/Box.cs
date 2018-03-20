@@ -9,31 +9,27 @@ namespace VangdeVolger
         public bool Push(Box Target, Directions direction)
         {
             bool success = false;
-            //check if we are trying to push the box off the map
-            if (!(Target._location.neighbor[(int)direction] == null))                                           
+            if (!(Target._location.neighbor[(int)direction] == null))                                           //check if we are trying to push the box off the map
             {
-                //Check if the field we are trying to push to contains another box
-                if (Target._location.neighbor[(int)direction].contains is Box)                                 
+
+                if (Target._location.neighbor[(int)direction].contains is Box)                                  //Check if the field we are trying to push to contains another box
                 {
-                    // if it does push that box
-                    success = Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);  
+                    success = Target.Push((Box)Target._location.neighbor[(int)direction].contains, direction);  // if it does push that box
                 }
-                //check if the square is empty
-                else if (Target._location.neighbor[(int)direction].contains == null)                           
+                else if (Target._location.neighbor[(int)direction].contains == null)                            //check if the square is empty
                 {
-                    //if it is set success to true
-                    success = true;                                                                            
+                    success = true;                                                                             //if it is set success to true
                 }
 
                 if (success)                                                                                    
                 {
-                    //move the box in the specified direction
-                    Target.Move(direction);                                                                    
+                    Target.Move(direction);                                                                     //move the box in the specified direction
                 }
                 return success;                                                                                 
             }
             return success;
         }
+
 
         public Box(GameField location)
         {

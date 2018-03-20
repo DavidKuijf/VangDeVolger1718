@@ -1,49 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace VangdeVolger
 {
     class Enemy : Movable
     {
         Random random = new Random();
-        DialogResult winBox;
 
-        private bool CheckWin()
+        private void Decide(GameField[] level)
         {
-            int winCount = 0;
-
-            for (int i = 0; i < _location.neighbor.Length; i++)
-            {
-                if (!(_location.neighbor[i] == null))
-                {
-                    //check if the field in the specified direction is empty
-                    if (_location.neighbor[i].contains != null && !(_location.neighbor[i].contains is Player))
-                    {
-                        winCount++;
-                    }
-                }
-            }
-
-            if (winCount == _location.neighbor.Length)
-                return true;
-            else
-                return false;
-            
-        }
-
-        public void Decide()
-        {
-            Movable.Directions direction = (Movable.Directions)random.Next(4);
+            Movable.Directions direction = (Movable.Directions)random.Next(5);
             Move(direction);
-
-            if (CheckWin())
-                winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public Enemy()

@@ -13,7 +13,7 @@ namespace VangdeVolger
     {
         Random random = new Random();
         DialogResult winBox;
-
+        //
         private bool CheckWin()
         {
             int winCount = 0;

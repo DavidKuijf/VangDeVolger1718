@@ -34,13 +34,13 @@ namespace VangdeVolger
         /// </summary>
         /// <param name="givenLife">Int that assigns the time that the powerup will be alive</param>
         /// <param name="gameDuration">Timestamp of creation from Timer class</param>
-        public Powerup(int givenLife, int timer)
+        public Powerup(int givenLife)
         {
             //gameDuration = Timer;
             //get powerUp image
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Powerup.png");
             isActive = false;
-            born = timer;
+            
             activeUntill = givenLife;
 
             //random number for duration

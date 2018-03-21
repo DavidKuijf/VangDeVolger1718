@@ -20,10 +20,10 @@ namespace VangdeVolger
 
             _playerOne = new Player();
             _enemy = new Enemy();
-            _level = new Level(_playerOne, _enemy, gameTimer);
+            _level = new Level(_playerOne, _enemy);
             _level.Generate(_level);
-
             _level.Draw(pictureBoxMain);
+
 
         }
 
@@ -31,8 +31,6 @@ namespace VangdeVolger
 
         private void Draw(object sender, PaintEventArgs e)
         {
-            _level.gameTimer.gameDuration++;
-            lblTime.Text = _level.gameTimer.gameDuration.ToString();
             
             Application.Idle += delegate { Invalidate(); };
         }
@@ -62,12 +60,16 @@ namespace VangdeVolger
                     
                     break;
             }
-            bool win = _enemy.Decide();
-            _level.Draw(pictureBoxMain);
-            if (win)
+            if (true)
             {
-                winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool win = _enemy.Decide();
+                _level.Draw(pictureBoxMain);
+                if (win)
+                {
+                    winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+           
 
         }
 
@@ -85,8 +87,21 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm optionForm = new OptionForm(_level);
+            OptionForm optionForm = new OptionForm(_level,this);
             optionForm.Show();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (true)
+            {
+                bool win = _enemy.Decide();
+                _level.Draw(pictureBoxMain);
+                if (win)
+                {
+                    winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

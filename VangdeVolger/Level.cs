@@ -28,7 +28,8 @@ namespace VangdeVolger
         public int playerX;
         public int playerY;
 
-        public Timer gameTimer;
+        //public Timer gameTimer;
+
         private Player _playerOne;
         private Enemy _enemy;
 
@@ -72,7 +73,7 @@ namespace VangdeVolger
                     }
                     else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                     {
-                        levelLayout[x, y].contains = new Powerup(5, gameTimer.gameDuration);
+                        levelLayout[x, y].contains = new Powerup(5);
                     }
                     /*else if (levelLayout[x, y].contains == null)
                     {
@@ -225,7 +226,7 @@ namespace VangdeVolger
         /// </summary>
         /// <param name="player"></param>
         /// <param name="enemy"></param>
-        public Level(Player player, Enemy enemy, Timer timer)
+        public Level(Player player, Enemy enemy)
         {
             //
             //make sure out buffer is equal to the playingfield
@@ -237,7 +238,6 @@ namespace VangdeVolger
 
             _bufferSize = new Size(500, 500);
 
-            gameTimer = timer;
             _playerOne = player;
             _enemy = enemy;
             EmptyLevel();

@@ -77,7 +77,7 @@ namespace VangdeVolger
                     if (win)
                     {
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Timer.Stop();
+                        _paused = true;
                     }
                 }
                 _level.Draw(pictureBoxMain);
@@ -126,6 +126,7 @@ namespace VangdeVolger
                     if (win)
                     {                     
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _paused = true;
                     }
                 }
             }

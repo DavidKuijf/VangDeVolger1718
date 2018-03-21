@@ -48,16 +48,24 @@ namespace VangdeVolger
         public bool Decide()
         {
             Movable.Directions direction = (Movable.Directions)random.Next(4);
+
             while (!CheckDirection(direction) && !CheckWin())
             {
                 direction = (Movable.Directions)random.Next(4);
-                
+                if (_location.neighbor[(int)direction].contains is Player)
+                {
+                    
+                }
+
+
             }
             Move(direction);
 
             return CheckWin();
                 
         }
+
+        private
 
         public Enemy()
         {

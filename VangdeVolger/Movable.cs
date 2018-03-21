@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace VangdeVolger
 {
@@ -26,10 +25,7 @@ namespace VangdeVolger
             this._location = ObjectLocation;
         }
 
-        private void Kill(Player player)
-        {
-            DialogResult loseBox = MessageBox.Show("You have lost...", "You Lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
-        }
+       
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
@@ -50,10 +46,7 @@ namespace VangdeVolger
                     // set the location of this object to the tile in the sepcified direction.
                     _location = _location.neighbor[(int)direction];
                 }
-                else if (_location.neighbor[(int)direction].contains is Player)
-                {
-                    Kill((Player)_location.neighbor[(int)direction].contains);
-                }
+                
             }
         }
 

@@ -48,6 +48,11 @@ namespace VangdeVolger
         public bool Decide()
         {
             Movable.Directions direction = (Movable.Directions)random.Next(4);
+            while (!CheckDirection(direction) && !CheckWin())
+            {
+                direction = (Movable.Directions)random.Next(4);
+                
+            }
             Move(direction);
 
             return CheckWin();

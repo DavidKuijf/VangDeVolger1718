@@ -94,9 +94,9 @@
             this.DifficultyListBox.FormattingEnabled = true;
             this.DifficultyListBox.Items.AddRange(new object[] {
             "Rogue",
-            "Easy",
+            "Hard",
             "Medium",
-            "Hard"});
+            "Easy"});
             this.DifficultyListBox.Location = new System.Drawing.Point(101, 51);
             this.DifficultyListBox.Name = "DifficultyListBox";
             this.DifficultyListBox.Size = new System.Drawing.Size(100, 56);

@@ -13,12 +13,7 @@ namespace VangdeVolger
     partial class OptionForm : Form
     {
         private Level _level;
-        public OptionForm(Level level, Form Parent)
-        {
-            InitializeComponent();
-            _level = level;
-
-        }
+        private FormMainScreen _parent;
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
@@ -28,6 +23,8 @@ namespace VangdeVolger
             Int32.TryParse(LevelSizeTextboxX.Text, out sizeX);
             Int32.TryParse(LevelSizeTextboxY.Text, out sizeY);
 
+            _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
+
             if ((sizeX != 0) && (sizeY)!= 0) 
             {
                 _level.SetSize(sizeX,sizeY);
@@ -35,6 +32,14 @@ namespace VangdeVolger
         
             }
             Close();
+
+        }
+
+        public OptionForm(Level level, FormMainScreen ParentForm)
+        {
+            InitializeComponent();
+            _level = level;
+            _parent = ParentForm;
 
         }
     }

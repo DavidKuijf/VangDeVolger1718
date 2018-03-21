@@ -17,7 +17,7 @@ namespace VangdeVolger
          */
 
          /// <summary>
-         ///A way to set the location parameter of the Gameobject 
+         /// A way to set the location parameter of the Gameobject 
          /// </summary>
          /// <param name="ObjectLocation"></param>
         public void SetLocation(GameField ObjectLocation)
@@ -25,6 +25,10 @@ namespace VangdeVolger
             this._location = ObjectLocation;
         }
 
+        private void Kill()
+        {
+            Console.WriteLine("KILL");
+        }
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
@@ -45,10 +49,15 @@ namespace VangdeVolger
                     // set the location of this object to the tile in the sepcified direction.
                     _location = _location.neighbor[(int)direction];
                 }
+                else if (_location.neighbor[(int)direction].contains is Player)
+                {
+                    Kill();
+                }
             }
         }
+
         /// <summary>
-        /// 
+        /// Check specified direction to see if it is empty or not.
         /// </summary>
         /// <param name="direction"></param>
         /// <returns></returns>
@@ -58,7 +67,7 @@ namespace VangdeVolger
             if (!(_location.neighbor[(int)direction] == null))
             {
                 //check if the field in the specified direction is empty
-                if (_location.neighbor[(int)direction].contains == null)
+                if (_location.neighbor[(int)direction].contains == null || _location.neighbor[(int)direction].contains is Player)
                 {
                     return true;
                 }
@@ -68,12 +77,5 @@ namespace VangdeVolger
             else
                 return false;
         }
-
-        protected Movable()
-        {
-           
-        }
-
-        
     }
 }

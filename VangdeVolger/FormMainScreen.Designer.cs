@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainScreen));
-            this.lblTime = new System.Windows.Forms.Label();
+            this.TimeLabel = new System.Windows.Forms.Label();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.ResetPictureBox = new System.Windows.Forms.PictureBox();
             this.PausePictureBox = new System.Windows.Forms.PictureBox();
@@ -42,14 +42,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.OptionpictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblTime
+            // TimeLabel
             // 
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(479, 9);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(35, 19);
-            this.lblTime.TabIndex = 0;
-            this.lblTime.Text = "Timer";
+            this.TimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeLabel.Location = new System.Drawing.Point(479, 9);
+            this.TimeLabel.Name = "TimeLabel";
+            this.TimeLabel.Size = new System.Drawing.Size(35, 19);
+            this.TimeLabel.TabIndex = 0;
+            this.TimeLabel.Text = "Timer";
             // 
             // pictureBoxMain
             // 
@@ -107,7 +107,7 @@
             this.Controls.Add(this.PausePictureBox);
             this.Controls.Add(this.ResetPictureBox);
             this.Controls.Add(this.pictureBoxMain);
-            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.TimeLabel);
             this.KeyPreview = true;
             this.Name = "FormMainScreen";
             this.Text = "Vang De Volger";
@@ -123,7 +123,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.PictureBox pictureBoxMain;
         private System.Windows.Forms.PictureBox ResetPictureBox;
         private System.Windows.Forms.PictureBox PausePictureBox;

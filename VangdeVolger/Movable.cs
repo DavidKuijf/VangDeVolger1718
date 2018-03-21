@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VangdeVolger
 {
@@ -25,9 +26,9 @@ namespace VangdeVolger
             this._location = ObjectLocation;
         }
 
-        private void Kill()
+        private void Kill(Player player)
         {
-            Console.WriteLine("KILL");
+            DialogResult loseBox = MessageBox.Show("You have lost...", "You Lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace VangdeVolger
                 }
                 else if (_location.neighbor[(int)direction].contains is Player)
                 {
-                    Kill();
+                    Kill((Player)_location.neighbor[(int)direction].contains);
                 }
             }
         }

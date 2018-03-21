@@ -14,6 +14,8 @@ namespace VangdeVolger
         private int _time;
         DialogResult winBox;
 
+        private bool _paused;
+
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Rogue;
 
@@ -44,39 +46,42 @@ namespace VangdeVolger
 
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            
 
-            switch (e.KeyCode)
+            if (!_paused)
             {
-                case Keys.W:
-                    _playerOne.Move(Movable.Directions.Up);
-                    
-                    break;
-                case Keys.A:
-                    _playerOne.Move(Movable.Directions.Left);
-                    
-                    break;
-                case Keys.S:
-                    _playerOne.Move(Movable.Directions.Down);
-                  
-                    break;
-                case Keys.D:
-                    _playerOne.Move(Movable.Directions.Right);
-                    
-                    break;
-            }
-            if (Difficulty == Difficulties.Rogue)
-            {
-                bool win = _enemy.Decide();
-                _level.Draw(pictureBoxMain);
-                if (win)
+                switch (e.KeyCode)
                 {
-                    winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    timer.Stop();
-                }
-            }
-            _level.Draw(pictureBoxMain);
+                    case Keys.W:
+                        _playerOne.Move(Movable.Directions.Up);
 
+                        break;
+                    case Keys.A:
+                        _playerOne.Move(Movable.Directions.Left);
+
+                        break;
+                    case Keys.S:
+                        _playerOne.Move(Movable.Directions.Down);
+
+                        break;
+                    case Keys.D:
+                        _playerOne.Move(Movable.Directions.Right);
+
+                        break;
+                }
+
+
+                if (Difficulty == Difficulties.Rogue)
+                {
+                    bool win = _enemy.Decide();
+                    _level.Draw(pictureBoxMain);
+                    if (win)
+                    {
+                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Timer.Stop();
+                    }
+                }
+                _level.Draw(pictureBoxMain);
+            }
         }
 
         private void ResetPictureBox_Click(object sender, EventArgs e)
@@ -89,13 +94,15 @@ namespace VangdeVolger
 
         private void PausePictureBox_Click(object sender, EventArgs e)
         {
-            if (timer.Enabled == true)
+            if (!_paused)
             {
-                timer.Stop();
+                Timer.Stop();
+                _paused = true;
             }
             else
             {
-                timer.Start();
+                Timer.Start();
+                _paused = false;
             }
         }
 
@@ -105,7 +112,7 @@ namespace VangdeVolger
             optionForm.Show();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             _time++;
             TimeLabel.Text = _time.ToString();

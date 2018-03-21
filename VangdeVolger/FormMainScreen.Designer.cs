@@ -35,7 +35,7 @@
             this.ResetPictureBox = new System.Windows.Forms.PictureBox();
             this.PausePictureBox = new System.Windows.Forms.PictureBox();
             this.OptionpictureBox = new System.Windows.Forms.PictureBox();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.Timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).BeginInit();
@@ -93,11 +93,11 @@
             this.OptionpictureBox.TabStop = false;
             this.OptionpictureBox.Click += new System.EventHandler(this.OptionpictureBox_Click);
             // 
-            // timer
+            // Timer
             // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.Timer.Enabled = true;
+            this.Timer.Interval = 1000;
+            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // FormMainScreen
             // 
@@ -128,7 +128,7 @@
         private System.Windows.Forms.PictureBox ResetPictureBox;
         private System.Windows.Forms.PictureBox PausePictureBox;
         private System.Windows.Forms.PictureBox OptionpictureBox;
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer Timer;
     }
 }
 

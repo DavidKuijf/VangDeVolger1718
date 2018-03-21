@@ -17,13 +17,13 @@ namespace VangdeVolger
         //duration on the player
         public int playerDuration;
         //powerUp duration
-        public int activeUntill;
+        public int Lifespan;
 
         //private Timer gameDuration;
 
       
 
-        public void countDown()
+        public void Age()
         {
 
         }
@@ -41,11 +41,10 @@ namespace VangdeVolger
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Powerup.png");
             isActive = false;
             
-            activeUntill = givenLife;
+            
 
             //random number for duration
-            Random rnd = new Random();
-            activeUntill = rnd.Next(2, 5);
+            
 
         }
 

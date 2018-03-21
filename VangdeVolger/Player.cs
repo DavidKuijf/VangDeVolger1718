@@ -77,8 +77,7 @@ namespace VangdeVolger
             Powerup powerup = (Powerup)_location.neighbor[(int)direction].contains;
             _location.neighbor[(int)direction].contains = null;
             powerup.isActive = true;
-
-            
+            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PowerPlayer.png");
 
         }
 

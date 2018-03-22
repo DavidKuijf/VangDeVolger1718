@@ -32,15 +32,20 @@ namespace VangdeVolger
 
             _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
 
-            if ((sizeX != 0) && (sizeY)!= 0) 
+            if ((sizeX != 0) && (sizeY != 0)) 
             {
                 _level.SetSize(sizeX,sizeY);
+                _level.Generate();
+            }
+
+            if ((boxChance != 0) && (wallChance != 0) && (powerUpChance != 0) && (boxChance + wallChance + powerUpChance) < 100)
+            {
                 _level.SetBoxChance(boxChance);
                 _level.SetWallChance(wallChance);
                 _level.SetPowerUpChance(powerUpChance);
                 _level.Generate();
-        
             }
+
             Close();
 
         }

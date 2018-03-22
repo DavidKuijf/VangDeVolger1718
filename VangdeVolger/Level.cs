@@ -23,9 +23,9 @@ namespace VangdeVolger
         private int _sizeX = 50;
         private int _sizeY = 50;
 
-        private int _wallPercent;
-        private int _boxPercent;
-        private int _powerUpPercent;
+        private int _wallPercent = 5;
+        private int _boxPercent = 20;
+        private int _powerUpPercent = 2;
 
         public List<Powerup> powerupList = new List<Powerup>();
 
@@ -113,19 +113,6 @@ namespace VangdeVolger
             _enemy.SetLocation(levelLayout[enemyX, enemyY]);
 
             SetNeighbors();
-            /* DEBUG ARRAY CHECKING
-            int rowLength = levelLayout.GetLength(0);
-            int colLength = levelLayout.GetLength(1);
-
-            for (int i = 0; i < rowLength; i++)
-            {
-                for (int j = 0; j < colLength; j++)
-                {
-                    Console.Write(string.Format("{0} ", levelLayout[i, j]));
-                }
-                Console.Write(Environment.NewLine + Environment.NewLine);
-            }
-            */
         }
 
         /// <summary>
@@ -250,10 +237,6 @@ namespace VangdeVolger
 
             _imageSizeX = _defaultSize.Width;
             _imageSizeY = _defaultSize.Height;
-
-            _wallPercent = 5;
-            _boxPercent = 20;
-            _powerUpPercent = 2;
 
             _bufferSize = new Size(500, 500);
 

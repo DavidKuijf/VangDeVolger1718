@@ -13,5 +13,10 @@ namespace VangdeVolger
     {
         public GameField _location;
         public string _image;
+
+        public void SetLocation(GameField ObjectLocation)
+        {
+            this._location = ObjectLocation;
+        }
     }
 }

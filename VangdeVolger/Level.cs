@@ -63,11 +63,13 @@ namespace VangdeVolger
                     {
                         //create Wall
                         levelLayout[x, y].contains = new Wall();
+                        levelLayout[x, y].contains.SetLocation(levelLayout[x,y]);
                     }
                     else if (percentChance > _wallPercent && percentChance < (_wallPercent + _boxPercent) && levelLayout[x, y].contains == null)
                     {
                         //Create Box
                         levelLayout[x, y].contains = new Box(levelLayout[x, y]);
+                        levelLayout[x, y].contains.SetLocation(levelLayout[x, y]);
 
                     }
                     else if (percentChance > (_wallPercent + _boxPercent) && percentChance < (_wallPercent + _boxPercent + _powerUpPercent) && levelLayout[x, y].contains == null)
@@ -76,6 +78,7 @@ namespace VangdeVolger
 
                         levelLayout[x, y].contains = new Powerup(5);
                         powerupList.Add((Powerup)levelLayout[x, y].contains);
+                        levelLayout[x, y].contains.SetLocation(levelLayout[x, y]);
                     }
                     /*else if (levelLayout[x, y].contains == null)
                     {
@@ -159,22 +162,7 @@ namespace VangdeVolger
 
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public void GetPlayerPosition()
-        {
-            for (int x = 0; x < levelLayout.GetLength(0); x++)
-            {
-                for (int y = 0; y < levelLayout.GetLength(1); y++)
-                {
-                    if (levelLayout[x, y].contains is Player)
-                    {
-
-                    }
-                }
-            }
-        }
+      
 
         /// <summary>
         /// 

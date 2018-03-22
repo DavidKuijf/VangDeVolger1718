@@ -131,16 +131,16 @@ namespace VangdeVolger
             _time++;
             TimeLabel.Text = _time.ToString();
 
-            foreach (Powerup powerup in _level.powerupList)
+            for (int i = 0; i < _level.powerupList.Count; i++)
             {
-
-                if (powerup.Age())
+                if (_level.powerupList[i].Age())
                 {
-                    _level.powerupList.Remove(powerup);
-                    powerup._location.contains = null;
+                    
+                    _level.powerupList[i]._location.contains = null;
+                    _level.powerupList.Remove(_level.powerupList[i]);
                 }
-
             }
+           
             //Console.WriteLine(i);
             if (Difficulty != Difficulties.Rogue)
             {

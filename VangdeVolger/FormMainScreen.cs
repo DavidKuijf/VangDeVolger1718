@@ -13,6 +13,7 @@ namespace VangdeVolger
 
         private int _time;
         DialogResult winBox;
+        DialogResult loseBox;
 
         private bool _paused;
 
@@ -65,7 +66,7 @@ namespace VangdeVolger
                     case Keys.D:
                         _playerOne.Move(Movable.Directions.Right);
                         break;
-                        //pessant movement
+                        //peasant movement
                     case Keys.Up:
                         _playerOne.Move(Movable.Directions.Up);
                         break;
@@ -97,8 +98,8 @@ namespace VangdeVolger
 
         private void ResetPictureBox_Click(object sender, EventArgs e)
         {
-            _level.Generate(_level);
-            _level.Draw(pictureBoxMain);
+            _playerOne = new Player();
+            _level = new Level(_playerOne, _enemy);
             _time = 0;
 
         }
@@ -153,6 +154,19 @@ namespace VangdeVolger
                 }
             }
             
+        }
+
+        public void Lose()
+        {
+            _playerOne = null;
+            _paused = true;
+            loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
+            if (loseBox == DialogResult.Retry)
+            {
+                _playerOne = new Player();
+                _level = new Level(_playerOne, _enemy);
+                _time = 0;
+            }
         }
 
         private void FormMainScreen_Load(object sender, EventArgs e)

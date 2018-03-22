@@ -45,21 +45,64 @@ namespace VangdeVolger
             
         }
 
+        private void Kill(Directions direction)
+        {
+            _location.neighbor[(int)direction].contains = null;
+            
+        }
+
+        private bool CheckPlayer(Directions direction)
+        {
+            if (_location.neighbor[(int)direction] != null)
+            {
+                //check if the field in the specified direction is empty
+                if (_location.neighbor[(int)direction].contains is Player)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+
+        }
+
         public bool Decide()
         {
             Movable.Directions direction = (Movable.Directions)random.Next(4);
 
-            while (!CheckDirection(direction) && !CheckWin())
+            for (int i = 0; i < _location.neighbor.Length; i++)
             {
-                direction = (Movable.Directions)random.Next(4);
-                if (_location.neighbor[(int)direction].contains is Player)
+                if (CheckPlayer(direction) && !CheckWin())
                 {
-                    
+                    Kill(direction);
+                    break;
                 }
-
-
             }
-            Move(direction);
+
+            for (int j = 0; j < _location.neighbor.Length; j++)
+            {
+                if (CheckDirection(direction) && !CheckWin())
+                {
+                    Move(direction);
+                    break;
+                }
+            }
+
+            //while (!CheckDirection(direction) && !CheckWin())
+            //{
+            //    direction = (Movable.Directions)random.Next(4);
+            //    if (_location.neighbor[(int)direction] != null)
+            //    {
+            //        if (_location.neighbor[(int)direction].contains is Player)
+            //        {
+            //            Move(direction);
+            //        }
+            //    }
+
+            //}
+            //Move(direction);
 
             return CheckWin();
                 

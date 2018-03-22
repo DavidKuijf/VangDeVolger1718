@@ -55,13 +55,13 @@ namespace VangdeVolger
         /// </summary>
         /// <param name="direction"></param>
         /// <returns></returns>
-        protected bool CheckDirection(Directions direction)
+        protected virtual bool CheckDirection(Directions direction)
         {
 
             if (!(_location.neighbor[(int)direction] == null))
             {
                 //check if the field in the specified direction is empty
-                if (_location.neighbor[(int)direction].contains == null || _location.neighbor[(int)direction].contains is Player)
+                if (_location.neighbor[(int)direction].contains == null)
                 {
                     return true;
                 }

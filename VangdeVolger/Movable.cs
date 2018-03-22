@@ -8,7 +8,7 @@ namespace VangdeVolger
 {
     abstract class Movable : GameObject
     {
-        protected GameField _location;
+        
         protected int _speed ;
         public enum Directions { Up, Right, Down, Left };
         /*

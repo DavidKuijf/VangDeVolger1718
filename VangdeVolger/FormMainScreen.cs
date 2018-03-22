@@ -127,8 +127,18 @@ namespace VangdeVolger
         {
             _time++;
             TimeLabel.Text = _time.ToString();
-            
 
+            foreach (Powerup powerup in _level.powerupList)
+            {
+
+                if (powerup.Age())
+                {
+                    _level.powerupList.Remove(powerup);
+                    powerup._location.contains = null;
+                }
+
+            }
+            //Console.WriteLine(i);
             if (Difficulty != Difficulties.Rogue)
             {
                 if (_time % (int)Difficulty == 0)

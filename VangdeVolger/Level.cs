@@ -23,7 +23,7 @@ namespace VangdeVolger
         private int _sizeX = 50;
         private int _sizeY = 50;
 
-        
+        public List<Powerup> powerupList = new List<Powerup>();
 
         public int playerX;
         public int playerY;
@@ -51,29 +51,27 @@ namespace VangdeVolger
             {
                 for (int y = 0; y < levelLayout.GetLength(1); y++)
                 {
-                    // Assign the Wall object to the borders of the map.
-                    // TODO: Remove this and reimplement in a different way. Can't be a game object.
-                    /*if (x == 0 || y == 0 || x == sizeX - 1 || y == sizeY - 1)
-                    {
-                        levelLayout[x, y].contains = new Wall();
-                    }*/
-                    //else
-                    //{
+                    
                     // Generate a pseudo-random number to decide object placement.
                     int percentChance = _random.Next(100);
 
                     if (percentChance < 5 && levelLayout[x, y].contains == null)
                     {
+                        //create Wall
                         levelLayout[x, y].contains = new Wall();
                     }
                     else if (percentChance > 5 && percentChance < 25 && levelLayout[x, y].contains == null)
                     {
+                        //Create Box
                         levelLayout[x, y].contains = new Box(levelLayout[x, y]);
 
                     }
                     else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
                     {
+                        //Create Powerup
+
                         levelLayout[x, y].contains = new Powerup(5);
+                        powerupList.Add((Powerup)levelLayout[x, y].contains);
                     }
                     /*else if (levelLayout[x, y].contains == null)
                     {
@@ -157,6 +155,9 @@ namespace VangdeVolger
 
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void GetPlayerPosition()
         {
             for (int x = 0; x < levelLayout.GetLength(0); x++)
@@ -171,6 +172,9 @@ namespace VangdeVolger
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetNeighbors()
         {
             // Set neighbors for every GameField
@@ -197,6 +201,9 @@ namespace VangdeVolger
             }
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
         private void EmptyLevel()
         {
             levelLayout = new GameField[_sizeX, _sizeY];
@@ -228,7 +235,6 @@ namespace VangdeVolger
         /// <param name="enemy"></param>
         public Level(Player player, Enemy enemy)
         {
-            //
             //make sure out buffer is equal to the playingfield
             _sizeX = 10;
             _sizeY = 10;

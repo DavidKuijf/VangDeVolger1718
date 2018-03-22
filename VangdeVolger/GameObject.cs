@@ -11,7 +11,7 @@ namespace VangdeVolger
 {
     abstract class GameObject
     {
-
+        public GameField _location;
         public string _image;
     }
 }

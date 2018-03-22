@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 
 
@@ -8,6 +9,7 @@ namespace VangdeVolger
     {
         private int _health;
         protected int _speed;
+
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible

@@ -12,10 +12,13 @@ namespace VangdeVolger
         private Level _level;
 
         private int _time;
+
         DialogResult winBox;
         DialogResult loseBox;
 
         private bool _paused;
+        private bool _lost = false;
+        private bool _won = true;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Rogue;
@@ -84,12 +87,16 @@ namespace VangdeVolger
 
                 if (Difficulty == Difficulties.Rogue)
                 {
-                    bool win = _enemy.Decide();
+                    _enemy.Decide(out _won,out _lost);
                     _level.Draw(pictureBoxMain);
-                    if (win)
+                    if (_won)
                     {
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _paused = true;
+                    }
+                    if (_lost)
+                    {
+                        Lose();
                     }
                 }
                 _level.Draw(pictureBoxMain);
@@ -145,12 +152,16 @@ namespace VangdeVolger
             {
                 if (_time % (int)Difficulty == 0)
                 {
-                    bool win = _enemy.Decide();
+                    _enemy.Decide(out _won, out _lost);
                     _level.Draw(pictureBoxMain);
-                    if (win)
+                    if (_won)
                     {                     
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _paused = true;
+                    }
+                    if (_lost)
+                    {
+                        Lose();
                     }
                 }
             }

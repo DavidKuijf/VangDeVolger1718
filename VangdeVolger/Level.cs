@@ -37,6 +37,8 @@ namespace VangdeVolger
         private Player _playerOne;
         private Enemy _enemy;
 
+        
+
         public GameField[,] levelLayout;
 
        

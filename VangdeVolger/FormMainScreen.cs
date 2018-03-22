@@ -29,7 +29,7 @@ namespace VangdeVolger
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);
             
-            _level.Generate(_level);
+            _level.Generate();
             _level.Draw(pictureBoxMain);
 
 
@@ -100,6 +100,7 @@ namespace VangdeVolger
         {
             _playerOne = new Player();
             _level = new Level(_playerOne, _enemy);
+            _level.Generate();
             _time = 0;
 
         }

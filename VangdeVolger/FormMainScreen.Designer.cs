@@ -108,7 +108,9 @@
             this.Controls.Add(this.ResetPictureBox);
             this.Controls.Add(this.pictureBoxMain);
             this.Controls.Add(this.TimeLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "FormMainScreen";
             this.Text = "Vang De Volger";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Draw);

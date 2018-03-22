@@ -19,7 +19,7 @@ namespace VangdeVolger
             if (!(_location.neighbor[(int)direction] == null))
             {
                 //for all 4 directions around players
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < _location.neighbor.Length; i++)
                 {
                    //check if that direction is not NULL && the location is enemy
                    if (_location.neighbor[i] != null && _location.neighbor[i].contains is Enemy)
@@ -83,7 +83,7 @@ namespace VangdeVolger
 
         void Die()
         {
-            
+            //stop the game
         }
 
 

@@ -36,6 +36,12 @@
             this.DifficultylevelLabel = new System.Windows.Forms.Label();
             this.DifficultyListBox = new System.Windows.Forms.ListBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.lblWallPercent = new System.Windows.Forms.Label();
+            this.tbWallPercent = new System.Windows.Forms.TextBox();
+            this.tbBoxPercent = new System.Windows.Forms.TextBox();
+            this.lblBoxPercent = new System.Windows.Forms.Label();
+            this.tbPowerUpPercent = new System.Windows.Forms.TextBox();
+            this.lblPowerUpPercent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ApplyButton
@@ -114,11 +120,65 @@
             this.radioButton1.Text = "Random Starting Position";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // lblWallPercent
+            // 
+            this.lblWallPercent.AutoSize = true;
+            this.lblWallPercent.Location = new System.Drawing.Point(56, 116);
+            this.lblWallPercent.Name = "lblWallPercent";
+            this.lblWallPercent.Size = new System.Drawing.Size(39, 13);
+            this.lblWallPercent.TabIndex = 9;
+            this.lblWallPercent.Text = "% Wall";
+            // 
+            // tbWallPercent
+            // 
+            this.tbWallPercent.Location = new System.Drawing.Point(101, 113);
+            this.tbWallPercent.Name = "tbWallPercent";
+            this.tbWallPercent.Size = new System.Drawing.Size(38, 20);
+            this.tbWallPercent.TabIndex = 10;
+            // 
+            // tbBoxPercent
+            // 
+            this.tbBoxPercent.Location = new System.Drawing.Point(101, 139);
+            this.tbBoxPercent.Name = "tbBoxPercent";
+            this.tbBoxPercent.Size = new System.Drawing.Size(38, 20);
+            this.tbBoxPercent.TabIndex = 12;
+            // 
+            // lblBoxPercent
+            // 
+            this.lblBoxPercent.AutoSize = true;
+            this.lblBoxPercent.Location = new System.Drawing.Point(56, 142);
+            this.lblBoxPercent.Name = "lblBoxPercent";
+            this.lblBoxPercent.Size = new System.Drawing.Size(36, 13);
+            this.lblBoxPercent.TabIndex = 11;
+            this.lblBoxPercent.Text = "% Box";
+            // 
+            // tbPowerUpPercent
+            // 
+            this.tbPowerUpPercent.Location = new System.Drawing.Point(101, 165);
+            this.tbPowerUpPercent.Name = "tbPowerUpPercent";
+            this.tbPowerUpPercent.Size = new System.Drawing.Size(38, 20);
+            this.tbPowerUpPercent.TabIndex = 14;
+            // 
+            // lblPowerUpPercent
+            // 
+            this.lblPowerUpPercent.AutoSize = true;
+            this.lblPowerUpPercent.Location = new System.Drawing.Point(27, 168);
+            this.lblPowerUpPercent.Name = "lblPowerUpPercent";
+            this.lblPowerUpPercent.Size = new System.Drawing.Size(65, 13);
+            this.lblPowerUpPercent.TabIndex = 13;
+            this.lblPowerUpPercent.Text = "% Power Up";
+            // 
             // OptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 406);
+            this.Controls.Add(this.tbPowerUpPercent);
+            this.Controls.Add(this.lblPowerUpPercent);
+            this.Controls.Add(this.tbBoxPercent);
+            this.Controls.Add(this.lblBoxPercent);
+            this.Controls.Add(this.tbWallPercent);
+            this.Controls.Add(this.lblWallPercent);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.DifficultyListBox);
             this.Controls.Add(this.DifficultylevelLabel);
@@ -144,5 +204,11 @@
         private System.Windows.Forms.Label DifficultylevelLabel;
         private System.Windows.Forms.ListBox DifficultyListBox;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label lblWallPercent;
+        private System.Windows.Forms.TextBox tbWallPercent;
+        private System.Windows.Forms.TextBox tbBoxPercent;
+        private System.Windows.Forms.Label lblBoxPercent;
+        private System.Windows.Forms.TextBox tbPowerUpPercent;
+        private System.Windows.Forms.Label lblPowerUpPercent;
     }
 }

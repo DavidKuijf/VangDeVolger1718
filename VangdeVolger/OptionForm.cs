@@ -20,15 +20,25 @@ namespace VangdeVolger
             int sizeX = 0;
             int sizeY = 0;
 
+            int boxChance = 0;
+            int wallChance = 0;
+            int powerUpChance = 0;
+
             Int32.TryParse(LevelSizeTextboxX.Text, out sizeX);
             Int32.TryParse(LevelSizeTextboxY.Text, out sizeY);
+            Int32.TryParse(tbBoxPercent.Text, out boxChance);
+            Int32.TryParse(tbWallPercent.Text, out wallChance);
+            Int32.TryParse(tbPowerUpPercent.Text, out powerUpChance);
 
             _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
 
             if ((sizeX != 0) && (sizeY)!= 0) 
             {
                 _level.SetSize(sizeX,sizeY);
-                _level.Generate(_level);
+                _level.SetBoxChance(boxChance);
+                _level.SetWallChance(wallChance);
+                _level.SetPowerUpChance(powerUpChance);
+                _level.Generate();
         
             }
             Close();

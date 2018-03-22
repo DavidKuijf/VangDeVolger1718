@@ -23,6 +23,10 @@ namespace VangdeVolger
         private int _sizeX = 50;
         private int _sizeY = 50;
 
+        private int _wallPercent;
+        private int _boxPercent;
+        private int _powerUpPercent;
+
         public List<Powerup> powerupList = new List<Powerup>();
 
         public int playerX;
@@ -42,7 +46,7 @@ namespace VangdeVolger
 
         }
 
-        public void Generate(Level level)
+        public void Generate()
         {
 
             EmptyLevel();
@@ -55,18 +59,18 @@ namespace VangdeVolger
                     // Generate a pseudo-random number to decide object placement.
                     int percentChance = _random.Next(100);
 
-                    if (percentChance < 5 && levelLayout[x, y].contains == null)
+                    if (percentChance < _wallPercent && levelLayout[x, y].contains == null)
                     {
                         //create Wall
                         levelLayout[x, y].contains = new Wall();
                     }
-                    else if (percentChance > 5 && percentChance < 25 && levelLayout[x, y].contains == null)
+                    else if (percentChance > _wallPercent && percentChance < (_wallPercent + _boxPercent) && levelLayout[x, y].contains == null)
                     {
                         //Create Box
                         levelLayout[x, y].contains = new Box(levelLayout[x, y]);
 
                     }
-                    else if (percentChance > 40 && percentChance < 42 && levelLayout[x, y].contains == null)
+                    else if (percentChance > (_wallPercent + _boxPercent) && percentChance < (_wallPercent + _boxPercent + _powerUpPercent) && levelLayout[x, y].contains == null)
                     {
                         //Create Powerup
 
@@ -227,7 +231,22 @@ namespace VangdeVolger
             _sizeY = Y;
 
         }
-        
+
+        public void SetWallChance(int chance)
+        {
+            _wallPercent = chance;
+        }
+
+        public void SetBoxChance(int chance)
+        {
+            _boxPercent = chance;
+        }
+
+        public void SetPowerUpChance(int chance)
+        {
+            _powerUpPercent = chance;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -241,6 +260,10 @@ namespace VangdeVolger
 
             _imageSizeX = _defaultSize.Width;
             _imageSizeY = _defaultSize.Height;
+
+            _wallPercent = 5;
+            _boxPercent = 20;
+            _powerUpPercent = 2;
 
             _bufferSize = new Size(500, 500);
 

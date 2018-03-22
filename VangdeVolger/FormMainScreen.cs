@@ -101,6 +101,7 @@ namespace VangdeVolger
             _playerOne = new Player();
             _level = new Level(_playerOne, _enemy);
             _level.Generate();
+            _level.Draw(pictureBoxMain);
             _time = 0;
 
         }

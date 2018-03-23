@@ -114,7 +114,7 @@ namespace VangdeVolger
             _level = new Level(_playerOne, _enemy);
             _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
-            _paused = false;
+            PausePlay(false);
             _time = 0;
 
         }

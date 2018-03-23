@@ -12,8 +12,8 @@ namespace VangdeVolger
     class Enemy : Movable
     {
         Random random = new Random();
-        
-        
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -42,13 +42,13 @@ namespace VangdeVolger
                 return true;
             else
                 return false;
-            
+
         }
 
         private void Kill(Directions direction)
         {
             _location.neighbor[(int)direction].contains = null;
-            
+
         }
 
         private bool CheckPlayer(Directions direction)
@@ -67,12 +67,21 @@ namespace VangdeVolger
                 return false;
 
         }
-
-        public bool Decide(out bool won,out bool lost)
+        /// <summary>
+        /// Decide first checks wheter there is a player in range to kill
+        ///if there is it kills that player
+        ///else it moves in a random direction
+        ///if this is not possible it declares the player has won
+        /// </summary>
+        /// <param name="won"></param>
+        /// <param name="lost"></param>
+        /// <returns></returns>
+        public bool Decide(out bool won, out bool lost)
         {
-            Directions direction = (Directions)random.Next(4);
+
             won = false;
             lost = false;
+            bool moved = false;
 
             for (int i = 0; i < _location.neighbor.Length; i++)
             {
@@ -80,38 +89,30 @@ namespace VangdeVolger
                 {
                     Kill((Movable.Directions)i);
                     Move((Movable.Directions)i);
+                    moved = true;
                     lost = true;
                     break;
                 }
             }
-
-            for (int j = 0; j < _location.neighbor.Length; j++)
+            while (!moved && !CheckWin())
             {
+                Directions direction = (Directions)random.Next(4);
                 if (CheckDirection(direction) && !CheckWin() && !lost)
                 {
                     Move(direction);
+                    moved = true;
                     break;
                 }
+
+
             }
+
 
             if (CheckWin())
             {
                 won = true;
             }
-
-            //while (!CheckDirection(direction) && !CheckWin())
-            //{
-            //    direction = (Movable.Directions)random.Next(4);
-            //    if (_location.neighbor[(int)direction] != null)
-            //    {
-            //        if (_location.neighbor[(int)direction].contains is Player)
-            //        {
-            //            Move(direction);
-            //        }
-            //    }
-
-            //}
-            //Move(direction);
+        
 
             return CheckWin();
                 

@@ -19,6 +19,7 @@ namespace VangdeVolger
         private bool _paused;
         private bool _lost = false;
         private bool _won = true;
+        public bool _randomStartingPos = false;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Hard;
@@ -32,7 +33,7 @@ namespace VangdeVolger
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);
             
-            _level.Generate();
+            _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
 
 
@@ -53,20 +54,7 @@ namespace VangdeVolger
 
             if (!_paused)
             {
-                if (Difficulty == Difficulties.Rogue)
-                {
-                    _enemy.Decide(out _won, out _lost);
-                    _level.Draw(pictureBoxMain);
-                    if (_won)
-                    {
-                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _paused = true;
-                    }
-                    if (_lost)
-                    {
-                        Lose();
-                    }
-                }
+                
 
                 switch (e.KeyCode)
                 {
@@ -99,8 +87,23 @@ namespace VangdeVolger
                         break;
                 }
 
+                if (Difficulty == Difficulties.Rogue)
+                {
+                    _enemy.Decide(out _won, out _lost);
+                    _level.Draw(pictureBoxMain);
+                    if (_won)
+                    {
+                        PausePlay(true);
+                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                    }
+                    if (_lost)
+                    {
+                        Lose();
+                    }
+                }
 
-               
+
                 _level.Draw(pictureBoxMain);
             }
         }
@@ -109,16 +112,16 @@ namespace VangdeVolger
         {
             _playerOne = new Player();
             _level = new Level(_playerOne, _enemy);
-            _level.Generate();
+            _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
             _paused = false;
             _time = 0;
 
         }
 
-        private void PausePictureBox_Click(object sender, EventArgs e)
+        private void PausePlay(bool reeee)
         {
-            if (!_paused)
+            if (reeee)
             {
                 Timer.Stop();
                 _paused = true;
@@ -127,6 +130,18 @@ namespace VangdeVolger
             {
                 Timer.Start();
                 _paused = false;
+            }
+        }
+
+        private void PausePictureBox_Click(object sender, EventArgs e)
+        {
+            if (!_paused)
+            {
+                PausePlay(true);
+            }
+            else
+            {
+                PausePlay(false);
             }
         }
 
@@ -154,14 +169,15 @@ namespace VangdeVolger
             //Console.WriteLine(i);
             if (Difficulty != Difficulties.Rogue)
             {
-                if (_time % (int)Difficulty == 0)
+                if (_time % (int)Difficulty == 0 && !_paused)
                 {
                     _enemy.Decide(out _won, out _lost);
                     _level.Draw(pictureBoxMain);
                     if (_won)
-                    {                     
+                    {
+                        PausePlay(true);
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _paused = true;
+                        
                     }
                     if (_lost)
                     {
@@ -176,12 +192,13 @@ namespace VangdeVolger
         {
             _playerOne = null;
             _paused = true;
+
             loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
             if (loseBox == DialogResult.Retry)
             {
                 _playerOne = new Player();
                 _level = new Level(_playerOne, _enemy);
-                _level.Generate();
+                _level.Generate(_randomStartingPos);
                 _level.Draw(pictureBoxMain);
                 _paused = false;
                 _time = 0;

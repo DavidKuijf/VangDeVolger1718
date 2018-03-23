@@ -20,8 +20,8 @@ namespace VangdeVolger
 
         private Random _random = new Random();
 
-        private int _sizeX = 50;
-        private int _sizeY = 50;
+        private int _sizeX;
+        private int _sizeY;
 
         private int _wallPercent = 5;
         private int _boxPercent = 20;
@@ -31,6 +31,9 @@ namespace VangdeVolger
 
         public int playerX;
         public int playerY;
+
+        public int enemyX;
+        public int enemyY;
 
         //public Timer gameTimer;
 
@@ -48,7 +51,7 @@ namespace VangdeVolger
 
         }
 
-        public void Generate()
+        public void Generate(bool randomStartingPos)
         {
 
             EmptyLevel();
@@ -95,22 +98,35 @@ namespace VangdeVolger
             * We do this to make sure they are actually in the game, 
             * since the for-loop generator might not hit the numbers needed to generate them.
             */
-            playerX = _random.Next(1, _sizeX - 1);
-            playerY = _random.Next(1, _sizeY - 1);
-            int enemyX = -1;
-            int enemyY = -1;
-
-            // Make sure the player and the enemy do not get generated in the same spots.
-            while ((enemyX == -1 && enemyY == -1) || (enemyX == playerX && enemyY == playerY))
+            if (randomStartingPos)
             {
-                enemyX = _random.Next(1, _sizeX - 1);
-                enemyY = _random.Next(1, _sizeY - 1);
-            }
+                playerX = _random.Next(1, _sizeX - 1);
+                playerY = _random.Next(1, _sizeY - 1);
+                int enemyX = -1;
+                int enemyY = -1;
 
+                // Make sure the player and the enemy do not get generated in the same spots.
+                while ((enemyX == -1 && enemyY == -1) || (enemyX == playerX && enemyY == playerY))
+                {
+                    enemyX = _random.Next(1, _sizeX - 1);
+                    enemyY = _random.Next(1, _sizeY - 1);
+                }
+                
+            }
+            else
+            {
+                playerX = 0;
+                playerY = 0;
+                enemyX = _sizeX - 1;
+                enemyY = _sizeY - 1;
+            
+
+            }
             levelLayout[playerX, playerY].contains = _playerOne;
             _playerOne.SetLocation(levelLayout[playerX, playerY]);
             levelLayout[enemyX, enemyY].contains = _enemy;
             _enemy.SetLocation(levelLayout[enemyX, enemyY]);
+
 
             SetNeighbors();
         }

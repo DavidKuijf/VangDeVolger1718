@@ -35,7 +35,7 @@ namespace VangdeVolger
             if ((sizeX != 0) && (sizeY != 0)) 
             {
                 _level.SetSize(sizeX,sizeY);
-                _level.Generate();
+                _level.Generate(_parent._randomStartingPos);
             }
 
             if ((boxChance != 0) && (wallChance != 0) && (powerUpChance != 0) && (boxChance + wallChance + powerUpChance) < 100)
@@ -43,7 +43,7 @@ namespace VangdeVolger
                 _level.SetBoxChance(boxChance);
                 _level.SetWallChance(wallChance);
                 _level.SetPowerUpChance(powerUpChance);
-                _level.Generate();
+                _level.Generate(_parent._randomStartingPos);
             }
 
             Close();
@@ -56,6 +56,11 @@ namespace VangdeVolger
             _level = level;
             _parent = ParentForm;
 
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            _parent._randomStartingPos = !_parent._randomStartingPos;
         }
     }
 }

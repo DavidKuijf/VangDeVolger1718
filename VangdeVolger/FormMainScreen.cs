@@ -21,7 +21,7 @@ namespace VangdeVolger
         private bool _won = true;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
-        public Difficulties Difficulty = Difficulties.Rogue;
+        public Difficulties Difficulty = Difficulties.Hard;
 
         public FormMainScreen()
         {
@@ -53,6 +53,21 @@ namespace VangdeVolger
 
             if (!_paused)
             {
+                if (Difficulty == Difficulties.Rogue)
+                {
+                    _enemy.Decide(out _won, out _lost);
+                    _level.Draw(pictureBoxMain);
+                    if (_won)
+                    {
+                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _paused = true;
+                    }
+                    if (_lost)
+                    {
+                        Lose();
+                    }
+                }
+
                 switch (e.KeyCode)
                 {
                     case Keys.W:
@@ -85,20 +100,7 @@ namespace VangdeVolger
                 }
 
 
-                if (Difficulty == Difficulties.Rogue)
-                {
-                    _enemy.Decide(out _won,out _lost);
-                    _level.Draw(pictureBoxMain);
-                    if (_won)
-                    {
-                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _paused = true;
-                    }
-                    if (_lost)
-                    {
-                        Lose();
-                    }
-                }
+               
                 _level.Draw(pictureBoxMain);
             }
         }

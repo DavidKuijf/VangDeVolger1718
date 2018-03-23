@@ -70,15 +70,16 @@ namespace VangdeVolger
 
         public bool Decide(out bool won,out bool lost)
         {
-            Movable.Directions direction = (Movable.Directions)random.Next(4);
+            Directions direction = (Directions)random.Next(4);
             won = false;
             lost = false;
 
             for (int i = 0; i < _location.neighbor.Length; i++)
             {
-                if (CheckPlayer(direction) && !CheckWin())
+                if (CheckPlayer((Directions)i))
                 {
-                    Kill(direction);
+                    Kill((Movable.Directions)i);
+                    Move((Movable.Directions)i);
                     lost = true;
                     break;
                 }
@@ -86,7 +87,7 @@ namespace VangdeVolger
 
             for (int j = 0; j < _location.neighbor.Length; j++)
             {
-                if (CheckDirection(direction) && !CheckWin())
+                if (CheckDirection(direction) && !CheckWin() && !lost)
                 {
                     Move(direction);
                     break;

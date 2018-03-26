@@ -12,6 +12,7 @@ namespace VangdeVolger
         private Level _level;
 
         private int _time;
+        private bool timeClicker;
 
         DialogResult winBox;
         DialogResult loseBox;
@@ -28,7 +29,7 @@ namespace VangdeVolger
         {
 
             InitializeComponent();
-
+            timeClicker = true;
             _playerOne = new Player();
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);
@@ -87,7 +88,7 @@ namespace VangdeVolger
                         break;
                 }
 
-                if (Difficulty == Difficulties.Rogue)
+                if (Difficulty == Difficulties.Rogue && timeClicker == true)
                 {
                     _enemy.Decide(out _won, out _lost);
                     _level.Draw(pictureBoxMain);
@@ -153,8 +154,18 @@ namespace VangdeVolger
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            _time++;
-            TimeLabel.Text = _time.ToString();
+            if (_playerOne.usingPowerup == true)
+            {
+            timeClicker ^= true;
+            }
+            else
+            {
+                timeClicker = true;
+            }
+            if (timeClicker) {
+                _time++;
+                TimeLabel.Text = _time.ToString();
+            }
 
             for (int i = 0; i < _level.powerupList.Count; i++)
             {
@@ -167,7 +178,7 @@ namespace VangdeVolger
             }
            
             //Console.WriteLine(i);
-            if (Difficulty != Difficulties.Rogue)
+            if (Difficulty != Difficulties.Rogue && timeClicker == true)
             {
                 if (_time % (int)Difficulty == 0 && !_paused)
                 {
@@ -211,6 +222,11 @@ namespace VangdeVolger
         }
 
         private void TimeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMainScreen_Load_1(object sender, EventArgs e)
         {
 
         }

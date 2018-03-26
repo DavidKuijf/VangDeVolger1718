@@ -9,7 +9,7 @@ namespace VangdeVolger
     {
         private int _health;
         protected int _speed;
-
+        public bool usingPowerup;
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
@@ -80,7 +80,7 @@ namespace VangdeVolger
             _location.neighbor[(int)direction].contains = null;
             powerup.isActive = true;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PowerPlayer.png");
-
+            this.usingPowerup = true;
         }
 
         void Die()
@@ -93,7 +93,7 @@ namespace VangdeVolger
         {
             _health = 10;
             _speed = 1;
-
+            usingPowerup = false;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
             /*level.levelLayout[level.playerX, level.playerY].neighbor = new GameField[] { level.levelLayout[level.playerX, level.playerY - 1], level.levelLayout[level.playerX + 1, level.playerY], level.levelLayout[level.playerX, level.playerY + 1], level.levelLayout[level.playerX - 1, level.playerY] };

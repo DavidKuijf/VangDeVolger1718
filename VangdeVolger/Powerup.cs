@@ -55,7 +55,8 @@ namespace VangdeVolger
             Random rnd = new Random();
             lifespan = rnd.Next(1, 13);
 
-            playerDuration = 5;
+            Random rnd2 = new Random();
+            playerDuration = rnd2.Next(2, 6);
 
 
         }

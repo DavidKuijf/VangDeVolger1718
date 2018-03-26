@@ -158,16 +158,13 @@ namespace VangdeVolger
         {
             if(_playerOne.PowerDuration <= 0)
             {
-                _playerOne.usingPowerup = false;
-                _playerOne._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
-
+                _playerOne.LoosePowers();
             }
             if (_playerOne.usingPowerup == true)
             {
                 timeClicker ^= true;
-                _playerOne.PowerDuration -= 1;
+                _playerOne.TickPowerup();
 
-                
             }
             else
             {

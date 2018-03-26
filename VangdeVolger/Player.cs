@@ -91,7 +91,17 @@ namespace VangdeVolger
         {
             //stop the game
         }
+        public void LoosePowers()
+        {
+            this.usingPowerup = false;
+            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
+        }
+
+        public void TickPowerup()
+        {
+            this.PowerDuration -= 1;
+        }
 
         public Player()
         {

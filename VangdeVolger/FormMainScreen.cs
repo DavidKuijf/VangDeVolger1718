@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace VangdeVolger
@@ -154,9 +156,18 @@ namespace VangdeVolger
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            if(_playerOne.PowerDuration <= 0)
+            {
+                _playerOne.usingPowerup = false;
+                _playerOne._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
+
+            }
             if (_playerOne.usingPowerup == true)
             {
-            timeClicker ^= true;
+                timeClicker ^= true;
+                _playerOne.PowerDuration -= 1;
+
+                
             }
             else
             {

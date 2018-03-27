@@ -62,32 +62,28 @@ namespace VangdeVolger
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        _playerOne.Move(Movable.Directions.Up);
-
-                        break;
-                    case Keys.A:
-                        _playerOne.Move(Movable.Directions.Left);
-
-                        break;
-                    case Keys.S:
-                        _playerOne.Move(Movable.Directions.Down);
-                        break;
-                    case Keys.D:
-                        _playerOne.Move(Movable.Directions.Right);
-                        break;
-                        //peasant movement
                     case Keys.Up:
                         _playerOne.Move(Movable.Directions.Up);
                         break;
+
+                    case Keys.S:
                     case Keys.Down:
                         _playerOne.Move(Movable.Directions.Down);
+                        
                         break;
+
+                    
+                    case Keys.A:
                     case Keys.Left:
                         _playerOne.Move(Movable.Directions.Left);
                         break;
+
+                    case Keys.D:
                     case Keys.Right:
                         _playerOne.Move(Movable.Directions.Right);
                         break;
+
+                       
                 }
 
                 if (Difficulty == Difficulties.Rogue && timeClicker == true)
@@ -150,7 +146,7 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm optionForm = new OptionForm(_level,this);
+            OptionForm optionForm = new OptionForm(_level,this, _randomStartingPos);
             optionForm.Show();
         }
 

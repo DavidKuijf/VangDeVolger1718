@@ -32,7 +32,7 @@ namespace VangdeVolger
 
             _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
 
-            if ((sizeX != 0) && (sizeY != 0)) 
+            if (((sizeX != 0) && (sizeY != 0)) && ((sizeX <= 50) && (sizeY <= 50))) 
             {
                 _level.SetSize(sizeX,sizeY);
                 _level.Generate(_parent._randomStartingPos);

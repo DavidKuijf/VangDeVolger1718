@@ -50,11 +50,14 @@ namespace VangdeVolger
 
         }
 
-        public OptionForm(Level level, FormMainScreen ParentForm)
+        public OptionForm(Level level, FormMainScreen ParentForm, bool randomPos)
         {
+           
             InitializeComponent();
+            
             _level = level;
             _parent = ParentForm;
+            radioButton1.Checked = randomPos;
 
         }
 

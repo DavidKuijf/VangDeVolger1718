@@ -94,6 +94,8 @@ namespace VangdeVolger
                     break;
                 }
             }
+
+
             while (!moved && !CheckWin())
             {
                 Directions direction = (Directions)random.Next(4);

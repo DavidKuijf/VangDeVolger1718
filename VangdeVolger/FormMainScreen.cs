@@ -65,13 +65,14 @@ namespace VangdeVolger
 
                     case Keys.S:
                     case Keys.Down:
-                        _playerOne.Move(Movable.Directions.Left);
+                        _playerOne.Move(Movable.Directions.Down);
+                        
                         break;
 
                     
                     case Keys.A:
                     case Keys.Left:
-                        _playerOne.Move(Movable.Directions.Down);
+                        _playerOne.Move(Movable.Directions.Left);
                         break;
 
                     case Keys.D:

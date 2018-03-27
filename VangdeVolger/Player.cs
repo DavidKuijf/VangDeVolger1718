@@ -9,7 +9,8 @@ namespace VangdeVolger
     {
         private int _health;
         protected int _speed;
-
+        public bool usingPowerup;
+        public int PowerDuration;
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
@@ -52,8 +53,10 @@ namespace VangdeVolger
                 // if the neighbour in that direction is a Powerup
                 else if (_location.neighbor[(int)direction].contains is Powerup)
                 {
+                    Powerup reachedUp = (Powerup)_location.neighbor[(int)direction].contains;
                     // pick that powerup up
-                    PickUp(direction);
+                    PickUp(direction, reachedUp.playerDuration);
+
                 }
             }
 
@@ -74,26 +77,38 @@ namespace VangdeVolger
         /// 
         /// </summary>
         /// <param name="direction"></param>
-        void PickUp(Directions direction)
+        void PickUp(Directions direction, int duration)
         {
             Powerup powerup = (Powerup)_location.neighbor[(int)direction].contains;
             _location.neighbor[(int)direction].contains = null;
             powerup.isActive = true;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PowerPlayer.png");
-
+            this.usingPowerup = true;
+            this.PowerDuration = duration;
         }
 
         void Die()
         {
             //stop the game
         }
+        public void LoosePowers()
+        {
+            this.usingPowerup = false;
+            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
+        }
+
+        public void TickPowerup()
+        {
+            this.PowerDuration -= 1;
+        }
 
         public Player()
         {
             _health = 10;
             _speed = 1;
-
+            usingPowerup = false;
+            PowerDuration = 0;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
             /*level.levelLayout[level.playerX, level.playerY].neighbor = new GameField[] { level.levelLayout[level.playerX, level.playerY - 1], level.levelLayout[level.playerX + 1, level.playerY], level.levelLayout[level.playerX, level.playerY + 1], level.levelLayout[level.playerX - 1, level.playerY] };

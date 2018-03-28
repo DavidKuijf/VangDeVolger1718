@@ -38,6 +38,14 @@ namespace VangdeVolger
             
             _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
+
+            //8bit track
+            WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+
+            wplayer.URL = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.mp3");
+            wplayer.settings.autoStart = true;
+            wplayer.controls.play();
+        
         }
 
         

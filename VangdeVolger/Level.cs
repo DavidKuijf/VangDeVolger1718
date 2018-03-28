@@ -81,15 +81,10 @@ namespace VangdeVolger
                     {
                         //Create Powerup
 
-                        levelLayout[x, y].contains = new Powerup(5);
+                        levelLayout[x, y].contains = new Powerup();
                         powerupList.Add((Powerup)levelLayout[x, y].contains);
                         levelLayout[x, y].contains.SetLocation(levelLayout[x, y]);
                     }
-                    /*else if (levelLayout[x, y].contains == null)
-                    {
-                        levelLayout[x, y].contains = null;
-                    }*/
-                    //}
                 }
             }
 
@@ -132,9 +127,9 @@ namespace VangdeVolger
         }
 
         /// <summary>
-        /// 
+        /// Draw the entire game, (this can also be used when restarting the game)
         /// </summary>
-        /// <param name="Frame"></param>
+        /// <param name="Frame">PictureBox of the 'gamefield'</param>
         public void Draw(PictureBox Frame)
         {
             //make a bitmap that we can draw to before displaying
@@ -170,7 +165,7 @@ namespace VangdeVolger
       
 
         /// <summary>
-        /// 
+        /// Set the neighbors for every gamefield
         /// </summary>
         private void SetNeighbors()
         {
@@ -199,7 +194,7 @@ namespace VangdeVolger
         }
         
         /// <summary>
-        /// 
+        /// override all the gamefield so the game is entirely empty
         /// </summary>
         private void EmptyLevel()
         {
@@ -216,8 +211,8 @@ namespace VangdeVolger
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="X"></param>
-        /// <param name="Y"></param>
+        /// <param name="X">X-Coordinate</param>
+        /// <param name="Y">Y-Coordinate</param>
         public void SetSize(int X, int Y)
         {
             _sizeX = X;
@@ -225,11 +220,19 @@ namespace VangdeVolger
 
         }
 
+        /// <summary>
+        /// Set wall change with percentage
+        /// </summary>
+        /// <param name="chance">percentage int for the wall spawn chance</param>
         public void SetWallChance(int chance)
         {
             _wallPercent = chance;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chance"></param>
         public void SetBoxChance(int chance)
         {
             _boxPercent = chance;

@@ -122,6 +122,7 @@ namespace VangdeVolger
 
         private void Pathfinding()
         {
+            //Init all the vars
             List<KeyValuePair<int, GameField>> visitedSquares = new List<KeyValuePair<int, GameField>>();
             List<GameField> tentativeSquares = new List<GameField>();
             List<GameField> path = new List<GameField>();
@@ -129,7 +130,9 @@ namespace VangdeVolger
             bool playerFound = false;
             int loopCount = 0;
 
+            //Add the current location to visitedSquares as init
             visitedSquares.Add(new KeyValuePair<int, GameField>(0, _location));
+            //Add the Neigbours of _location to tentativeSquares as init
             for (int i = 0; i < _location.neighbor.Length; i++)
             {
                 if (_location.neighbor[i] != null)
@@ -142,11 +145,15 @@ namespace VangdeVolger
 
             }
 
-            while (!playerFound && loopCount < 1000)
+            //while we havent found the player and we havent visited all reachable squares yet
+            while (!playerFound && tentativeSquares.Count != 0)
             {
+                //loopcount is the counter to see what step we are at
                 loopCount++;
+                //walk through all the tentatives we currently have
                 for (int i = tentativeSquares.Count - 1; i >= 0; i--)
                 {
+                    //check all the neighbours of these tentative squares
                     for (int j = 0; j < tentativeSquares[i].neighbor.Length; j++)
                     {
                         if (tentativeSquares[i].neighbor[j] != null)

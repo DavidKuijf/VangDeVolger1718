@@ -97,8 +97,8 @@ namespace VangdeVolger
             {
                 playerX = _random.Next(1, _sizeX - 1);
                 playerY = _random.Next(1, _sizeY - 1);
-                int enemyX = -1;
-                int enemyY = -1;
+                enemyX = -1;
+                enemyY = -1;
 
                 // Make sure the player and the enemy do not get generated in the same spots.
                 while ((enemyX == -1 && enemyY == -1) || (enemyX == playerX && enemyY == playerY))

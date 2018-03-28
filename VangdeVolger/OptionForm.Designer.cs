@@ -56,14 +56,14 @@
             // 
             // LevelSizeTextboxX
             // 
-            this.LevelSizeTextboxX.Location = new System.Drawing.Point(101, 15);
+            this.LevelSizeTextboxX.Location = new System.Drawing.Point(131, 15);
             this.LevelSizeTextboxX.Name = "LevelSizeTextboxX";
             this.LevelSizeTextboxX.Size = new System.Drawing.Size(100, 20);
             this.LevelSizeTextboxX.TabIndex = 1;
             // 
             // LevelSizeTextboxY
             // 
-            this.LevelSizeTextboxY.Location = new System.Drawing.Point(287, 15);
+            this.LevelSizeTextboxY.Location = new System.Drawing.Point(372, 15);
             this.LevelSizeTextboxY.Name = "LevelSizeTextboxY";
             this.LevelSizeTextboxY.Size = new System.Drawing.Size(100, 20);
             this.LevelSizeTextboxY.TabIndex = 2;
@@ -71,49 +71,59 @@
             // LevelSizeLabelX
             // 
             this.LevelSizeLabelX.AutoSize = true;
-            this.LevelSizeLabelX.Location = new System.Drawing.Point(29, 18);
+            this.LevelSizeLabelX.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LevelSizeLabelX.ForeColor = System.Drawing.SystemColors.Control;
+            this.LevelSizeLabelX.Location = new System.Drawing.Point(52, 17);
             this.LevelSizeLabelX.Name = "LevelSizeLabelX";
-            this.LevelSizeLabelX.Size = new System.Drawing.Size(66, 13);
+            this.LevelSizeLabelX.Size = new System.Drawing.Size(73, 14);
             this.LevelSizeLabelX.TabIndex = 3;
             this.LevelSizeLabelX.Text = "Level Size X";
             // 
             // LevelSizeLabelY
             // 
             this.LevelSizeLabelY.AutoSize = true;
-            this.LevelSizeLabelY.Location = new System.Drawing.Point(215, 18);
+            this.LevelSizeLabelY.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LevelSizeLabelY.ForeColor = System.Drawing.SystemColors.Control;
+            this.LevelSizeLabelY.Location = new System.Drawing.Point(240, 17);
             this.LevelSizeLabelY.Name = "LevelSizeLabelY";
-            this.LevelSizeLabelY.Size = new System.Drawing.Size(66, 13);
+            this.LevelSizeLabelY.Size = new System.Drawing.Size(71, 14);
             this.LevelSizeLabelY.TabIndex = 4;
             this.LevelSizeLabelY.Text = "Level Size Y";
             // 
             // DifficultylevelLabel
             // 
             this.DifficultylevelLabel.AutoSize = true;
+            this.DifficultylevelLabel.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DifficultylevelLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.DifficultylevelLabel.Location = new System.Drawing.Point(23, 51);
             this.DifficultylevelLabel.Name = "DifficultylevelLabel";
-            this.DifficultylevelLabel.Size = new System.Drawing.Size(72, 13);
+            this.DifficultylevelLabel.Size = new System.Drawing.Size(102, 14);
             this.DifficultylevelLabel.TabIndex = 6;
             this.DifficultylevelLabel.Text = "Difficulty level";
             // 
             // DifficultyListBox
             // 
+            this.DifficultyListBox.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DifficultyListBox.FormattingEnabled = true;
+            this.DifficultyListBox.ItemHeight = 14;
             this.DifficultyListBox.Items.AddRange(new object[] {
             "Rogue",
             "Hard",
             "Medium",
             "Easy"});
-            this.DifficultyListBox.Location = new System.Drawing.Point(101, 51);
+            this.DifficultyListBox.Location = new System.Drawing.Point(131, 51);
             this.DifficultyListBox.Name = "DifficultyListBox";
-            this.DifficultyListBox.Size = new System.Drawing.Size(100, 56);
+            this.DifficultyListBox.Size = new System.Drawing.Size(100, 60);
             this.DifficultyListBox.TabIndex = 7;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Showcard Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
             this.radioButton1.Location = new System.Drawing.Point(243, 51);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(144, 17);
+            this.radioButton1.Size = new System.Drawing.Size(235, 22);
             this.radioButton1.TabIndex = 8;
             this.radioButton1.Text = "Random Starting Position";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -122,22 +132,24 @@
             // lblWallPercent
             // 
             this.lblWallPercent.AutoSize = true;
-            this.lblWallPercent.Location = new System.Drawing.Point(56, 116);
+            this.lblWallPercent.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWallPercent.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblWallPercent.Location = new System.Drawing.Point(73, 120);
             this.lblWallPercent.Name = "lblWallPercent";
-            this.lblWallPercent.Size = new System.Drawing.Size(39, 13);
+            this.lblWallPercent.Size = new System.Drawing.Size(48, 14);
             this.lblWallPercent.TabIndex = 9;
             this.lblWallPercent.Text = "% Wall";
             // 
             // tbWallPercent
             // 
-            this.tbWallPercent.Location = new System.Drawing.Point(101, 113);
+            this.tbWallPercent.Location = new System.Drawing.Point(131, 120);
             this.tbWallPercent.Name = "tbWallPercent";
             this.tbWallPercent.Size = new System.Drawing.Size(38, 20);
             this.tbWallPercent.TabIndex = 10;
             // 
             // tbBoxPercent
             // 
-            this.tbBoxPercent.Location = new System.Drawing.Point(101, 139);
+            this.tbBoxPercent.Location = new System.Drawing.Point(131, 147);
             this.tbBoxPercent.Name = "tbBoxPercent";
             this.tbBoxPercent.Size = new System.Drawing.Size(38, 20);
             this.tbBoxPercent.TabIndex = 12;
@@ -145,15 +157,17 @@
             // lblBoxPercent
             // 
             this.lblBoxPercent.AutoSize = true;
-            this.lblBoxPercent.Location = new System.Drawing.Point(56, 142);
+            this.lblBoxPercent.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBoxPercent.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblBoxPercent.Location = new System.Drawing.Point(80, 147);
             this.lblBoxPercent.Name = "lblBoxPercent";
-            this.lblBoxPercent.Size = new System.Drawing.Size(36, 13);
+            this.lblBoxPercent.Size = new System.Drawing.Size(41, 14);
             this.lblBoxPercent.TabIndex = 11;
             this.lblBoxPercent.Text = "% Box";
             // 
             // tbPowerUpPercent
             // 
-            this.tbPowerUpPercent.Location = new System.Drawing.Point(101, 165);
+            this.tbPowerUpPercent.Location = new System.Drawing.Point(131, 173);
             this.tbPowerUpPercent.Name = "tbPowerUpPercent";
             this.tbPowerUpPercent.Size = new System.Drawing.Size(38, 20);
             this.tbPowerUpPercent.TabIndex = 14;
@@ -161,9 +175,11 @@
             // lblPowerUpPercent
             // 
             this.lblPowerUpPercent.AutoSize = true;
-            this.lblPowerUpPercent.Location = new System.Drawing.Point(27, 168);
+            this.lblPowerUpPercent.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPowerUpPercent.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblPowerUpPercent.Location = new System.Drawing.Point(46, 175);
             this.lblPowerUpPercent.Name = "lblPowerUpPercent";
-            this.lblPowerUpPercent.Size = new System.Drawing.Size(65, 13);
+            this.lblPowerUpPercent.Size = new System.Drawing.Size(75, 14);
             this.lblPowerUpPercent.TabIndex = 13;
             this.lblPowerUpPercent.Text = "% Power Up";
             // 
@@ -171,6 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(484, 406);
             this.Controls.Add(this.tbPowerUpPercent);
             this.Controls.Add(this.lblPowerUpPercent);

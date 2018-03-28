@@ -156,35 +156,36 @@ namespace VangdeVolger
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(_playerOne.PowerDuration <= 0)
-            {
-                _playerOne.LoosePowers();
-            }
-            if (_playerOne.usingPowerup == true)
-            {
-                timeClicker ^= true;
-                _playerOne.TickPowerup();
-
-            }
-            else
-            {
-                timeClicker = true;
-            }
-            if (timeClicker) {
-                _time++;
-                TimeLabel.Text = _time.ToString();
-            }
-
-            for (int i = 0; i < _level.powerupList.Count; i++)
-            {
-                if (_level.powerupList[i].Age())
+            if (_playerOne != null) {
+                if (_playerOne.PowerDuration <= 0)
                 {
-                    
-                    _level.powerupList[i]._location.contains = null;
-                    _level.powerupList.Remove(_level.powerupList[i]);
+                    _playerOne.LoosePowers();
+                }
+                if (_playerOne.usingPowerup == true)
+                {
+                    timeClicker ^= true;
+                    _playerOne.TickPowerup();
+
+                }
+                else
+                {
+                    timeClicker = true;
+                }
+                if (timeClicker) {
+                    _time++;
+                    TimeLabel.Text = _time.ToString();
+                }
+
+                for (int i = 0; i < _level.powerupList.Count; i++)
+                {
+                    if (_level.powerupList[i].Age())
+                    {
+
+                        _level.powerupList[i]._location.contains = null;
+                        _level.powerupList.Remove(_level.powerupList[i]);
+                    }
                 }
             }
-           
             //Console.WriteLine(i);
             if (Difficulty != Difficulties.Rogue && timeClicker == true)
             {

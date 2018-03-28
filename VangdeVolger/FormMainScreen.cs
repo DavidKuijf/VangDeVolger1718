@@ -38,8 +38,6 @@ namespace VangdeVolger
             
             _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
-
-
         }
 
         
@@ -54,77 +52,61 @@ namespace VangdeVolger
 
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-
             if (!_paused)
             {
-                
-
+                // Read input and move the player.
                 switch (e.KeyCode)
                 {
                     case Keys.W:
-                        _playerOne.Move(Movable.Directions.Up);
-
-                        break;
-                    case Keys.A:
-                        _playerOne.Move(Movable.Directions.Left);
-
-                        break;
-                    case Keys.S:
-                        _playerOne.Move(Movable.Directions.Down);
-                        break;
-                    case Keys.D:
-                        _playerOne.Move(Movable.Directions.Right);
-                        break;
-                        //peasant movement
                     case Keys.Up:
                         _playerOne.Move(Movable.Directions.Up);
                         break;
+
+                    case Keys.S:
                     case Keys.Down:
                         _playerOne.Move(Movable.Directions.Down);
+                        
                         break;
+
+                    
+                    case Keys.A:
                     case Keys.Left:
                         _playerOne.Move(Movable.Directions.Left);
                         break;
+
+                    case Keys.D:
                     case Keys.Right:
                         _playerOne.Move(Movable.Directions.Right);
                         break;
                 }
-
+                
                 if (Difficulty == Difficulties.Rogue && timeClicker == true)
                 {
+                    // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
                     _level.Draw(pictureBoxMain);
                     if (_won)
                     {
                         PausePlay(true);
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
                     }
                     if (_lost)
                     {
                         Lose();
                     }
                 }
-
-
                 _level.Draw(pictureBoxMain);
             }
         }
 
         private void ResetPictureBox_Click(object sender, EventArgs e)
         {
-            _playerOne = new Player();
-            _level = new Level(_playerOne, _enemy);
-            _level.Generate(_randomStartingPos);
-            _level.Draw(pictureBoxMain);
-            PausePlay(false);
-            _time = 0;
-
+            Reset();
         }
 
-        private void PausePlay(bool reeee)
+        private void PausePlay(bool pause)
         {
-            if (reeee)
+            if (pause)
             {
                 Timer.Stop();
                 _paused = true;
@@ -150,7 +132,7 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm optionForm = new OptionForm(_level,this);
+            OptionForm optionForm = new OptionForm(_level,this, _randomStartingPos);
             optionForm.Show();
         }
 
@@ -216,12 +198,7 @@ namespace VangdeVolger
             loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
             if (loseBox == DialogResult.Retry)
             {
-                _playerOne = new Player();
-                _level = new Level(_playerOne, _enemy);
-                _level.Generate(_randomStartingPos);
-                _level.Draw(pictureBoxMain);
-                _paused = false;
-                _time = 0;
+                Reset();
             }
         }
 
@@ -238,6 +215,16 @@ namespace VangdeVolger
         private void FormMainScreen_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void Reset()
+        {
+            _playerOne = new Player();
+            _level = new Level(_playerOne, _enemy);
+            _level.Generate(_randomStartingPos);
+            _level.Draw(pictureBoxMain);
+            PausePlay(false);
+            _time = 0;
         }
     }
 }

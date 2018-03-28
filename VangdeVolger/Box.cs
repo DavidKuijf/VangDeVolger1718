@@ -36,7 +36,7 @@ namespace VangdeVolger
                     //move the box in the specified direction
                     Target.Move(direction);                                                                   
                 }
-                return success;                                                                                 
+               // return success;                                                                                 
             }
             return success;
         }

@@ -78,7 +78,7 @@ namespace VangdeVolger
         /// <returns></returns>
         public bool Decide(out bool won, out bool lost)
         {
-
+            Pathfinding();
             won = false;
             lost = false;
             bool moved = false;
@@ -118,6 +118,65 @@ namespace VangdeVolger
 
             return CheckWin();
                 
+        }
+
+        private void Pathfinding()
+        {
+            List < KeyValuePair<int, GameField> > visitedSquares = new List<KeyValuePair<int, GameField>>();
+            List <GameField> tentativeSquares= new List<GameField>();
+            List < KeyValuePair<int, GameField> > path = new List<KeyValuePair<int, GameField>>();
+
+            bool playerFound = false;
+            int loopCount = 0;
+
+            visitedSquares.Add(new KeyValuePair<int, GameField>(0, _location));
+            for (int i = 0; i < _location.neighbor.Length; i++)
+            {
+                if (_location.neighbor[i] != null)
+                {
+                    if (_location.neighbor[i].contains == null)
+                    {
+                        tentativeSquares.Add(_location.neighbor[i]);
+                    }
+                }
+                
+            }
+
+            while (!playerFound && loopCount<1000)
+            {
+                loopCount++;
+                for (int i = tentativeSquares.Count-1; i >=0 ; i--)
+                {
+                    for (int j = 0; j < tentativeSquares[i].neighbor.Length; j++)
+                    {
+                        if (tentativeSquares[i].neighbor[j] != null)
+                        {
+                            List<GameField> tempList = new List<GameField>();
+                            foreach (KeyValuePair<int, GameField> item in visitedSquares)
+                            {
+                                tempList.Add(item.Value);
+                            }
+                            if (tentativeSquares[i].neighbor[j].contains == null && !tentativeSquares.Contains(tentativeSquares[i].neighbor[j]) && !tempList.Contains(tentativeSquares[i].neighbor[j]))
+                            {
+                                tentativeSquares.Add(tentativeSquares[i].neighbor[j]);
+                                visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
+                                //tentativeSquares.RemoveAt(i);
+
+                            }
+                            if (tentativeSquares[i].neighbor[j].contains is Player)
+                            {
+                                visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
+                                System.Diagnostics.Debug.WriteLine("FOUND THE FUCKING PLAYER");
+                                playerFound = true;
+                                break;
+                            }
+                        }
+                        
+                    }
+                    tentativeSquares.RemoveAt(i);
+                }
+            }
+            Console.WriteLine("i need a Breakable point");
         }
 
         public Enemy()

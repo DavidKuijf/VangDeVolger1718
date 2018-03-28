@@ -21,17 +21,8 @@ namespace VangdeVolger
             //Check if you are walking to the edge of the map
             if (!(_location.neighbor[(int)direction] == null))
             {
-                //for all 4 directions around players
-                for (int i = 0; i < _location.neighbor.Length; i++)
-                {
-                   //check if that direction is not NULL && the location is enemy
-                   if (_location.neighbor[i] != null && _location.neighbor[i].contains is Enemy)
-                    {
-                        //player die if direction contains enemy
-                        Die();
-
-                    }
-                }
+              
+                
                 //check if the field in the specified direction is empty
                 if (_location.neighbor[(int)direction].contains == null)
                 {

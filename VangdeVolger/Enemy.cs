@@ -78,7 +78,7 @@ namespace VangdeVolger
         /// <returns></returns>
         public bool Decide(out bool won, out bool lost)
         {
-            Pathfinding();
+            
             won = false;
             lost = false;
             bool moved = false;
@@ -97,6 +97,7 @@ namespace VangdeVolger
             }
 
             // As long as the enemy hasn't moved yet and we havn't won, move in a random direction.
+            /*
             while (!moved && !CheckWin())
             {
                 Directions direction = (Directions)random.Next(4);
@@ -107,6 +108,8 @@ namespace VangdeVolger
                     break;
                 }
             }
+            */
+            Pathfinding();
 
             if (CheckWin())
             {
@@ -121,7 +124,7 @@ namespace VangdeVolger
         {
             List < KeyValuePair<int, GameField> > visitedSquares = new List<KeyValuePair<int, GameField>>();
             List <GameField> tentativeSquares= new List<GameField>();
-            List < KeyValuePair<int, GameField> > path = new List<KeyValuePair<int, GameField>>();
+            List <GameField> path = new List<GameField>();
 
             bool playerFound = false;
             int loopCount = 0;
@@ -163,7 +166,7 @@ namespace VangdeVolger
                             if (tentativeSquares[i].neighbor[j].contains is Player)
                             {
                                 visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
-                                System.Diagnostics.Debug.WriteLine("FOUND THE FUCKING PLAYER");
+                                
                                 playerFound = true;
                                 break;
                             }
@@ -173,7 +176,41 @@ namespace VangdeVolger
                     tentativeSquares.RemoveAt(i);
                 }
             }
-            Console.WriteLine("i need a Breakable point");
+            GameField lasthit = null;
+            int currentstep = loopCount;
+
+            for (int i = currentstep; i > 0 ; i--)
+            {
+                for (int j = visitedSquares.Count-1; j >= 0; j--)
+                {
+                    if (visitedSquares[j].Key == i)
+                    {
+                        for (int k = 0; k < visitedSquares[j].Value.neighbor.Length; k++)
+                        {
+                            if (visitedSquares[j].Value.neighbor[k] != null)
+                            {
+                                if (visitedSquares[j].Value.neighbor[k].contains is Player || visitedSquares[j].Value.neighbor[k] == lasthit)
+                                {
+                                    lasthit = visitedSquares[j].Value;
+                                    path.Add(visitedSquares[j].Value);
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < _location.neighbor.Length; i++)
+            {
+                
+                if (_location.neighbor[i] == path[path.Count-1])
+                {
+                    Move((Directions)i);
+                }
+            }
+            //Console.WriteLine("i need a Breakable point");
+
         }
 
         public Enemy()

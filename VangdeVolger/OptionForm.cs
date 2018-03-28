@@ -32,12 +32,14 @@ namespace VangdeVolger
 
             _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
 
-            if ((sizeX != 0) && (sizeY != 0)) 
+            // Only set the size if it's been filled in and less than the maximum.
+            if (((sizeX != 0) && (sizeY != 0)) && ((sizeX <= 50) && (sizeY <= 50))) 
             {
                 _level.SetSize(sizeX,sizeY);
                 _level.Generate(_parent._randomStartingPos);
             }
 
+            // Only set the chances if it's been filled in and less than the maximum.
             if ((boxChance != 0) && (wallChance != 0) && (powerUpChance != 0) && (boxChance + wallChance + powerUpChance) < 100)
             {
                 _level.SetBoxChance(boxChance);

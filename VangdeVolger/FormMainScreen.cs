@@ -38,8 +38,6 @@ namespace VangdeVolger
             
             _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
-
-
         }
 
         
@@ -54,11 +52,9 @@ namespace VangdeVolger
 
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-
             if (!_paused)
             {
-                
-
+                // Read input and move the player.
                 switch (e.KeyCode)
                 {
                     case Keys.W:
@@ -82,45 +78,35 @@ namespace VangdeVolger
                     case Keys.Right:
                         _playerOne.Move(Movable.Directions.Right);
                         break;
-
-                       
                 }
-
+                
                 if (Difficulty == Difficulties.Rogue && timeClicker == true)
                 {
+                    // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
                     _level.Draw(pictureBoxMain);
                     if (_won)
                     {
                         PausePlay(true);
                         winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
                     }
                     if (_lost)
                     {
                         Lose();
                     }
                 }
-
-
                 _level.Draw(pictureBoxMain);
             }
         }
 
         private void ResetPictureBox_Click(object sender, EventArgs e)
         {
-            _playerOne = new Player();
-            _level = new Level(_playerOne, _enemy);
-            _level.Generate(_randomStartingPos);
-            _level.Draw(pictureBoxMain);
-            PausePlay(false);
-            _time = 0;
-
+            Reset();
         }
 
-        private void PausePlay(bool reeee)
+        private void PausePlay(bool pause)
         {
-            if (reeee)
+            if (pause)
             {
                 Timer.Stop();
                 _paused = true;
@@ -152,35 +138,36 @@ namespace VangdeVolger
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(_playerOne.PowerDuration <= 0)
-            {
-                _playerOne.LoosePowers();
-            }
-            if (_playerOne.usingPowerup == true)
-            {
-                timeClicker ^= true;
-                _playerOne.TickPowerup();
-
-            }
-            else
-            {
-                timeClicker = true;
-            }
-            if (timeClicker) {
-                _time++;
-                TimeLabel.Text = _time.ToString();
-            }
-
-            for (int i = 0; i < _level.powerupList.Count; i++)
-            {
-                if (_level.powerupList[i].Age())
+            if (_playerOne != null) {
+                if (_playerOne.PowerDuration <= 0)
                 {
-                    
-                    _level.powerupList[i]._location.contains = null;
-                    _level.powerupList.Remove(_level.powerupList[i]);
+                    _playerOne.LoosePowers();
+                }
+                if (_playerOne.usingPowerup == true)
+                {
+                    timeClicker ^= true;
+                    _playerOne.TickPowerup();
+
+                }
+                else
+                {
+                    timeClicker = true;
+                }
+                if (timeClicker) {
+                    _time++;
+                    TimeLabel.Text = _time.ToString();
+                }
+
+                for (int i = 0; i < _level.powerupList.Count; i++)
+                {
+                    if (_level.powerupList[i].Age())
+                    {
+
+                        _level.powerupList[i]._location.contains = null;
+                        _level.powerupList.Remove(_level.powerupList[i]);
+                    }
                 }
             }
-           
             //Console.WriteLine(i);
             if (Difficulty != Difficulties.Rogue && timeClicker == true)
             {
@@ -211,12 +198,7 @@ namespace VangdeVolger
             loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
             if (loseBox == DialogResult.Retry)
             {
-                _playerOne = new Player();
-                _level = new Level(_playerOne, _enemy);
-                _level.Generate(_randomStartingPos);
-                _level.Draw(pictureBoxMain);
-                _paused = false;
-                _time = 0;
+                Reset();
             }
         }
 
@@ -233,6 +215,16 @@ namespace VangdeVolger
         private void FormMainScreen_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void Reset()
+        {
+            _playerOne = new Player();
+            _level = new Level(_playerOne, _enemy);
+            _level.Generate(_randomStartingPos);
+            _level.Draw(pictureBoxMain);
+            PausePlay(false);
+            _time = 0;
         }
     }
 }

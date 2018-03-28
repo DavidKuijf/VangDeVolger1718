@@ -83,6 +83,7 @@ namespace VangdeVolger
             lost = false;
             bool moved = false;
 
+            // Check all neighbors, kill and move to player if found.
             for (int i = 0; i < _location.neighbor.Length; i++)
             {
                 if (CheckPlayer((Directions)i))
@@ -95,7 +96,7 @@ namespace VangdeVolger
                 }
             }
 
-
+            // As long as the enemy hasn't moved yet and we havn't won, move in a random direction.
             while (!moved && !CheckWin())
             {
                 Directions direction = (Directions)random.Next(4);
@@ -105,16 +106,12 @@ namespace VangdeVolger
                     moved = true;
                     break;
                 }
-
-
             }
-
 
             if (CheckWin())
             {
                 won = true;
             }
-        
 
             return CheckWin();
                 

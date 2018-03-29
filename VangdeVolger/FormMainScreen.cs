@@ -182,14 +182,18 @@ namespace VangdeVolger
                         PausePlay(true);
                         _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        if (_winBox == DialogResult.OK)
+                        {
+                            Reset();
+                        }
                     }
+
                     if (_lost)
                     {
                         Lose();
                     }
                 }
             }
-
         }
 
         public void Lose()
@@ -200,6 +204,10 @@ namespace VangdeVolger
             _loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
 
             if (_loseBox == DialogResult.Retry)
+            {
+                Reset();
+            }
+            else
             {
                 Reset();
             }

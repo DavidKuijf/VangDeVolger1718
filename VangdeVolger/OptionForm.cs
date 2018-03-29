@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,16 +56,31 @@ namespace VangdeVolger
 
         public OptionForm(Level level, FormMainScreen ParentForm, bool randomPos)
         {
+
             InitializeComponent();
             
             _level = level;
             _parent = ParentForm;
             radioButton1.Checked = randomPos;
+
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\font.TTF"));
+            Font bits = new Font(pfc.Families[0], 8);
+
+            LevelSizeLabel.Font = bits;
+            lblBoxPercent.Font = bits;
+            lblPowerUpPercent.Font = bits;
+            lblWallPercent.Font = bits;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             _parent.randomStartingPos = !_parent.randomStartingPos;
+        }
+
+        private void OptionForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

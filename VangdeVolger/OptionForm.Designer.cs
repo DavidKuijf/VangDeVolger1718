@@ -62,22 +62,22 @@
             // LevelSizeLabel
             // 
             this.LevelSizeLabel.AutoSize = true;
-            this.LevelSizeLabel.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LevelSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.LevelSizeLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.LevelSizeLabel.Location = new System.Drawing.Point(58, 17);
             this.LevelSizeLabel.Name = "LevelSizeLabel";
-            this.LevelSizeLabel.Size = new System.Drawing.Size(63, 14);
+            this.LevelSizeLabel.Size = new System.Drawing.Size(56, 13);
             this.LevelSizeLabel.TabIndex = 3;
             this.LevelSizeLabel.Text = "Level Size";
             // 
             // DifficultylevelLabel
             // 
             this.DifficultylevelLabel.AutoSize = true;
-            this.DifficultylevelLabel.Font = new System.Drawing.Font("8BIT WONDER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DifficultylevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DifficultylevelLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.DifficultylevelLabel.Location = new System.Drawing.Point(185, 128);
             this.DifficultylevelLabel.Name = "DifficultylevelLabel";
-            this.DifficultylevelLabel.Size = new System.Drawing.Size(166, 11);
+            this.DifficultylevelLabel.Size = new System.Drawing.Size(72, 13);
             this.DifficultylevelLabel.TabIndex = 6;
             this.DifficultylevelLabel.Text = "Difficulty level";
             // 
@@ -112,11 +112,11 @@
             // lblWallPercent
             // 
             this.lblWallPercent.AutoSize = true;
-            this.lblWallPercent.Font = new System.Drawing.Font("8BIT WONDER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWallPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWallPercent.ForeColor = System.Drawing.SystemColors.Control;
             this.lblWallPercent.Location = new System.Drawing.Point(49, 53);
             this.lblWallPercent.Name = "lblWallPercent";
-            this.lblWallPercent.Size = new System.Drawing.Size(68, 11);
+            this.lblWallPercent.Size = new System.Drawing.Size(39, 13);
             this.lblWallPercent.TabIndex = 9;
             this.lblWallPercent.Text = "% Wall";
             // 
@@ -137,11 +137,11 @@
             // lblBoxPercent
             // 
             this.lblBoxPercent.AutoSize = true;
-            this.lblBoxPercent.Font = new System.Drawing.Font("8BIT WONDER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBoxPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBoxPercent.ForeColor = System.Drawing.SystemColors.Control;
             this.lblBoxPercent.Location = new System.Drawing.Point(66, 84);
             this.lblBoxPercent.Name = "lblBoxPercent";
-            this.lblBoxPercent.Size = new System.Drawing.Size(51, 11);
+            this.lblBoxPercent.Size = new System.Drawing.Size(36, 13);
             this.lblBoxPercent.TabIndex = 11;
             this.lblBoxPercent.Text = "% Box";
             // 
@@ -155,11 +155,11 @@
             // lblPowerUpPercent
             // 
             this.lblPowerUpPercent.AutoSize = true;
-            this.lblPowerUpPercent.Font = new System.Drawing.Font("8BIT WONDER", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPowerUpPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPowerUpPercent.ForeColor = System.Drawing.SystemColors.Control;
             this.lblPowerUpPercent.Location = new System.Drawing.Point(12, 111);
             this.lblPowerUpPercent.Name = "lblPowerUpPercent";
-            this.lblPowerUpPercent.Size = new System.Drawing.Size(107, 11);
+            this.lblPowerUpPercent.Size = new System.Drawing.Size(65, 13);
             this.lblPowerUpPercent.TabIndex = 13;
             this.lblPowerUpPercent.Text = "% Power Up";
             // 
@@ -183,6 +183,7 @@
             this.Controls.Add(this.ApplyButton);
             this.Name = "OptionForm";
             this.Text = "Options";
+            this.Load += new System.EventHandler(this.OptionForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +203,7 @@
         private System.Windows.Forms.Label lblBoxPercent;
         private System.Windows.Forms.TextBox tbPowerUpPercent;
         private System.Windows.Forms.Label lblPowerUpPercent;
+
+        
     }
 }

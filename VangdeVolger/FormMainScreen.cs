@@ -16,8 +16,8 @@ namespace VangdeVolger
         private int _time;
         private bool timeClicker;
 
-        private DialogResult winBox;
-        private DialogResult loseBox;
+        private DialogResult _winBox;
+        private DialogResult _loseBox;
 
         private bool _paused;
         private bool _lost = false;

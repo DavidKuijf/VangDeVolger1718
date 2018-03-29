@@ -8,9 +8,8 @@ namespace VangdeVolger
     class Player : Movable
     {
         private int _health;
-        protected int _speed;
-        public bool usingPowerup;
-        public int PowerDuration;
+        private int _speed;
+        public int powerDuration;
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
@@ -63,43 +62,38 @@ namespace VangdeVolger
             //push the specified box
             target.Push(target, direction);
         }
-
+        
         /// <summary>
         /// 
         /// </summary>
         /// <param name="direction"></param>
+        /// <param name="duration"></param>
         void PickUp(Directions direction, int duration)
         {
+
             Powerup powerup = (Powerup)_location.neighbor[(int)direction].contains;
             _location.neighbor[(int)direction].contains = null;
             powerup.isActive = true;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PowerPlayer.png");
-            this.usingPowerup = true;
-            this.PowerDuration = duration;
+            this.powerDuration = duration;
         }
 
-        void Die()
-        {
-            //stop the game
-        }
         public void LoosePowers()
         {
-            this.usingPowerup = false;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
         }
 
         public void TickPowerup()
         {
-            this.PowerDuration -= 1;
+            this.powerDuration -= 1;
         }
 
         public Player()
         {
             _health = 10;
             _speed = 1;
-            usingPowerup = false;
-            PowerDuration = 0;
+            powerDuration = 0;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
             /*level.levelLayout[level.playerX, level.playerY].neighbor = new GameField[] { level.levelLayout[level.playerX, level.playerY - 1], level.levelLayout[level.playerX + 1, level.playerY], level.levelLayout[level.playerX, level.playerY + 1], level.levelLayout[level.playerX - 1, level.playerY] };

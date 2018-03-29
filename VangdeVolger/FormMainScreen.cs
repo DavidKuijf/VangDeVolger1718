@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -28,6 +29,14 @@ namespace VangdeVolger
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Hard;
 
+        private void Draw(object sender, PaintEventArgs e)
+        {
+
+            Application.Idle += delegate { Invalidate(); };
+        }
+
+
+
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (!_paused)
@@ -43,8 +52,10 @@ namespace VangdeVolger
                     case Keys.S:
                     case Keys.Down:
                         _playerOne.Move(Movable.Directions.Down);
+
                         break;
-                    
+
+
                     case Keys.A:
                     case Keys.Left:
                         _playerOne.Move(Movable.Directions.Left);
@@ -61,7 +72,7 @@ namespace VangdeVolger
                         OptionpictureBox.Visible = _menuVisible;
                         break;
                 }
-                
+
                 if (Difficulty == Difficulties.Rogue && timeClicker == true)
                 {
                     // set won, lost and draw the screen.
@@ -120,7 +131,7 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm optionForm = new OptionForm(_level,this, _randomStartingPos);
+            OptionForm optionForm = new OptionForm(_level, this, _randomStartingPos);
             optionForm.Show();
         }
 
@@ -128,12 +139,11 @@ namespace VangdeVolger
         {
             if (_playerOne != null)
             {
-                if (_playerOne.PowerDuration <= 0)
+                if (_playerOne.powerDuration <= 0)
                 {
                     _playerOne.LoosePowers();
                 }
-
-                if (_playerOne.usingPowerup == true)
+                else if (_playerOne.powerDuration > 0)
                 {
                     timeClicker ^= true;
                     _playerOne.TickPowerup();
@@ -143,8 +153,8 @@ namespace VangdeVolger
                 {
                     timeClicker = true;
                 }
-
-                if (timeClicker) {
+                if (timeClicker)
+                {
                     _time++;
                     TimeLabel.Text = _time.ToString();
                 }
@@ -171,15 +181,15 @@ namespace VangdeVolger
                     {
                         PausePlay(true);
                         _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
 
+                    }
                     if (_lost)
                     {
                         Lose();
                     }
                 }
             }
-            
+
         }
 
         public void Lose()
@@ -220,13 +230,8 @@ namespace VangdeVolger
             _won = true;
 
             //8bit track
-            /*
-            WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
-
-            wplayer.URL = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.mp3");
-            wplayer.settings.autoStart = true;
-            wplayer.controls.play();
-            */
+            SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
+            simpleSound.Play();
         }
     }
 }

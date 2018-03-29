@@ -17,8 +17,8 @@ namespace VangdeVolger
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            int sizeX = 0;
-            int sizeY = 0;
+            int size = 0;
+            
 
             int boxChance = 0;
             int wallChance = 0;
@@ -33,7 +33,7 @@ namespace VangdeVolger
             _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
 
             // Only set the size if it's been filled in and less than the maximum.
-            if (((sizeX != 0) && (sizeY != 0)) && ((sizeX <= 50) && (sizeY <= 50))) 
+            if (((size !=  0)) && ((size <= 50))) 
             {
                 _level.SetSize(sizeX,sizeY);
                 _level.Generate(_parent._randomStartingPos);

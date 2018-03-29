@@ -216,10 +216,10 @@ namespace VangdeVolger
         /// </summary>
         /// <param name="X">X-Coordinate</param>
         /// <param name="Y">Y-Coordinate</param>
-        public void SetSize(int X, int Y)
+        public void SetSize(int temp)
         {
-            _sizeX = X;
-            _sizeY = Y;
+            _sizeX = temp;
+            _sizeY = temp;
 
         }
 

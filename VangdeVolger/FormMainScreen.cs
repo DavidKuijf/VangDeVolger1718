@@ -73,7 +73,7 @@ namespace VangdeVolger
                         break;
                 }
 
-                if (Difficulty == Difficulties.Rogue && timeClicker == true)
+                if (Difficulty == Difficulties.Rogue && timeClicker)
                 {
                     // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
@@ -231,7 +231,7 @@ namespace VangdeVolger
 
             //8bit track
             SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
-            simpleSound.Play();
+            simpleSound.PlayLooping();
         }
     }
 }

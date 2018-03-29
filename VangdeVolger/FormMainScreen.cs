@@ -8,14 +8,14 @@ namespace VangdeVolger
 {
     public partial class FormMainScreen : Form
     {
-        private Timer _gameTimer = new Timer();
+        Timer gameTimer = new Timer();
 
         private Player _playerOne;
         private Enemy _enemy;
         private Level _level;
 
         private int _time;
-        private bool _timeClicker;
+        private bool timeClicker;
 
         private DialogResult _winBox;
         private DialogResult _loseBox;
@@ -24,7 +24,7 @@ namespace VangdeVolger
         private bool _lost;
         private bool _won;
         private bool _menuVisible;
-        public bool randomStartingPos;
+        public bool _randomStartingPos = false;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Hard;
@@ -73,7 +73,7 @@ namespace VangdeVolger
                         break;
                 }
 
-                if (Difficulty == Difficulties.Rogue && _timeClicker == true)
+                if (Difficulty == Difficulties.Rogue && timeClicker)
                 {
                     // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
@@ -131,7 +131,7 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm optionForm = new OptionForm(_level, this, randomStartingPos);
+            OptionForm optionForm = new OptionForm(_level, this, _randomStartingPos);
             optionForm.Show();
         }
 
@@ -145,15 +145,15 @@ namespace VangdeVolger
                 }
                 else if (_playerOne.powerDuration > 0)
                 {
-                    _timeClicker ^= true;
+                    timeClicker ^= true;
                     _playerOne.TickPowerup();
                 }
 
                 else
                 {
-                    _timeClicker = true;
+                    timeClicker = true;
                 }
-                if (_timeClicker)
+                if (timeClicker)
                 {
                     _time++;
                     TimeLabel.Text = _time.ToString();
@@ -169,7 +169,7 @@ namespace VangdeVolger
                 }
             }
 
-            if (Difficulty != Difficulties.Rogue && _timeClicker)
+            if (Difficulty != Difficulties.Rogue && timeClicker)
             {
                 if (_time % (int)Difficulty == 0 && !_paused)
                 {
@@ -209,7 +209,7 @@ namespace VangdeVolger
         {
             _playerOne = new Player();
             _level = new Level(_playerOne, _enemy);
-            _level.Generate(randomStartingPos);
+            _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
             PausePlay(false);
             _time = 0;
@@ -218,12 +218,12 @@ namespace VangdeVolger
         public FormMainScreen()
         {
             InitializeComponent();
-            _timeClicker = true;
+            timeClicker = true;
             _playerOne = new Player();
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);
-            randomStartingPos = false;
-            _level.Generate(randomStartingPos);
+
+            _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
             _menuVisible = false;
             _lost = false;
@@ -231,7 +231,7 @@ namespace VangdeVolger
 
             //8bit track
             SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
-            simpleSound.Play();
+            simpleSound.PlayLooping();
         }
     }
 }

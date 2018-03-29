@@ -232,6 +232,20 @@ namespace VangdeVolger
             //8bit track
             SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
             simpleSound.PlayLooping();
+
+            //8bit font loader
+            Stream fontStream = this.GetType().Assembly.GetManifestResourceStream(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\8bitfont.TTF"));
+
+            byte[] fontdata = new byte[fontStream.Length];
+            fontStream.Read(fontdata, 0, (int)fontStream.Length);
+            fontStream.Close();
+            //unsafe
+            //{
+            //    fixed (byte* pFontData = fontdata)
+            //    {
+            //        pfc.AddMemoryFont((System.IntPtr)pFontData, fontdata.Length);
+            //    }
+            //}
         }
     }
 }

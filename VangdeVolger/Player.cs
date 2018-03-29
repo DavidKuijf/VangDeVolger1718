@@ -8,8 +8,8 @@ namespace VangdeVolger
     class Player : Movable
     {
         private int _health;
-        protected int _speed;
-
+        private int _speed;
+        public int powerDuration;
 
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
@@ -18,19 +18,10 @@ namespace VangdeVolger
         override public void Move(Directions direction)
         {
             //Check if you are walking to the edge of the map
-            if (!(_location.neighbor[(int)direction] == null))
+            if (_location.neighbor[(int)direction] != null)
             {
-                //for all 4 directions around players
-                for (int i = 0; i < _location.neighbor.Length; i++)
-                {
-                   //check if that direction is not NULL && the location is enemy
-                   if (_location.neighbor[i] != null && _location.neighbor[i].contains is Enemy)
-                    {
-                        //player die if direction contains enemy
-                        Die();
-
-                    }
-                }
+              
+                
                 //check if the field in the specified direction is empty
                 if (_location.neighbor[(int)direction].contains == null)
                 {
@@ -52,8 +43,10 @@ namespace VangdeVolger
                 // if the neighbour in that direction is a Powerup
                 else if (_location.neighbor[(int)direction].contains is Powerup)
                 {
+                    Powerup reachedUp = (Powerup)_location.neighbor[(int)direction].contains;
                     // pick that powerup up
-                    PickUp(direction);
+                    PickUp(direction, reachedUp.playerDuration);
+
                 }
             }
 
@@ -69,31 +62,38 @@ namespace VangdeVolger
             //push the specified box
             target.Push(target, direction);
         }
-
+        
         /// <summary>
         /// 
         /// </summary>
         /// <param name="direction"></param>
-        void PickUp(Directions direction)
+        /// <param name="duration"></param>
+        void PickUp(Directions direction, int duration)
         {
+
             Powerup powerup = (Powerup)_location.neighbor[(int)direction].contains;
             _location.neighbor[(int)direction].contains = null;
             powerup.isActive = true;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PowerPlayer.png");
-
+            this.powerDuration = duration;
         }
 
-        void Die()
+        public void LoosePowers()
         {
-            //stop the game
+            this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
+
         }
 
+        public void TickPowerup()
+        {
+            this.powerDuration -= 1;
+        }
 
         public Player()
         {
             _health = 10;
             _speed = 1;
-
+            powerDuration = 0;
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Player.png");
 
             /*level.levelLayout[level.playerX, level.playerY].neighbor = new GameField[] { level.levelLayout[level.playerX, level.playerY - 1], level.levelLayout[level.playerX + 1, level.playerY], level.levelLayout[level.playerX, level.playerY + 1], level.levelLayout[level.playerX - 1, level.playerY] };

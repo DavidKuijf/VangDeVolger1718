@@ -14,6 +14,10 @@ namespace VangdeVolger
         public GameField _location;
         public string _image;
 
+        /// <summary>
+        /// A way to set the location parameter of the Gameobject 
+        /// </summary>
+        /// <param name="ObjectLocation"></param>
         public void SetLocation(GameField ObjectLocation)
         {
             this._location = ObjectLocation;

@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainScreen));
             this.TimeLabel = new System.Windows.Forms.Label();
-            this.pictureBoxMain = new System.Windows.Forms.PictureBox();
-            this.ResetPictureBox = new System.Windows.Forms.PictureBox();
-            this.PausePictureBox = new System.Windows.Forms.PictureBox();
-            this.OptionpictureBox = new System.Windows.Forms.PictureBox();
             this.Timer = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).BeginInit();
+            this.OptionpictureBox = new System.Windows.Forms.PictureBox();
+            this.PausePictureBox = new System.Windows.Forms.PictureBox();
+            this.ResetPictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.OptionpictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.SuspendLayout();
             // 
             // TimeLabel
@@ -51,75 +51,81 @@
             this.TimeLabel.TabIndex = 0;
             this.TimeLabel.Text = "Timer";
             // 
-            // pictureBoxMain
-            // 
-            this.pictureBoxMain.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBoxMain.Location = new System.Drawing.Point(12, 30);
-            this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(500, 500);
-            this.pictureBoxMain.TabIndex = 1;
-            this.pictureBoxMain.TabStop = false;
-            // 
-            // ResetPictureBox
-            // 
-            this.ResetPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ResetPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ResetPictureBox.BackgroundImage")));
-            this.ResetPictureBox.Location = new System.Drawing.Point(518, 30);
-            this.ResetPictureBox.Name = "ResetPictureBox";
-            this.ResetPictureBox.Size = new System.Drawing.Size(150, 90);
-            this.ResetPictureBox.TabIndex = 2;
-            this.ResetPictureBox.TabStop = false;
-            this.ResetPictureBox.Click += new System.EventHandler(this.ResetPictureBox_Click);
-            // 
-            // PausePictureBox
-            // 
-            this.PausePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PausePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PausePictureBox.BackgroundImage")));
-            this.PausePictureBox.Location = new System.Drawing.Point(518, 126);
-            this.PausePictureBox.Name = "PausePictureBox";
-            this.PausePictureBox.Size = new System.Drawing.Size(150, 90);
-            this.PausePictureBox.TabIndex = 3;
-            this.PausePictureBox.TabStop = false;
-            this.PausePictureBox.Click += new System.EventHandler(this.PausePictureBox_Click);
-            // 
-            // OptionpictureBox
-            // 
-            this.OptionpictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.OptionpictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OptionpictureBox.BackgroundImage")));
-            this.OptionpictureBox.Location = new System.Drawing.Point(518, 222);
-            this.OptionpictureBox.Name = "OptionpictureBox";
-            this.OptionpictureBox.Size = new System.Drawing.Size(150, 90);
-            this.OptionpictureBox.TabIndex = 4;
-            this.OptionpictureBox.TabStop = false;
-            this.OptionpictureBox.Click += new System.EventHandler(this.OptionpictureBox_Click);
-            // 
             // Timer
             // 
             this.Timer.Enabled = true;
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // OptionpictureBox
+            // 
+            this.OptionpictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.OptionpictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OptionpictureBox.BackgroundImage")));
+            this.OptionpictureBox.Location = new System.Drawing.Point(0, 169);
+            this.OptionpictureBox.Name = "OptionpictureBox";
+            this.OptionpictureBox.Size = new System.Drawing.Size(150, 90);
+            this.OptionpictureBox.TabIndex = 4;
+            this.OptionpictureBox.TabStop = false;
+            this.OptionpictureBox.Visible = false;
+            this.OptionpictureBox.Click += new System.EventHandler(this.OptionpictureBox_Click);
+            // 
+            // PausePictureBox
+            // 
+            this.PausePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PausePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PausePictureBox.BackgroundImage")));
+            this.PausePictureBox.Location = new System.Drawing.Point(0, 83);
+            this.PausePictureBox.Name = "PausePictureBox";
+            this.PausePictureBox.Size = new System.Drawing.Size(150, 90);
+            this.PausePictureBox.TabIndex = 3;
+            this.PausePictureBox.TabStop = false;
+            this.PausePictureBox.Visible = false;
+            this.PausePictureBox.Click += new System.EventHandler(this.PausePictureBox_Click);
+            // 
+            // ResetPictureBox
+            // 
+            this.ResetPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ResetPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ResetPictureBox.BackgroundImage")));
+            this.ResetPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.ResetPictureBox.Name = "ResetPictureBox";
+            this.ResetPictureBox.Size = new System.Drawing.Size(150, 90);
+            this.ResetPictureBox.TabIndex = 2;
+            this.ResetPictureBox.TabStop = false;
+            this.ResetPictureBox.Visible = false;
+            this.ResetPictureBox.Click += new System.EventHandler(this.ResetPictureBox_Click);
+            // 
+            // pictureBoxMain
+            // 
+            this.pictureBoxMain.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxMain.Name = "pictureBoxMain";
+            this.pictureBoxMain.Size = new System.Drawing.Size(484, 461);
+            this.pictureBoxMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxMain.TabIndex = 1;
+            this.pictureBoxMain.TabStop = false;
+            // 
             // FormMainScreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(673, 542);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ControlBox = false;
             this.Controls.Add(this.OptionpictureBox);
             this.Controls.Add(this.PausePictureBox);
             this.Controls.Add(this.ResetPictureBox);
             this.Controls.Add(this.pictureBoxMain);
             this.Controls.Add(this.TimeLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FormMainScreen";
             this.Text = "Vang De Volger";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Draw);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FormMainScreen_PreviewKeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OptionpictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

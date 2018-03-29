@@ -63,7 +63,7 @@ namespace VangdeVolger
             radioButton1.Checked = randomPos;
 
             PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\font.TTF"));
+            pfc.AddFontFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\8bitfont.TTF"));
             Font bits = new Font(pfc.Families[0], 8);
 
             LevelSizeLabel.Font = bits;

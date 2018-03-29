@@ -203,6 +203,11 @@ namespace VangdeVolger
             {
                 Reset();
             }
+
+            _menuVisible = !_menuVisible;
+            ResetPictureBox.Visible = _menuVisible;
+            PausePictureBox.Visible = _menuVisible;
+            OptionpictureBox.Visible = _menuVisible;
         }
 
         private void Reset()

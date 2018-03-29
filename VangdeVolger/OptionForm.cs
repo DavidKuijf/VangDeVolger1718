@@ -24,8 +24,7 @@ namespace VangdeVolger
             int wallChance = 0;
             int powerUpChance = 0;
 
-            Int32.TryParse(LevelSizeTextboxX.Text, out sizeX);
-            Int32.TryParse(LevelSizeTextboxX.Text, out sizeY);
+            Int32.TryParse(LevelSizeTextbox.Text, out size);
             Int32.TryParse(tbBoxPercent.Text, out boxChance);
             Int32.TryParse(tbWallPercent.Text, out wallChance);
             Int32.TryParse(tbPowerUpPercent.Text, out powerUpChance);
@@ -35,7 +34,7 @@ namespace VangdeVolger
             // Only set the size if it's been filled in and less than the maximum.
             if (((size !=  0)) && ((size <= 50))) 
             {
-                _level.SetSize(sizeX,sizeY);
+                _level.SetSize(size);
                 _level.Generate(_parent._randomStartingPos);
             }
 

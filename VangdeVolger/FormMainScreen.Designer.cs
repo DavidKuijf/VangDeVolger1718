@@ -101,7 +101,6 @@
             this.pictureBoxMain.Size = new System.Drawing.Size(500, 500);
             this.pictureBoxMain.TabIndex = 1;
             this.pictureBoxMain.TabStop = false;
-            this.pictureBoxMain.Paint += new System.Windows.Forms.PaintEventHandler(this.Draw);
             // 
             // FormMainScreen
             // 
@@ -118,8 +117,6 @@
             this.MaximizeBox = false;
             this.Name = "FormMainScreen";
             this.Text = "Vang De Volger";
-            this.Load += new System.EventHandler(this.FormMainScreen_Load_1);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Draw);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FormMainScreen_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.OptionpictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PausePictureBox)).EndInit();

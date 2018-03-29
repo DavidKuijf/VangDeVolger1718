@@ -17,7 +17,6 @@ namespace VangdeVolger
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMainScreen());
-            
         }
     }
 }

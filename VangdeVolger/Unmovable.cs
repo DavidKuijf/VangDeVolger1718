@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    abstract class Unmovable : GameObject
+    public abstract class Unmovable : GameObject
     {
 
     }

@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace VangdeVolger
 {
-    class Wall : Unmovable
+    public class Wall : Unmovable
     {
-
         public Wall()
         {
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Wall.png");

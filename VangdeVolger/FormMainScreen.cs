@@ -27,38 +27,6 @@ namespace VangdeVolger
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Hard;
 
-        public FormMainScreen()
-        {
-
-            InitializeComponent();
-            timeClicker = true;
-            _playerOne = new Player();
-            _enemy = new Enemy();
-            _level = new Level(_playerOne, _enemy);
-            
-            _level.Generate(_randomStartingPos);
-            _level.Draw(pictureBoxMain);
-
-            //8bit track
-            /*
-            WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
-
-            wplayer.URL = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.mp3");
-            wplayer.settings.autoStart = true;
-            wplayer.controls.play();
-            */
-        }
-
-        
-
-        private void Draw(object sender, PaintEventArgs e)
-        {
-            
-            Application.Idle += delegate { Invalidate(); };
-        }
-
-       
-
         private void FormMainScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (!_paused)
@@ -75,7 +43,7 @@ namespace VangdeVolger
                     case Keys.Down:
                         _playerOne.Move(Movable.Directions.Down);
                         break;
-                 
+                    
                     case Keys.A:
                     case Keys.Left:
                         _playerOne.Move(Movable.Directions.Left);
@@ -91,17 +59,21 @@ namespace VangdeVolger
                 {
                     // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
+
                     _level.Draw(pictureBoxMain);
+
                     if (_won)
                     {
                         PausePlay(true);
-                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
                     if (_lost)
                     {
                         Lose();
                     }
                 }
+
                 _level.Draw(pictureBoxMain);
             }
         }
@@ -118,6 +90,7 @@ namespace VangdeVolger
                 Timer.Stop();
                 _paused = true;
             }
+
             else
             {
                 Timer.Start();
@@ -131,6 +104,7 @@ namespace VangdeVolger
             {
                 PausePlay(true);
             }
+
             else
             {
                 PausePlay(false);
@@ -145,21 +119,24 @@ namespace VangdeVolger
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (_playerOne != null) {
+            if (_playerOne != null)
+            {
                 if (_playerOne.PowerDuration <= 0)
                 {
                     _playerOne.LoosePowers();
                 }
+
                 if (_playerOne.usingPowerup == true)
                 {
                     timeClicker ^= true;
                     _playerOne.TickPowerup();
-
                 }
+
                 else
                 {
                     timeClicker = true;
                 }
+
                 if (timeClicker) {
                     _time++;
                     TimeLabel.Text = _time.ToString();
@@ -169,25 +146,26 @@ namespace VangdeVolger
                 {
                     if (_level.powerupList[i].Age())
                     {
-
                         _level.powerupList[i]._location.contains = null;
                         _level.powerupList.Remove(_level.powerupList[i]);
                     }
                 }
             }
-            //Console.WriteLine(i);
+
             if (Difficulty != Difficulties.Rogue && timeClicker == true)
             {
                 if (_time % (int)Difficulty == 0 && !_paused)
                 {
                     _enemy.Decide(out _won, out _lost);
+
                     _level.Draw(pictureBoxMain);
+
                     if (_won)
                     {
                         PausePlay(true);
-                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+                        _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
                     if (_lost)
                     {
                         Lose();
@@ -202,26 +180,12 @@ namespace VangdeVolger
             _playerOne = null;
             _paused = true;
 
-            loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
-            if (loseBox == DialogResult.Retry)
+            _loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
+
+            if (_loseBox == DialogResult.Retry)
             {
                 Reset();
             }
-        }
-
-        private void FormMainScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TimeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormMainScreen_Load_1(object sender, EventArgs e)
-        {
-
         }
 
         private void Reset()
@@ -232,6 +196,27 @@ namespace VangdeVolger
             _level.Draw(pictureBoxMain);
             PausePlay(false);
             _time = 0;
+        }
+
+        public FormMainScreen()
+        {
+            InitializeComponent();
+            timeClicker = true;
+            _playerOne = new Player();
+            _enemy = new Enemy();
+            _level = new Level(_playerOne, _enemy);
+
+            _level.Generate(_randomStartingPos);
+            _level.Draw(pictureBoxMain);
+
+            //8bit track
+            /*
+            WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
+
+            wplayer.URL = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.mp3");
+            wplayer.settings.autoStart = true;
+            wplayer.controls.play();
+            */
         }
     }
 }

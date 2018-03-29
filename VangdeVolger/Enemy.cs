@@ -13,7 +13,6 @@ namespace VangdeVolger
     {
         Random random = new Random();
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -42,13 +41,11 @@ namespace VangdeVolger
                 return true;
             else
                 return false;
-
         }
 
         private void Kill(Directions direction)
         {
             _location.neighbor[(int)direction].contains = null;
-
         }
 
         private bool CheckPlayer(Directions direction)
@@ -65,20 +62,19 @@ namespace VangdeVolger
             }
             else
                 return false;
-
         }
+
         /// <summary>
         /// Decide first checks wheter there is a player in range to kill
-        ///if there is it kills that player
-        ///else it moves in a random direction
-        ///if this is not possible it declares the player has won
+        /// if there is it kills that player
+        /// else it moves in a random direction
+        /// if this is not possible it declares the player has won
         /// </summary>
         /// <param name="won"></param>
         /// <param name="lost"></param>
         /// <returns></returns>
         public bool Decide(out bool won, out bool lost)
         {
-
             won = false;
             lost = false;
             bool moved = false;
@@ -109,6 +105,7 @@ namespace VangdeVolger
                 }
             }
             */
+
             Pathfinding();
 
             if (CheckWin())
@@ -117,7 +114,6 @@ namespace VangdeVolger
             }
 
             return CheckWin();
-
         }
 
         private void Pathfinding()
@@ -150,6 +146,7 @@ namespace VangdeVolger
             {
                 //loopcount is the counter to see what step we are at
                 loopCount++;
+
                 //walk through all the tentatives we currently have
                 for (int i = tentativeSquares.Count - 1; i >= 0; i--)
                 {
@@ -159,16 +156,19 @@ namespace VangdeVolger
                         if (tentativeSquares[i].neighbor[j] != null)
                         {
                             List<GameField> tempList = new List<GameField>();
+
                             foreach (KeyValuePair<int, GameField> item in visitedSquares)
                             {
                                 tempList.Add(item.Value);
                             }
+
                             if (tentativeSquares[i].neighbor[j].contains == null && !tentativeSquares.Contains(tentativeSquares[i].neighbor[j]) && !tempList.Contains(tentativeSquares[i].neighbor[j]))
                             {
                                 tentativeSquares.Add(tentativeSquares[i].neighbor[j]);
                                 visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));                              
 
                             }
+
                             if (tentativeSquares[i].neighbor[j].contains is Player)
                             {
                                 visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
@@ -177,12 +177,13 @@ namespace VangdeVolger
                                 break;
                             }
                         }
-
                     }
+
                     tentativeSquares.RemoveAt(i);
                 }
             }
-            GameField lasthit = null;
+
+            GameField lastHit = null;
             int currentstep = loopCount;
 
             for (int i = currentstep; i > 0; i--)
@@ -195,13 +196,12 @@ namespace VangdeVolger
                         {
                             if (visitedSquares[j].Value.neighbor[k] != null)
                             {
-                                if (visitedSquares[j].Value.neighbor[k].contains is Player || visitedSquares[j].Value.neighbor[k] == lasthit)
+                                if (visitedSquares[j].Value.neighbor[k].contains is Player || visitedSquares[j].Value.neighbor[k] == lastHit)
                                 {
-                                    lasthit = visitedSquares[j].Value;
+                                    lastHit = visitedSquares[j].Value;
                                     path.Add(visitedSquares[j].Value);
                                 }
                             }
-
                         }
                     }
                 }
@@ -217,8 +217,6 @@ namespace VangdeVolger
                     }
                 }
             }
-            Console.WriteLine("i need a Breakable point");
-
         }
 
         public Enemy()

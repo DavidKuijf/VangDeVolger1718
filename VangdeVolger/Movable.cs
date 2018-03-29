@@ -16,19 +16,11 @@ namespace VangdeVolger
          *  3  2  1
          */
 
-         /// <summary>
-         /// A way to set the location parameter of the Gameobject 
-         /// </summary>
-         /// <param name="ObjectLocation"></param>
-        
-
-       
-
         /// <summary>
         /// This function checks what is in the specified neigbouring square and then attempts to move there if possible
         /// </summary>
         /// <param name="direction"></param>
-        virtual public void Move(Directions direction)
+        public virtual void Move(Directions direction)
         {
             //Check if we are trying to move to the edge of the map
             if (!(_location.neighbor[(int)direction] == null))
@@ -43,7 +35,6 @@ namespace VangdeVolger
                     // set the location of this object to the tile in the sepcified direction.
                     _location = _location.neighbor[(int)direction];
                 }
-                
             }
         }
 
@@ -54,7 +45,6 @@ namespace VangdeVolger
         /// <returns></returns>
         protected virtual bool CheckDirection(Directions direction)
         {
-
             if (!(_location.neighbor[(int)direction] == null))
             {
                 //check if the field in the specified direction is empty

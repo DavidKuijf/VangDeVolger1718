@@ -16,33 +16,28 @@ namespace VangdeVolger
         public int playerDuration;
         //powerUp duration
         public int lifespan;
-
-        //private Timer gameDuration;
-
       
         //let the powerup age over time. 
         public bool Age()
         {
-            
             lifespan -= 1;
 
             if (lifespan <= 0)
             {
                 return true;
             }
+
             else
             {
                 return false;
             }
         }
-
-
+        
         /// <summary>
         /// Constructor for powerup
         /// </summary>
         public Powerup()
         {
-            //gameDuration = Timer;
             //get powerUp image
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Powerup.png");
             isActive = false;
@@ -53,9 +48,6 @@ namespace VangdeVolger
 
             Random rnd2 = new Random();
             playerDuration = rnd2.Next(2, 6);
-
-
         }
-
     }
 }

@@ -209,7 +209,7 @@ namespace VangdeVolger
 
             for (int i = 0; i < _location.neighbor.Length; i++)
             {
-                if (path.Count - 1 > 0)
+                if (path.Count - 1 >= 0)
                 {
                     if (_location.neighbor[i] == path[path.Count - 1])
                     {

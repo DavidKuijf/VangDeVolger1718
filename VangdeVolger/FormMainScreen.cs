@@ -182,14 +182,18 @@ namespace VangdeVolger
                         PausePlay(true);
                         _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        if (_winBox == DialogResult.OK)
+                        {
+                            Reset();
+                        }
                     }
+
                     if (_lost)
                     {
                         Lose();
                     }
                 }
             }
-
         }
 
         public void Lose()
@@ -200,6 +204,10 @@ namespace VangdeVolger
             _loseBox = MessageBox.Show("You lose...", "You lose!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
 
             if (_loseBox == DialogResult.Retry)
+            {
+                Reset();
+            }
+            else
             {
                 Reset();
             }
@@ -239,11 +247,11 @@ namespace VangdeVolger
             simpleSound.PlayLooping();
 
             //8bit font loader
-            Stream fontStream = this.GetType().Assembly.GetManifestResourceStream(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\8bitfont.TTF"));
+            //Stream fontStream = this.GetType().Assembly.GetManifestResourceStream(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\8bitfont.TTF"));
 
-            byte[] fontdata = new byte[fontStream.Length];
-            fontStream.Read(fontdata, 0, (int)fontStream.Length);
-            fontStream.Close();
+            //byte[] fontdata = new byte[fontStream.Length];
+            //fontStream.Read(fontdata, 0, (int)fontStream.Length);
+            //fontStream.Close();
             //unsafe
             //{
             //    fixed (byte* pFontData = fontdata)

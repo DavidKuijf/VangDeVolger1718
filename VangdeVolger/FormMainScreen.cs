@@ -20,8 +20,9 @@ namespace VangdeVolger
         private DialogResult _loseBox;
 
         private bool _paused;
-        private bool _lost = false;
-        private bool _won = true;
+        private bool _lost;
+        private bool _won;
+        private bool _menuVisible;
         public bool _randomStartingPos = false;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
@@ -52,6 +53,12 @@ namespace VangdeVolger
                     case Keys.D:
                     case Keys.Right:
                         _playerOne.Move(Movable.Directions.Right);
+                        break;
+                    case Keys.Escape:
+                        _menuVisible = !_menuVisible;
+                        ResetPictureBox.Visible = _menuVisible;
+                        PausePictureBox.Visible = _menuVisible;
+                        OptionpictureBox.Visible = _menuVisible;
                         break;
                 }
                 
@@ -152,7 +159,7 @@ namespace VangdeVolger
                 }
             }
 
-            if (Difficulty != Difficulties.Rogue && timeClicker == true)
+            if (Difficulty != Difficulties.Rogue && timeClicker)
             {
                 if (_time % (int)Difficulty == 0 && !_paused)
                 {
@@ -208,6 +215,9 @@ namespace VangdeVolger
 
             _level.Generate(_randomStartingPos);
             _level.Draw(pictureBoxMain);
+            _menuVisible = false;
+            _lost = false;
+            _won = true;
 
             //8bit track
             /*

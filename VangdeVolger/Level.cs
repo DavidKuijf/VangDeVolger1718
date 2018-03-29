@@ -128,7 +128,7 @@ namespace VangdeVolger
         public void Draw(PictureBox Frame)
         {
             //make a bitmap that we can draw to before displaying
-            _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
+            _buffer = new Bitmap(Frame.Width, Frame.Height);
 
             float imageSizeX = Frame.Width / _sizeX;
             float imageSizeY = Frame.Height / _sizeY;
@@ -240,8 +240,12 @@ namespace VangdeVolger
         public Level(Player player, Enemy enemy)
         {
             //make sure out buffer is equal to the playingfield
-            _sizeX = 10;
-            _sizeY = 10;
+            if (_sizeX == 0 && _sizeY == 0)
+            {
+                _sizeX = 10;
+                _sizeY = 10;
+            }
+            
 
             _imageSizeX = _defaultSize.Width;
             _imageSizeY = _defaultSize.Height;

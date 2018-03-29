@@ -19,7 +19,7 @@ namespace VangdeVolger
         override public void Move(Directions direction)
         {
             //Check if you are walking to the edge of the map
-            if (!(_location.neighbor[(int)direction] == null))
+            if (_location.neighbor[(int)direction] != null)
             {
               
                 

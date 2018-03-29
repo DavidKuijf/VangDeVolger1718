@@ -16,8 +16,8 @@ namespace VangdeVolger
         private int _time;
         private bool timeClicker;
 
-        DialogResult winBox;
-        DialogResult loseBox;
+        private DialogResult winBox;
+        private DialogResult loseBox;
 
         private bool _paused;
         private bool _lost = false;
@@ -74,10 +74,8 @@ namespace VangdeVolger
                     case Keys.S:
                     case Keys.Down:
                         _playerOne.Move(Movable.Directions.Down);
-                        
                         break;
-
-                    
+                 
                     case Keys.A:
                     case Keys.Left:
                         _playerOne.Move(Movable.Directions.Left);

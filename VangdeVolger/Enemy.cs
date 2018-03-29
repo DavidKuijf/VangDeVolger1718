@@ -166,8 +166,7 @@ namespace VangdeVolger
                             if (tentativeSquares[i].neighbor[j].contains == null && !tentativeSquares.Contains(tentativeSquares[i].neighbor[j]) && !tempList.Contains(tentativeSquares[i].neighbor[j]))
                             {
                                 tentativeSquares.Add(tentativeSquares[i].neighbor[j]);
-                                visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
-                                //tentativeSquares.RemoveAt(i);
+                                visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));                              
 
                             }
                             if (tentativeSquares[i].neighbor[j].contains is Player)
@@ -218,7 +217,7 @@ namespace VangdeVolger
                     }
                 }
             }
-            //Console.WriteLine("i need a Breakable point");
+            Console.WriteLine("i need a Breakable point");
 
         }
 

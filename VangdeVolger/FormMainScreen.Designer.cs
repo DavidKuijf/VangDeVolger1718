@@ -61,7 +61,6 @@
             // 
             this.OptionpictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.OptionpictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OptionpictureBox.BackgroundImage")));
-            this.OptionpictureBox.Image = global::VangdeVolger.Properties.Resources.Options;
             this.OptionpictureBox.Location = new System.Drawing.Point(0, 169);
             this.OptionpictureBox.Name = "OptionpictureBox";
             this.OptionpictureBox.Size = new System.Drawing.Size(150, 90);
@@ -74,7 +73,6 @@
             // 
             this.PausePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.PausePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PausePictureBox.BackgroundImage")));
-            this.PausePictureBox.Image = global::VangdeVolger.Properties.Resources.Pause;
             this.PausePictureBox.Location = new System.Drawing.Point(0, 83);
             this.PausePictureBox.Name = "PausePictureBox";
             this.PausePictureBox.Size = new System.Drawing.Size(150, 90);
@@ -87,7 +85,6 @@
             // 
             this.ResetPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ResetPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ResetPictureBox.BackgroundImage")));
-            this.ResetPictureBox.Image = global::VangdeVolger.Properties.Resources.Restart;
             this.ResetPictureBox.Location = new System.Drawing.Point(0, 0);
             this.ResetPictureBox.Name = "ResetPictureBox";
             this.ResetPictureBox.Size = new System.Drawing.Size(150, 90);

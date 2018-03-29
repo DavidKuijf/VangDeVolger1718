@@ -47,7 +47,7 @@ namespace VangdeVolger
                 _level.SetBoxChance(boxChance);
                 _level.SetWallChance(wallChance);
                 _level.SetPowerUpChance(powerUpChance);
-                _level.Generate(_parent._randomStartingPos);
+                _level.Generate(_parent.randomStartingPos);
             }
 
             Close();
@@ -74,7 +74,7 @@ namespace VangdeVolger
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            _parent._randomStartingPos = !_parent._randomStartingPos;
+            _parent.randomStartingPos = !_parent.randomStartingPos;
         }
 
         private void OptionForm_Load(object sender, EventArgs e)

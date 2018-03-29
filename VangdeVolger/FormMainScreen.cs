@@ -28,25 +28,6 @@ namespace VangdeVolger
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Hard;
 
-        public FormMainScreen()
-        {
-
-            InitializeComponent();
-            timeClicker = true;
-            _playerOne = new Player();
-            _enemy = new Enemy();
-            _level = new Level(_playerOne, _enemy);
-
-            _level.Generate(_randomStartingPos);
-            _level.Draw(pictureBoxMain);
-
-            //8bit track
-             SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));  
-             simpleSound.Play(); 
-        }
-
-
-
         private void Draw(object sender, PaintEventArgs e)
         {
 
@@ -192,7 +173,7 @@ namespace VangdeVolger
                     if (_won)
                     {
                         PausePlay(true);
-                        winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     if (_lost)
@@ -239,13 +220,8 @@ namespace VangdeVolger
             _level.Draw(pictureBoxMain);
 
             //8bit track
-            /*
-            WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
-
-            wplayer.URL = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.mp3");
-            wplayer.settings.autoStart = true;
-            wplayer.controls.play();
-            */
+            SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
+            simpleSound.Play();
         }
     }
 }

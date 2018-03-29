@@ -25,7 +25,7 @@ namespace VangdeVolger
             int powerUpChance = 0;
 
             Int32.TryParse(LevelSizeTextboxX.Text, out sizeX);
-            Int32.TryParse(LevelSizeTextboxY.Text, out sizeY);
+            Int32.TryParse(LevelSizeTextboxX.Text, out sizeY);
             Int32.TryParse(tbBoxPercent.Text, out boxChance);
             Int32.TryParse(tbWallPercent.Text, out wallChance);
             Int32.TryParse(tbPowerUpPercent.Text, out powerUpChance);
@@ -36,7 +36,7 @@ namespace VangdeVolger
             if (((sizeX != 0) && (sizeY != 0)) && ((sizeX <= 50) && (sizeY <= 50))) 
             {
                 _level.SetSize(sizeX,sizeY);
-                _level.Generate(_parent.randomStartingPos);
+                _level.Generate(_parent._randomStartingPos);
             }
 
             // Only set the chances if it's been filled in and less than the maximum.
@@ -45,7 +45,7 @@ namespace VangdeVolger
                 _level.SetBoxChance(boxChance);
                 _level.SetWallChance(wallChance);
                 _level.SetPowerUpChance(powerUpChance);
-                _level.Generate(_parent.randomStartingPos);
+                _level.Generate(_parent._randomStartingPos);
             }
 
             Close();
@@ -62,7 +62,7 @@ namespace VangdeVolger
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            _parent.randomStartingPos = !_parent.randomStartingPos;
+            _parent._randomStartingPos = !_parent._randomStartingPos;
         }
     }
 }

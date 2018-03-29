@@ -24,7 +24,7 @@ namespace VangdeVolger
         private bool _lost;
         private bool _won;
         private bool _menuVisible;
-        public bool _randomStartingPos = false;
+        public bool randomStartingPos;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
         public Difficulties Difficulty = Difficulties.Hard;
@@ -131,7 +131,7 @@ namespace VangdeVolger
 
         private void OptionpictureBox_Click(object sender, EventArgs e)
         {
-            OptionForm optionForm = new OptionForm(_level, this, _randomStartingPos);
+            OptionForm optionForm = new OptionForm(_level, this, randomStartingPos);
             optionForm.Show();
         }
 
@@ -214,7 +214,7 @@ namespace VangdeVolger
         {
             _playerOne = new Player();
             _level = new Level(_playerOne, _enemy);
-            _level.Generate(_randomStartingPos);
+            _level.Generate(randomStartingPos);
             _level.Draw(pictureBoxMain);
             PausePlay(false);
             _time = 0;
@@ -228,11 +228,12 @@ namespace VangdeVolger
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);
 
-            _level.Generate(_randomStartingPos);
+            _level.Generate(randomStartingPos);
             _level.Draw(pictureBoxMain);
             _menuVisible = false;
             _lost = false;
             _won = true;
+            randomStartingPos = false;
 
             //8bit track
             SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));

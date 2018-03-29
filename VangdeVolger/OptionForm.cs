@@ -36,7 +36,7 @@ namespace VangdeVolger
             if (((size !=  0)) && ((size <= 50))) 
             {
                 _level.SetSize(size);
-                _level.Generate(_parent._randomStartingPos);
+                _level.Generate(_parent.randomStartingPos);
             }
 
             // Only set the chances if it's been filled in and less than the maximum.

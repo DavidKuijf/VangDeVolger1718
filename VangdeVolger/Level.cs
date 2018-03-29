@@ -128,10 +128,24 @@ namespace VangdeVolger
         public void Draw(PictureBox Frame)
         {
             //make a bitmap that we can draw to before displaying
+
             _buffer = new Bitmap(Frame.Width, Frame.Height);
 
             float imageSizeX = Frame.Width / _sizeX;
             float imageSizeY = Frame.Height / _sizeY;
+
+            if (_sizeX > _sizeY)
+            {
+                imageSizeX = Frame.Width / _sizeY;
+                imageSizeY = Frame.Height / _sizeY;
+            }
+            else if (_sizeY > _sizeX)
+            {
+                imageSizeX = Frame.Width / _sizeX;
+                imageSizeY = Frame.Height / _sizeX;
+            }
+           
+            
 
             using (Graphics graphics = Graphics.FromImage(_buffer))
             {

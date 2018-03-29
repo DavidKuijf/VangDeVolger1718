@@ -103,6 +103,7 @@
             this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxMain.Name = "pictureBoxMain";
             this.pictureBoxMain.Size = new System.Drawing.Size(484, 461);
+            this.pictureBoxMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxMain.TabIndex = 1;
             this.pictureBoxMain.TabStop = false;
             // 
@@ -127,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ResetPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -30,9 +30,7 @@
         {
             this.ApplyButton = new System.Windows.Forms.Button();
             this.LevelSizeTextboxX = new System.Windows.Forms.TextBox();
-            this.LevelSizeTextboxY = new System.Windows.Forms.TextBox();
             this.LevelSizeLabelX = new System.Windows.Forms.Label();
-            this.LevelSizeLabelY = new System.Windows.Forms.Label();
             this.DifficultylevelLabel = new System.Windows.Forms.Label();
             this.DifficultyListBox = new System.Windows.Forms.ListBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -46,7 +44,7 @@
             // 
             // ApplyButton
             // 
-            this.ApplyButton.Location = new System.Drawing.Point(192, 358);
+            this.ApplyButton.Location = new System.Drawing.Point(382, 171);
             this.ApplyButton.Name = "ApplyButton";
             this.ApplyButton.Size = new System.Drawing.Size(75, 23);
             this.ApplyButton.TabIndex = 0;
@@ -61,34 +59,16 @@
             this.LevelSizeTextboxX.Size = new System.Drawing.Size(100, 20);
             this.LevelSizeTextboxX.TabIndex = 1;
             // 
-            // LevelSizeTextboxY
-            // 
-            this.LevelSizeTextboxY.Location = new System.Drawing.Point(372, 15);
-            this.LevelSizeTextboxY.Name = "LevelSizeTextboxY";
-            this.LevelSizeTextboxY.Size = new System.Drawing.Size(100, 20);
-            this.LevelSizeTextboxY.TabIndex = 2;
-            // 
             // LevelSizeLabelX
             // 
             this.LevelSizeLabelX.AutoSize = true;
             this.LevelSizeLabelX.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LevelSizeLabelX.ForeColor = System.Drawing.SystemColors.Control;
-            this.LevelSizeLabelX.Location = new System.Drawing.Point(52, 17);
+            this.LevelSizeLabelX.Location = new System.Drawing.Point(58, 17);
             this.LevelSizeLabelX.Name = "LevelSizeLabelX";
-            this.LevelSizeLabelX.Size = new System.Drawing.Size(73, 14);
+            this.LevelSizeLabelX.Size = new System.Drawing.Size(63, 14);
             this.LevelSizeLabelX.TabIndex = 3;
-            this.LevelSizeLabelX.Text = "Level Size X";
-            // 
-            // LevelSizeLabelY
-            // 
-            this.LevelSizeLabelY.AutoSize = true;
-            this.LevelSizeLabelY.Font = new System.Drawing.Font("Showcard Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LevelSizeLabelY.ForeColor = System.Drawing.SystemColors.Control;
-            this.LevelSizeLabelY.Location = new System.Drawing.Point(240, 17);
-            this.LevelSizeLabelY.Name = "LevelSizeLabelY";
-            this.LevelSizeLabelY.Size = new System.Drawing.Size(71, 14);
-            this.LevelSizeLabelY.TabIndex = 4;
-            this.LevelSizeLabelY.Text = "Level Size Y";
+            this.LevelSizeLabelX.Text = "Level Size";
             // 
             // DifficultylevelLabel
             // 
@@ -121,7 +101,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Showcard Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioButton1.Location = new System.Drawing.Point(243, 51);
+            this.radioButton1.Location = new System.Drawing.Point(237, 17);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(235, 22);
             this.radioButton1.TabIndex = 8;
@@ -188,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(484, 406);
+            this.ClientSize = new System.Drawing.Size(484, 212);
             this.Controls.Add(this.tbPowerUpPercent);
             this.Controls.Add(this.lblPowerUpPercent);
             this.Controls.Add(this.tbBoxPercent);
@@ -198,9 +178,7 @@
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.DifficultyListBox);
             this.Controls.Add(this.DifficultylevelLabel);
-            this.Controls.Add(this.LevelSizeLabelY);
             this.Controls.Add(this.LevelSizeLabelX);
-            this.Controls.Add(this.LevelSizeTextboxY);
             this.Controls.Add(this.LevelSizeTextboxX);
             this.Controls.Add(this.ApplyButton);
             this.Name = "OptionForm";
@@ -214,9 +192,7 @@
 
         private System.Windows.Forms.Button ApplyButton;
         private System.Windows.Forms.TextBox LevelSizeTextboxX;
-        private System.Windows.Forms.TextBox LevelSizeTextboxY;
         private System.Windows.Forms.Label LevelSizeLabelX;
-        private System.Windows.Forms.Label LevelSizeLabelY;
         private System.Windows.Forms.Label DifficultylevelLabel;
         private System.Windows.Forms.ListBox DifficultyListBox;
         private System.Windows.Forms.RadioButton radioButton1;

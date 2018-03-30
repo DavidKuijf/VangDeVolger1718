@@ -57,7 +57,7 @@ namespace VangdeVolger
         /// </summary>
         /// <param name="target"></param>
         /// <param name="direction"></param>
-        void Push(Box target, Directions direction)
+        private void Push(Box target, Directions direction)
         {
             //push the specified box
             target.Push(target, direction);

@@ -11,7 +11,7 @@ namespace VangdeVolger
 {
     class Enemy : Movable
     {
-        Random random = new Random();
+        private Random random = new Random();
 
         /// <summary>
         /// 
@@ -43,10 +43,7 @@ namespace VangdeVolger
                 return false;
         }
 
-        private void Kill(Directions direction)
-        {
-            _location.neighbor[(int)direction].contains = null;
-        }
+        
 
         private bool CheckPlayer(Directions direction)
         {
@@ -84,7 +81,7 @@ namespace VangdeVolger
             {
                 if (CheckPlayer((Directions)i))
                 {
-                    Kill((Movable.Directions)i);
+                    _location.neighbor[i].contains = null;
                     Move((Movable.Directions)i);
                     moved = true;
                     lost = true;

@@ -68,7 +68,7 @@
             this.DifficultylevelLabel.AutoSize = true;
             this.DifficultylevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DifficultylevelLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.DifficultylevelLabel.Location = new System.Drawing.Point(321, 15);
+            this.DifficultylevelLabel.Location = new System.Drawing.Point(231, 19);
             this.DifficultylevelLabel.Name = "DifficultylevelLabel";
             this.DifficultylevelLabel.Size = new System.Drawing.Size(72, 13);
             this.DifficultylevelLabel.TabIndex = 6;
@@ -86,7 +86,7 @@
             "Hard",
             "Medium",
             "Easy"});
-            this.DifficultyListBox.Location = new System.Drawing.Point(310, 39);
+            this.DifficultyListBox.Location = new System.Drawing.Point(260, 35);
             this.DifficultyListBox.Name = "DifficultyListBox";
             this.DifficultyListBox.Size = new System.Drawing.Size(100, 64);
             this.DifficultyListBox.TabIndex = 7;

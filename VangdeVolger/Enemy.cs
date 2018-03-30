@@ -114,7 +114,13 @@ namespace VangdeVolger
 
            
         }
-
+        /// <summary>
+        /// Checks aal reachable squares for the closest player and then moves a single step in the direction of that player
+        /// By making a list of all gamefields and the amount of steps it takes to get there and then when it has found the player
+        /// looking for which step is neigbours with the previous step creating a path
+        /// then we take the first step of that path and move in the apropriate direaction
+        /// </summary>
+        /// <returns></returns>
         private bool Pathfinding()
         {
             //Init all the vars
@@ -140,7 +146,7 @@ namespace VangdeVolger
 
             }
 
-            //while we havent found the player and we havent visited all reachable squares yet
+            //while we havent found the player and we havent exhausted the list of considered squares
             while (!playerFound && tentativeSquares.Count != 0)
             {
                 //loopcount is the counter to see what step we are at
@@ -149,55 +155,66 @@ namespace VangdeVolger
                 //walk through all the tentatives we currently have
                 for (int i = tentativeSquares.Count - 1; i >= 0; i--)
                 {
-                    //check all the neighbours of these tentative squares
+                    //Walk through all the neighbours of these tentative squares
                     for (int j = 0; j < tentativeSquares[i].neighbor.Length; j++)
-                    {
+                    {   
+                        //If the square we want to look at isn't of the edge
                         if (tentativeSquares[i].neighbor[j] != null)
                         {
+                            //Make a list of all the currently visited squares
                             List<GameField> tempList = new List<GameField>();
-
                             foreach (KeyValuePair<int, GameField> item in visitedSquares)
                             {
                                 tempList.Add(item.Value);
                             }
 
+                            //If the neighbour is unoccupied, not already under consideration and not already visited
                             if (tentativeSquares[i].neighbor[j].contains == null && !tentativeSquares.Contains(tentativeSquares[i].neighbor[j]) && !tempList.Contains(tentativeSquares[i].neighbor[j]))
                             {
+                                //add the neigbour to the list of considered squares
                                 tentativeSquares.Add(tentativeSquares[i].neighbor[j]);
-                                visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));                              
-
+                                
                             }
+                            //add the considered square to visited squares
+                            visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
 
+                            //if the neigbour of the considered square is a player
                             if (tentativeSquares[i].neighbor[j].contains is Player)
                             {
-                                visitedSquares.Add(new KeyValuePair<int, GameField>(loopCount, tentativeSquares[i]));
-
+                                
                                 playerFound = true;
                                 break;
                             }
                         }
                     }
-
+                    //Remove this square from the list of considered square
                     tentativeSquares.RemoveAt(i);
                 }
             }
-
+            
             GameField lastHit = null;
             int currentstep = loopCount;
-
+            //Walk through all steps we need
             for (int i = currentstep; i > 0; i--)
             {
+                //Walk through all visitedSquares
                 for (int j = visitedSquares.Count - 1; j >= 0; j--)
                 {
+                    //if the steps required to the reach the current square is equal to the step we are currently at
                     if (visitedSquares[j].Key == i)
                     {
+                        //Walk through all the neigbours of this square
                         for (int k = 0; k < visitedSquares[j].Value.neighbor.Length; k++)
                         {
+                            //check if the neigbour we are looking at isnt the edge
                             if (visitedSquares[j].Value.neighbor[k] != null)
                             {
+                                //if this neighbour contains a player or equals the last step
                                 if (visitedSquares[j].Value.neighbor[k].contains is Player || visitedSquares[j].Value.neighbor[k] == lastHit)
                                 {
+                                    //set the last hit to this square
                                     lastHit = visitedSquares[j].Value;
+                                    //add the square to the path
                                     path.Add(visitedSquares[j].Value);
                                 }
                             }
@@ -205,13 +222,15 @@ namespace VangdeVolger
                     }
                 }
             }
-
+            //walk through all the current neighbours of the enemy
             for (int i = 0; i < _location.neighbor.Length; i++)
             {
                 if (path.Count - 1 >= 0)
                 {
+                    //if the first step of path equals this neigbour
                     if (_location.neighbor[i] == path[path.Count - 1])
                     {
+                        //move in that direction
                         Move((Directions)i);
                     }
                 }

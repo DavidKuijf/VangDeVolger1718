@@ -73,7 +73,7 @@ namespace VangdeVolger
         /// <param name="won"></param>
         /// <param name="lost"></param>
         /// <returns></returns>
-        public bool Decide(out bool won, out bool lost)
+        public void Decide(out bool won, out bool lost)
         {
             won = false;
             lost = false;
@@ -92,8 +92,13 @@ namespace VangdeVolger
                 }
             }
 
-            // As long as the enemy hasn't moved yet and we havn't won, move in a random direction.
-            /*
+            if (!moved)
+            {
+                moved = Pathfinding();
+            }
+            
+
+
             while (!moved && !CheckWin())
             {
                 Directions direction = (Directions)random.Next(4);
@@ -104,19 +109,16 @@ namespace VangdeVolger
                     break;
                 }
             }
-            */
-
-            Pathfinding();
 
             if (CheckWin())
             {
                 won = true;
             }
 
-            return CheckWin();
+           
         }
 
-        private void Pathfinding()
+        private bool Pathfinding()
         {
             //Init all the vars
             List<KeyValuePair<int, GameField>> visitedSquares = new List<KeyValuePair<int, GameField>>();
@@ -217,6 +219,7 @@ namespace VangdeVolger
                     }
                 }
             }
+            return playerFound;
         }
 
         public Enemy()

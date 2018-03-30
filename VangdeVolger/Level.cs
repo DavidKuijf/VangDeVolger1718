@@ -10,22 +10,13 @@ namespace VangdeVolger
 {
     class Level
     {
-        private Image _image;
         private Bitmap _buffer;
-        private Size _bufferSize;
-        private Size _defaultSize;
-
-        private float _imageSizeX;
-        private float _imageSizeY;
-
         private Random _random = new Random();
 
-        private int _sizeX;
-        private int _sizeY;
-
-        private int _wallPercent = 5;
-        private int _boxPercent = 20;
-        private int _powerUpPercent = 2;
+        private int _size;
+        private int _wallPercent;
+        private int _boxPercent;
+        private int _powerUpPercent;
 
         public List<Powerup> powerupList = new List<Powerup>();
 
@@ -34,8 +25,6 @@ namespace VangdeVolger
 
         public int enemyX;
         public int enemyY;
-
-        //public Timer gameTimer;
 
         private Player _playerOne;
         private Enemy _enemy;
@@ -91,16 +80,16 @@ namespace VangdeVolger
             */
             if (randomStartingPos)
             {
-                playerX = _random.Next(1, _sizeX - 1);
-                playerY = _random.Next(1, _sizeY - 1);
+                playerX = _random.Next(1, _size- 1);
+                playerY = _random.Next(1, _size - 1);
                 enemyX = -1;
                 enemyY = -1;
 
                 // Make sure the player and the enemy do not get generated in the same spots.
                 while ((enemyX == -1 && enemyY == -1) || (enemyX == playerX && enemyY == playerY))
                 {
-                    enemyX = _random.Next(1, _sizeX - 1);
-                    enemyY = _random.Next(1, _sizeY - 1);
+                    enemyX = _random.Next(1, _size - 1);
+                    enemyY = _random.Next(1, _size - 1);
                 }
             }
 
@@ -108,8 +97,8 @@ namespace VangdeVolger
             {
                 playerX = 0;
                 playerY = 0;
-                enemyX = _sizeX - 1;
-                enemyY = _sizeY - 1;
+                enemyX = _size - 1;
+                enemyY = _size - 1;
             }
 
             levelLayout[playerX, playerY].contains = _playerOne;
@@ -131,27 +120,18 @@ namespace VangdeVolger
 
             _buffer = new Bitmap(Frame.Width, Frame.Height);
 
-            float imageSizeX = Frame.Width / _sizeX;
-            float imageSizeY = Frame.Height / _sizeY;
+            float imageSizeX = Frame.Width / _size;
+            float imageSizeY = Frame.Height / _size;
 
-            if (_sizeX > _sizeY)
-            {
-                imageSizeX = Frame.Width / _sizeY;
-                imageSizeY = Frame.Height / _sizeY;
-            }
-            else if (_sizeY > _sizeX)
-            {
-                imageSizeX = Frame.Width / _sizeX;
-                imageSizeY = Frame.Height / _sizeX;
-            }
+           
            
             
 
             using (Graphics graphics = Graphics.FromImage(_buffer))
             {
-                for (int x = 0; x < _sizeX; x++)
+                for (int x = 0; x < _size; x++)
                 {
-                    for (int y = 0; y < _sizeY; y++)
+                    for (int y = 0; y < _size; y++)
                     {
                         if (levelLayout[x, y].contains is GameObject)
                         {
@@ -200,7 +180,7 @@ namespace VangdeVolger
         /// </summary>
         private void EmptyLevel()
         {
-            levelLayout = new GameField[_sizeX, _sizeY];
+            levelLayout = new GameField[_size, _size];
 
             for (int x = 0; x < levelLayout.GetLength(0); x++)
             {
@@ -218,8 +198,8 @@ namespace VangdeVolger
         /// <param name="Y">Y-Coordinate</param>
         public void SetSize(int temp)
         {
-            _sizeX = temp;
-            _sizeY = temp;
+            _size = temp;
+            _size = temp;
 
         }
 
@@ -227,24 +207,13 @@ namespace VangdeVolger
         /// Set wall change with percentage
         /// </summary>
         /// <param name="chance">percentage int for the wall spawn chance</param>
-        public void SetWallChance(int chance)
+        public void SetGenertionChances(int wallChance , int boxChance, int powerupChance)
         {
-            _wallPercent = chance;
+            _wallPercent = wallChance;
+            _boxPercent = boxChance;
+            _powerUpPercent = powerupChance;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="chance"></param>
-        public void SetBoxChance(int chance)
-        {
-            _boxPercent = chance;
-        }
-
-        public void SetPowerUpChance(int chance)
-        {
-            _powerUpPercent = chance;
-        }
 
         /// <summary>
         /// 
@@ -254,18 +223,10 @@ namespace VangdeVolger
         public Level(Player player, Enemy enemy)
         {
             //make sure out buffer is equal to the playingfield
-            if (_sizeX == 0 && _sizeY == 0)
-            {
-                _sizeX = 10;
-                _sizeY = 10;
-            }
-            
-
-            _imageSizeX = _defaultSize.Width;
-            _imageSizeY = _defaultSize.Height;
-
-            _bufferSize = new Size(500, 500);
-
+            _size = 10;
+            _wallPercent = 5;
+            _boxPercent = 20;
+            _powerUpPercent = 2;
             _playerOne = player;
             _enemy = enemy;
             EmptyLevel();

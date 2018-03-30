@@ -8,7 +8,7 @@ namespace VangdeVolger
 {
     public partial class FormMainScreen : Form
     {
-        Timer gameTimer = new Timer();
+        private Timer gameTimer = new Timer();
 
         private Player _playerOne;
         private Enemy _enemy;
@@ -27,7 +27,8 @@ namespace VangdeVolger
         public bool randomStartingPos;
 
         public enum Difficulties { Rogue, Hard, Medium, Easy };
-        public Difficulties Difficulty = Difficulties.Hard;
+        public Difficulties Difficulty;
+        SoundPlayer simpleSound;
 
         private void Draw(object sender, PaintEventArgs e)
         {
@@ -65,14 +66,18 @@ namespace VangdeVolger
                     case Keys.Right:
                         _playerOne.Move(Movable.Directions.Right);
                         break;
-                    case Keys.Escape:
-                        _menuVisible = !_menuVisible;
-                        ResetPictureBox.Visible = _menuVisible;
-                        PausePictureBox.Visible = _menuVisible;
-                        OptionpictureBox.Visible = _menuVisible;
-                        break;
+                    
                 }
-
+                if (e.KeyCode == Keys.Escape)
+                {
+                    
+                    _menuVisible = !_menuVisible;
+                    ResetPictureBox.Visible = _menuVisible;
+                    PausePictureBox.Visible = _menuVisible;
+                    OptionPictureBox.Visible = _menuVisible;
+                    QuitPictureBox.Visible = _menuVisible;
+                    
+                }
                 if (Difficulty == Difficulties.Rogue && timeClicker)
                 {
                     // set won, lost and draw the screen.
@@ -82,8 +87,7 @@ namespace VangdeVolger
 
                     if (_won)
                     {
-                        PausePlay(true);
-                        _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Win();
                     }
 
                     if (_lost)
@@ -107,12 +111,14 @@ namespace VangdeVolger
             {
                 Timer.Stop();
                 _paused = true;
+                
             }
 
             else
             {
                 Timer.Start();
                 _paused = false;
+               
             }
         }
 
@@ -133,6 +139,11 @@ namespace VangdeVolger
         {
             OptionForm optionForm = new OptionForm(_level, this, randomStartingPos);
             optionForm.Show();
+        }
+
+        private void PictureBoxQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -176,16 +187,10 @@ namespace VangdeVolger
                     _enemy.Decide(out _won, out _lost);
 
                     _level.Draw(pictureBoxMain);
-
+                    
                     if (_won)
                     {
-                        PausePlay(true);
-                        _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        if (_winBox == DialogResult.OK)
-                        {
-                            Reset();
-                        }
+                        Win();
                     }
 
                     if (_lost)
@@ -196,7 +201,7 @@ namespace VangdeVolger
             }
         }
 
-        public void Lose()
+        private void Lose()
         {
             _playerOne = null;
             _paused = true;
@@ -211,11 +216,17 @@ namespace VangdeVolger
             {
                 Reset();
             }
+        }
 
-            _menuVisible = !_menuVisible;
-            ResetPictureBox.Visible = _menuVisible;
-            PausePictureBox.Visible = _menuVisible;
-            OptionpictureBox.Visible = _menuVisible;
+        private void Win()
+        {
+            PausePlay(true);
+            _winBox = MessageBox.Show("Winner, winner chicken dinner...", "You win!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (_winBox == DialogResult.OK)
+            {
+                Reset();
+            }
         }
 
         private void Reset()
@@ -242,12 +253,15 @@ namespace VangdeVolger
             _lost = false;
             _won = true;
             randomStartingPos = false;
+            Difficulty = Difficulties.Hard;
 
             //8bit track
-            SoundPlayer simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
+            simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
             simpleSound.PlayLooping();
 
             
         }
+
+       
     }
 }

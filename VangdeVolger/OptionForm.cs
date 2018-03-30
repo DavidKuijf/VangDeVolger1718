@@ -21,8 +21,6 @@ namespace VangdeVolger
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             int size = 0;
-            
-
             int boxChance = 0;
             int wallChance = 0;
             int powerUpChance = 0;
@@ -42,11 +40,9 @@ namespace VangdeVolger
             }
 
             // Only set the chances if it's been filled in and less than the maximum.
-            if ((boxChance != 0) && (wallChance != 0) && (powerUpChance != 0) && (boxChance + wallChance + powerUpChance) < 100)
+            if ((boxChance + wallChance + powerUpChance) < 100)
             {
-                _level.SetBoxChance(boxChance);
-                _level.SetWallChance(wallChance);
-                _level.SetPowerUpChance(powerUpChance);
+                _level.SetGenertionChances(wallChance, boxChance, powerUpChance);
                 _level.Generate(_parent.randomStartingPos);
             }
 

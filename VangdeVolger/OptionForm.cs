@@ -27,7 +27,7 @@ namespace VangdeVolger
             
             _level = level;
             _parent = ParentForm;
-            radioButton1.Checked = randomPos;
+            RandomStartingPostitionRadioButton.Checked = randomPos;
             Location = new Point((_parent.Location.X) + (_parent.Width / 2) - (Width/2), (_parent.Location.Y) + (_parent.Height / 2)- (Height/2));
 
             PrivateFontCollection pfc = new PrivateFontCollection();
@@ -39,11 +39,11 @@ namespace VangdeVolger
             lblPowerUpPercent.Font = bits;
             lblWallPercent.Font = bits;
             DifficultylevelLabel.Font = bits;
-            radioButton1.Font = bits;
+            RandomStartingPostitionRadioButton.Font = bits;
             DifficultyListBox.Font = bits;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RandomStrartingPositionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             _parent.randomStartingPos = !_parent.randomStartingPos;
         }

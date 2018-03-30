@@ -33,7 +33,7 @@
             this.LevelSizeLabel = new System.Windows.Forms.Label();
             this.DifficultylevelLabel = new System.Windows.Forms.Label();
             this.DifficultyListBox = new System.Windows.Forms.ListBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.RandomStartingPostitionRadioButton = new System.Windows.Forms.RadioButton();
             this.lblWallPercent = new System.Windows.Forms.Label();
             this.tbWallPercent = new System.Windows.Forms.TextBox();
             this.tbBoxPercent = new System.Windows.Forms.TextBox();
@@ -91,18 +91,18 @@
             this.DifficultyListBox.Size = new System.Drawing.Size(100, 64);
             this.DifficultyListBox.TabIndex = 7;
             // 
-            // radioButton1
+            // RandomStartingPostitionRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioButton1.Location = new System.Drawing.Point(12, 146);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(128, 19);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.Text = "Random Starting Position";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.RandomStartingPostitionRadioButton.AutoSize = true;
+            this.RandomStartingPostitionRadioButton.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RandomStartingPostitionRadioButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomStartingPostitionRadioButton.Location = new System.Drawing.Point(12, 146);
+            this.RandomStartingPostitionRadioButton.Name = "RandomStartingPostitionRadioButton";
+            this.RandomStartingPostitionRadioButton.Size = new System.Drawing.Size(128, 19);
+            this.RandomStartingPostitionRadioButton.TabIndex = 8;
+            this.RandomStartingPostitionRadioButton.Text = "Random Starting Position";
+            this.RandomStartingPostitionRadioButton.UseVisualStyleBackColor = true;
+            this.RandomStartingPostitionRadioButton.CheckedChanged += new System.EventHandler(this.RandomStrartingPositionRadioButton_CheckedChanged);
             // 
             // lblWallPercent
             // 
@@ -185,7 +185,7 @@
             this.Controls.Add(this.lblBoxPercent);
             this.Controls.Add(this.tbWallPercent);
             this.Controls.Add(this.lblWallPercent);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.RandomStartingPostitionRadioButton);
             this.Controls.Add(this.DifficultyListBox);
             this.Controls.Add(this.DifficultylevelLabel);
             this.Controls.Add(this.LevelSizeLabel);
@@ -211,7 +211,7 @@
         private System.Windows.Forms.Label LevelSizeLabel;
         private System.Windows.Forms.Label DifficultylevelLabel;
         private System.Windows.Forms.ListBox DifficultyListBox;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton RandomStartingPostitionRadioButton;
         private System.Windows.Forms.Label lblWallPercent;
         private System.Windows.Forms.TextBox tbWallPercent;
         private System.Windows.Forms.TextBox tbBoxPercent;

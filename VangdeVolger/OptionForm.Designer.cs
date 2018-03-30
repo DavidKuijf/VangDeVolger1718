@@ -68,7 +68,7 @@
             this.DifficultylevelLabel.AutoSize = true;
             this.DifficultylevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DifficultylevelLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.DifficultylevelLabel.Location = new System.Drawing.Point(231, 19);
+            this.DifficultylevelLabel.Location = new System.Drawing.Point(247, 15);
             this.DifficultylevelLabel.Name = "DifficultylevelLabel";
             this.DifficultylevelLabel.Size = new System.Drawing.Size(72, 13);
             this.DifficultylevelLabel.TabIndex = 6;
@@ -86,7 +86,7 @@
             "Hard",
             "Medium",
             "Easy"});
-            this.DifficultyListBox.Location = new System.Drawing.Point(260, 35);
+            this.DifficultyListBox.Location = new System.Drawing.Point(285, 35);
             this.DifficultyListBox.Name = "DifficultyListBox";
             this.DifficultyListBox.Size = new System.Drawing.Size(100, 64);
             this.DifficultyListBox.TabIndex = 7;
@@ -122,7 +122,6 @@
             this.tbWallPercent.Size = new System.Drawing.Size(38, 20);
             this.tbWallPercent.TabIndex = 10;
             this.tbWallPercent.Text = "5";
-            this.tbWallPercent.TextChanged += new System.EventHandler(this.tbWallPercent_TextChanged);
             // 
             // tbBoxPercent
             // 
@@ -166,7 +165,7 @@
             // 
             this.ApplyPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ApplyPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApplyPictureBox.BackgroundImage")));
-            this.ApplyPictureBox.Location = new System.Drawing.Point(260, 102);
+            this.ApplyPictureBox.Location = new System.Drawing.Point(285, 102);
             this.ApplyPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.ApplyPictureBox.Name = "ApplyPictureBox";
             this.ApplyPictureBox.Size = new System.Drawing.Size(150, 90);
@@ -176,10 +175,9 @@
             // 
             // OptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(408, 195);
+            this.ClientSize = new System.Drawing.Size(434, 191);
             this.Controls.Add(this.ApplyPictureBox);
             this.Controls.Add(this.tbPowerUpPercent);
             this.Controls.Add(this.lblPowerUpPercent);
@@ -192,7 +190,14 @@
             this.Controls.Add(this.DifficultylevelLabel);
             this.Controls.Add(this.LevelSizeLabel);
             this.Controls.Add(this.LevelSizeTextbox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OptionForm";
+            this.Opacity = 0.8D;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ApplyPictureBox)).EndInit();

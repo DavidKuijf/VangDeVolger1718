@@ -28,6 +28,7 @@ namespace VangdeVolger
             _level = level;
             _parent = ParentForm;
             radioButton1.Checked = randomPos;
+            Location = new Point((_parent.Location.X) + (_parent.Width / 2) - (Width/2), (_parent.Location.Y) + (_parent.Height / 2)- (Height/2));
 
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\8bitfont.TTF"));
@@ -83,9 +84,6 @@ namespace VangdeVolger
             Close();
         }
 
-        private void tbWallPercent_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

@@ -18,36 +18,7 @@ namespace VangdeVolger
         private Level _level;
         private FormMainScreen _parent;
 
-        private void ApplyButton_Click(object sender, EventArgs e)
-        {
-            int size = 0;
-            int boxChance = 0;
-            int wallChance = 0;
-            int powerUpChance = 0;
-
-            Int32.TryParse(LevelSizeTextbox.Text, out size);
-            Int32.TryParse(tbBoxPercent.Text, out boxChance);
-            Int32.TryParse(tbWallPercent.Text, out wallChance);
-            Int32.TryParse(tbPowerUpPercent.Text, out powerUpChance);
-
-            _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
-
-            // Only set the size if it's been filled in and less than the maximum.
-            if (((size !=  0)) && ((size <= 50))) 
-            {
-                _level.SetSize(size);
-                _level.Generate(_parent.randomStartingPos);
-            }
-
-            // Only set the chances if it's been filled in and less than the maximum.
-            if ((boxChance + wallChance + powerUpChance) < 100)
-            {
-                _level.SetGenertionChances(wallChance, boxChance, powerUpChance);
-                _level.Generate(_parent.randomStartingPos);
-            }
-
-            Close();
-        }
+     
 
         public OptionForm(Level level, FormMainScreen ParentForm, bool randomPos)
         {
@@ -66,6 +37,9 @@ namespace VangdeVolger
             lblBoxPercent.Font = bits;
             lblPowerUpPercent.Font = bits;
             lblWallPercent.Font = bits;
+            DifficultylevelLabel.Font = bits;
+            radioButton1.Font = bits;
+            DifficultyListBox.Font = bits;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -74,6 +48,42 @@ namespace VangdeVolger
         }
 
         private void OptionForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ApplyPictureBox_Click(object sender, EventArgs e)
+        {
+            int size = 0;
+            int boxChance = 0;
+            int wallChance = 0;
+            int powerUpChance = 0;
+
+            Int32.TryParse(LevelSizeTextbox.Text, out size);
+            Int32.TryParse(tbBoxPercent.Text, out boxChance);
+            Int32.TryParse(tbWallPercent.Text, out wallChance);
+            Int32.TryParse(tbPowerUpPercent.Text, out powerUpChance);
+
+            _parent.Difficulty = (FormMainScreen.Difficulties)DifficultyListBox.SelectedIndex;
+
+            // Only set the size if it's been filled in and less than the maximum.
+            if (((size != 0)) && ((size <= 50)))
+            {
+                _level.SetSize(size);
+                _level.Generate(_parent.randomStartingPos);
+            }
+
+            // Only set the chances if it's been filled in and less than the maximum.
+            if ((boxChance + wallChance + powerUpChance) < 100)
+            {
+                _level.SetGenertionChances(wallChance, boxChance, powerUpChance);
+                _level.Generate(_parent.randomStartingPos);
+            }
+
+            Close();
+        }
+
+        private void tbWallPercent_TextChanged(object sender, EventArgs e)
         {
 
         }

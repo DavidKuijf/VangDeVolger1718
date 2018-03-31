@@ -10,8 +10,6 @@ namespace VangdeVolger
 {
     class Powerup : Unmovable
     {
-        //is active on player?
-        public bool isActive;
         //duration on the player
         public int playerDuration;
         //powerUp duration
@@ -40,12 +38,12 @@ namespace VangdeVolger
         {
             //get powerUp image
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Powerup.png");
-            isActive = false;
 
             //random duration on field
             Random rnd = new Random();
             lifespan = rnd.Next(1000, 3000);
 
+            //random duration on player
             Random rnd2 = new Random();
             playerDuration = rnd2.Next(250, 1000);
         }

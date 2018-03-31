@@ -52,10 +52,10 @@ namespace VangdeVolger
 
         }
         /// <summary>
-        /// 
+        /// Push Box
         /// </summary>
-        /// <param name="target"></param>
-        /// <param name="direction"></param>
+        /// <param name="target">The box that will be pushed</param>
+        /// <param name="direction">The direction in which it will be pushed</param>
         private void Push(Box target, Directions direction)
         {
             //push the specified box
@@ -63,16 +63,17 @@ namespace VangdeVolger
         }
         
         /// <summary>
-        /// 
+        /// pickup for powerup
         /// </summary>
-        /// <param name="direction"></param>
-        /// <param name="duration"></param>
+        /// <param name="direction">Direction in which the pickup is</param>
+        /// <param name="duration">Duration of the powerup on the player</param>
         void PickUp(Directions direction, int duration)
         {
-
+            //set this neighbor to a powerup variable
             Powerup powerup = (Powerup)_location.neighbor[(int)direction].contains;
+            //remove the powerup from the gamefield
             _location.neighbor[(int)direction].contains = null;
-            powerup.isActive = true;
+
             this._image = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PowerPlayer.png");
             this.powerDuration = duration;
         }

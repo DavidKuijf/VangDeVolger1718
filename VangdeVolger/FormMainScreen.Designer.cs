@@ -56,7 +56,7 @@
             // Timer
             // 
             this.Timer.Enabled = true;
-            this.Timer.Interval = 10;
+            this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // OptionPictureBox
@@ -104,7 +104,7 @@
             this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(984, 961);
+            this.pictureBoxMain.Size = new System.Drawing.Size(984, 781);
             this.pictureBoxMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxMain.TabIndex = 1;
             this.pictureBoxMain.TabStop = false;
@@ -126,7 +126,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(984, 961);
+            this.ClientSize = new System.Drawing.Size(984, 781);
             this.ControlBox = false;
             this.Controls.Add(this.QuitPictureBox);
             this.Controls.Add(this.OptionPictureBox);

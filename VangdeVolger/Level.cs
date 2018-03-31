@@ -31,13 +31,13 @@ namespace VangdeVolger
 
         public GameField[,] levelLayout;
 
-        private void Read()
-        {
-            // TODO: Read saved levels.
-        }
-
+        /// <summary>
+        /// Generate all elements of the game and fill the level layout.
+        /// </summary>
+        /// <param name="randomStartingPos">Optional for random starting position</param>
         public void Generate(bool randomStartingPos)
         {
+            //call method to empty level 
             EmptyLevel();
 
             // Iterate over 2D array levelLayout.
@@ -95,18 +95,23 @@ namespace VangdeVolger
 
             else
             {
+                //player in the top corner
                 playerX = 0;
                 playerY = 0;
+                //enemy in the bewlow corner
                 enemyX = _size - 1;
                 enemyY = _size - 1;
             }
 
+            //set player on the map
             levelLayout[playerX, playerY].contains = _playerOne;
             _playerOne.SetLocation(levelLayout[playerX, playerY]);
 
+            //set enemy on the map
             levelLayout[enemyX, enemyY].contains = _enemy;
             _enemy.SetLocation(levelLayout[enemyX, enemyY]);
             
+            //call method to set all the neighbors
             SetNeighbors();
         }
 
@@ -126,7 +131,7 @@ namespace VangdeVolger
            
            
             
-
+            //draw 
             using (Graphics graphics = Graphics.FromImage(_buffer))
             {
                 for (int x = 0; x < _size; x++)
@@ -218,8 +223,8 @@ namespace VangdeVolger
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="player"></param>
-        /// <param name="enemy"></param>
+        /// <param name="player">Player object</param>
+        /// <param name="enemy">enemy object</param>
         public Level(Player player, Enemy enemy)
         {
             //make sure out buffer is equal to the playingfield

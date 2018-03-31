@@ -15,6 +15,7 @@ namespace VangdeVolger
         private Level _level;
 
         private int _time;
+        private bool timeClicker;
 
         private DialogResult _winBox;
         private DialogResult _loseBox;
@@ -77,7 +78,7 @@ namespace VangdeVolger
                     QuitPictureBox.Visible = _menuVisible;
                     
                 }
-                if (Difficulty == Difficulties.Rogue)
+                if (Difficulty == Difficulties.Rogue && timeClicker)
                 {
                     // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
@@ -152,19 +153,22 @@ namespace VangdeVolger
                 if (_playerOne.powerDuration <= 0)
                 {
                     _playerOne.LoosePowers();
-                    Timer.Interval = 10;
                 }
                 else if (_playerOne.powerDuration > 0)
                 {
-                    Timer.Interval = 20;
+                    timeClicker ^= true;
                     _playerOne.TickPowerup();
                 }
 
-               
-                
-                 _time++;
-                 TimeLabel.Text = _time.ToString();
-                
+                else
+                {
+                    timeClicker = true;
+                }
+                if (timeClicker)
+                {
+                    _time++;
+                    TimeLabel.Text = _time.ToString();
+                }
 
                 for (int i = 0; i < _level.powerupList.Count; i++)
                 {
@@ -176,9 +180,9 @@ namespace VangdeVolger
                 }
             }
 
-            if (Difficulty != Difficulties.Rogue)
+            if (Difficulty != Difficulties.Rogue && timeClicker)
             {
-                if (_time % ((int)Difficulty*33) == 0 && !_paused)
+                if (_time % (int)Difficulty == 0 && !_paused)
                 {
                     _enemy.Decide(out _won, out _lost);
 
@@ -238,7 +242,7 @@ namespace VangdeVolger
         public FormMainScreen()
         {
             InitializeComponent();
-           
+            timeClicker = true;
             _playerOne = new Player();
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);
@@ -249,7 +253,7 @@ namespace VangdeVolger
             _lost = false;
             _won = true;
             randomStartingPos = false;
-            Difficulty = Difficulties.Medium;
+            Difficulty = Difficulties.Hard;
 
             //8bit track
             simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));

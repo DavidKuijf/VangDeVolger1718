@@ -42,10 +42,10 @@
             this.tbPowerUpPercent = new System.Windows.Forms.TextBox();
             this.lblPowerUpPercent = new System.Windows.Forms.Label();
             this.ApplyPictureBox = new System.Windows.Forms.PictureBox();
-            this.CancaelPictueBox = new System.Windows.Forms.PictureBox();
+            this.CancelPictureBox = new System.Windows.Forms.PictureBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ApplyPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CancaelPictueBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CancelPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // LevelSizeTextbox
@@ -185,17 +185,17 @@
             this.ApplyPictureBox.TabStop = false;
             this.ApplyPictureBox.Click += new System.EventHandler(this.ApplyPictureBox_Click);
             // 
-            // CancaelPictueBox
+            // CancelPictureBox
             // 
-            this.CancaelPictueBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CancaelPictueBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancaelPictueBox.BackgroundImage")));
-            this.CancaelPictueBox.Location = new System.Drawing.Point(0, 200);
-            this.CancaelPictueBox.Margin = new System.Windows.Forms.Padding(0);
-            this.CancaelPictueBox.Name = "CancaelPictueBox";
-            this.CancaelPictueBox.Size = new System.Drawing.Size(150, 90);
-            this.CancaelPictueBox.TabIndex = 16;
-            this.CancaelPictueBox.TabStop = false;
-            this.CancaelPictueBox.Click += new System.EventHandler(this.CancaelPictueBox_Click);
+            this.CancelPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.CancelPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancelPictureBox.BackgroundImage")));
+            this.CancelPictureBox.Location = new System.Drawing.Point(0, 200);
+            this.CancelPictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.CancelPictureBox.Name = "CancelPictureBox";
+            this.CancelPictureBox.Size = new System.Drawing.Size(150, 90);
+            this.CancelPictureBox.TabIndex = 16;
+            this.CancelPictureBox.TabStop = false;
+            this.CancelPictureBox.Click += new System.EventHandler(this.CancelPictureBox_Click);
             // 
             // ToolTip
             // 
@@ -206,7 +206,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(436, 292);
-            this.Controls.Add(this.CancaelPictueBox);
+            this.Controls.Add(this.CancelPictureBox);
             this.Controls.Add(this.ApplyPictureBox);
             this.Controls.Add(this.tbPowerUpPercent);
             this.Controls.Add(this.lblPowerUpPercent);
@@ -228,10 +228,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Options";
-            this.Load += new System.EventHandler(this.OptionForm_Load);
             this.Enter += new System.EventHandler(this.Textbox_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.ApplyPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CancaelPictueBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CancelPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +249,7 @@
         private System.Windows.Forms.TextBox tbPowerUpPercent;
         private System.Windows.Forms.Label lblPowerUpPercent;
         private System.Windows.Forms.PictureBox ApplyPictureBox;
-        private System.Windows.Forms.PictureBox CancaelPictueBox;
+        private System.Windows.Forms.PictureBox CancelPictureBox;
         private System.Windows.Forms.ToolTip ToolTip;
     }
 }

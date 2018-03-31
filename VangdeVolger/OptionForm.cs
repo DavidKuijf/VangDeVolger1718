@@ -19,7 +19,6 @@ namespace VangdeVolger
         private FormMainScreen _parent;
 
      
-
         public OptionForm(Level level, FormMainScreen ParentForm, bool randomPos)
         {
 
@@ -28,12 +27,18 @@ namespace VangdeVolger
             _level = level;
             _parent = ParentForm;
             RandomStartingPostitionRadioButton.Checked = randomPos;
+
+            //Position the optionScreen in the middle of the parent for aesthetics
             Location = new Point((_parent.Location.X) + (_parent.Width / 2) - (Width/2), (_parent.Location.Y) + (_parent.Height / 2)- (Height/2));
 
+
+            //Prepare the custom Font
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\8bitfont.TTF"));
             Font bits = new Font(pfc.Families[0], 8);
 
+
+            //Set all the things to custom font
             LevelSizeLabel.Font = bits;
             lblBoxPercent.Font = bits;
             lblPowerUpPercent.Font = bits;
@@ -42,8 +47,8 @@ namespace VangdeVolger
             RandomStartingPostitionRadioButton.Font = bits;
             DifficultyListBox.Font = bits;
 
-           
-           
+
+
         }
 
         private void RandomStrartingPositionRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -51,10 +56,7 @@ namespace VangdeVolger
             _parent.randomStartingPos = !_parent.randomStartingPos;
         }
 
-        private void OptionForm_Load(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void ApplyPictureBox_Click(object sender, EventArgs e)
         {
@@ -87,7 +89,7 @@ namespace VangdeVolger
             Close();
         }
 
-        private void CancaelPictueBox_Click(object sender, EventArgs e)
+        private void CancelPictureBox_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -97,15 +99,10 @@ namespace VangdeVolger
             if (sender == LevelSizeTextbox)
             {
                 ToolTip.Show("Any value between 0 and 50 though we reccomend 10-30", LevelSizeTextbox);
-
-
-
             }
             else
-            {
-                  
+            {                 
                 ToolTip.Show("These values combined must not be more than 100%", (IWin32Window)sender);
-
             }
         }
 

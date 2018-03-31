@@ -15,7 +15,6 @@ namespace VangdeVolger
         private Level _level;
 
         private int _time;
-        private bool timeClicker;
 
         private DialogResult _winBox;
         private DialogResult _loseBox;
@@ -78,7 +77,7 @@ namespace VangdeVolger
                     QuitPictureBox.Visible = _menuVisible;
                     
                 }
-                if (Difficulty == Difficulties.Rogue && timeClicker)
+                if (Difficulty == Difficulties.Rogue)
                 {
                     // set won, lost and draw the screen.
                     _enemy.Decide(out _won, out _lost);
@@ -153,22 +152,19 @@ namespace VangdeVolger
                 if (_playerOne.powerDuration <= 0)
                 {
                     _playerOne.LoosePowers();
+                    Timer.Interval = 10;
                 }
                 else if (_playerOne.powerDuration > 0)
                 {
-                    timeClicker ^= true;
+                    Timer.Interval = 20;
                     _playerOne.TickPowerup();
                 }
 
-                else
-                {
-                    timeClicker = true;
-                }
-                if (timeClicker)
-                {
-                    _time++;
-                    TimeLabel.Text = _time.ToString();
-                }
+               
+                
+                 _time++;
+                 TimeLabel.Text = _time.ToString();
+                
 
                 for (int i = 0; i < _level.powerupList.Count; i++)
                 {
@@ -180,7 +176,7 @@ namespace VangdeVolger
                 }
             }
 
-            if (Difficulty != Difficulties.Rogue && timeClicker)
+            if (Difficulty != Difficulties.Rogue)
             {
                 if (_time % ((int)Difficulty*33) == 0 && !_paused)
                 {
@@ -242,7 +238,7 @@ namespace VangdeVolger
         public FormMainScreen()
         {
             InitializeComponent();
-            timeClicker = true;
+           
             _playerOne = new Player();
             _enemy = new Enemy();
             _level = new Level(_playerOne, _enemy);

@@ -41,6 +41,9 @@ namespace VangdeVolger
             DifficultylevelLabel.Font = bits;
             RandomStartingPostitionRadioButton.Font = bits;
             DifficultyListBox.Font = bits;
+
+           
+           
         }
 
         private void RandomStrartingPositionRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -80,10 +83,35 @@ namespace VangdeVolger
                 _level.SetGenertionChances(wallChance, boxChance, powerUpChance);
                 _level.Generate(_parent.randomStartingPos);
             }
-
+            _parent.PausePlay(false);
             Close();
         }
 
-      
+        private void CancaelPictueBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Textbox_Enter(object sender, EventArgs e)
+        {
+            if (sender == LevelSizeTextbox)
+            {
+                ToolTip.Show("Any value between 0 and 50 though we reccomend 10-30", LevelSizeTextbox);
+
+
+
+            }
+            else
+            {
+                  
+                ToolTip.Show("These values combined must not be more than 100%", (IWin32Window)sender);
+
+            }
+        }
+
+        private void Textbox_Leave(object sender, EventArgs e)
+        {
+            ToolTip.Hide((IWin32Window)sender);
+        }
     }
 }

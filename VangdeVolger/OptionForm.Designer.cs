@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionForm));
             this.LevelSizeTextbox = new System.Windows.Forms.TextBox();
             this.LevelSizeLabel = new System.Windows.Forms.Label();
@@ -41,7 +42,10 @@
             this.tbPowerUpPercent = new System.Windows.Forms.TextBox();
             this.lblPowerUpPercent = new System.Windows.Forms.Label();
             this.ApplyPictureBox = new System.Windows.Forms.PictureBox();
+            this.CancaelPictueBox = new System.Windows.Forms.PictureBox();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ApplyPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CancaelPictueBox)).BeginInit();
             this.SuspendLayout();
             // 
             // LevelSizeTextbox
@@ -51,6 +55,8 @@
             this.LevelSizeTextbox.Size = new System.Drawing.Size(100, 20);
             this.LevelSizeTextbox.TabIndex = 1;
             this.LevelSizeTextbox.Text = "10";
+            this.LevelSizeTextbox.Enter += new System.EventHandler(this.Textbox_Enter);
+            this.LevelSizeTextbox.Leave += new System.EventHandler(this.Textbox_Leave);
             // 
             // LevelSizeLabel
             // 
@@ -122,6 +128,8 @@
             this.tbWallPercent.Size = new System.Drawing.Size(38, 20);
             this.tbWallPercent.TabIndex = 10;
             this.tbWallPercent.Text = "5";
+            this.tbWallPercent.Enter += new System.EventHandler(this.Textbox_Enter);
+            this.tbWallPercent.Leave += new System.EventHandler(this.Textbox_Leave);
             // 
             // tbBoxPercent
             // 
@@ -130,6 +138,8 @@
             this.tbBoxPercent.Size = new System.Drawing.Size(38, 20);
             this.tbBoxPercent.TabIndex = 12;
             this.tbBoxPercent.Text = "20";
+            this.tbBoxPercent.Enter += new System.EventHandler(this.Textbox_Enter);
+            this.tbBoxPercent.Leave += new System.EventHandler(this.Textbox_Leave);
             // 
             // lblBoxPercent
             // 
@@ -149,6 +159,8 @@
             this.tbPowerUpPercent.Size = new System.Drawing.Size(38, 20);
             this.tbPowerUpPercent.TabIndex = 14;
             this.tbPowerUpPercent.Text = "2";
+            this.tbPowerUpPercent.Enter += new System.EventHandler(this.Textbox_Enter);
+            this.tbPowerUpPercent.Leave += new System.EventHandler(this.Textbox_Leave);
             // 
             // lblPowerUpPercent
             // 
@@ -165,7 +177,7 @@
             // 
             this.ApplyPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ApplyPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApplyPictureBox.BackgroundImage")));
-            this.ApplyPictureBox.Location = new System.Drawing.Point(285, 102);
+            this.ApplyPictureBox.Location = new System.Drawing.Point(285, 200);
             this.ApplyPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.ApplyPictureBox.Name = "ApplyPictureBox";
             this.ApplyPictureBox.Size = new System.Drawing.Size(150, 90);
@@ -173,11 +185,28 @@
             this.ApplyPictureBox.TabStop = false;
             this.ApplyPictureBox.Click += new System.EventHandler(this.ApplyPictureBox_Click);
             // 
+            // CancaelPictueBox
+            // 
+            this.CancaelPictueBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.CancaelPictueBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancaelPictueBox.BackgroundImage")));
+            this.CancaelPictueBox.Location = new System.Drawing.Point(0, 200);
+            this.CancaelPictueBox.Margin = new System.Windows.Forms.Padding(0);
+            this.CancaelPictueBox.Name = "CancaelPictueBox";
+            this.CancaelPictueBox.Size = new System.Drawing.Size(150, 90);
+            this.CancaelPictueBox.TabIndex = 16;
+            this.CancaelPictueBox.TabStop = false;
+            this.CancaelPictueBox.Click += new System.EventHandler(this.CancaelPictueBox_Click);
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.ShowAlways = true;
+            // 
             // OptionForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(434, 191);
+            this.ClientSize = new System.Drawing.Size(436, 292);
+            this.Controls.Add(this.CancaelPictueBox);
             this.Controls.Add(this.ApplyPictureBox);
             this.Controls.Add(this.tbPowerUpPercent);
             this.Controls.Add(this.lblPowerUpPercent);
@@ -200,7 +229,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionForm_Load);
+            this.Enter += new System.EventHandler(this.Textbox_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.ApplyPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CancaelPictueBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +250,7 @@
         private System.Windows.Forms.TextBox tbPowerUpPercent;
         private System.Windows.Forms.Label lblPowerUpPercent;
         private System.Windows.Forms.PictureBox ApplyPictureBox;
+        private System.Windows.Forms.PictureBox CancaelPictueBox;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }

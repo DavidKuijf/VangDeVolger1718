@@ -105,7 +105,7 @@ namespace VangdeVolger
             Reset();
         }
 
-        private void PausePlay(bool pause)
+        public void PausePlay(bool pause)
         {
             if (pause)
             {

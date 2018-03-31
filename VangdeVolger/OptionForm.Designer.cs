@@ -177,7 +177,7 @@
             // 
             this.ApplyPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ApplyPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApplyPictureBox.BackgroundImage")));
-            this.ApplyPictureBox.Location = new System.Drawing.Point(285, 200);
+            this.ApplyPictureBox.Location = new System.Drawing.Point(285, 175);
             this.ApplyPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.ApplyPictureBox.Name = "ApplyPictureBox";
             this.ApplyPictureBox.Size = new System.Drawing.Size(150, 90);
@@ -189,7 +189,7 @@
             // 
             this.CancelPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CancelPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CancelPictureBox.BackgroundImage")));
-            this.CancelPictureBox.Location = new System.Drawing.Point(0, 200);
+            this.CancelPictureBox.Location = new System.Drawing.Point(0, 175);
             this.CancelPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.CancelPictureBox.Name = "CancelPictureBox";
             this.CancelPictureBox.Size = new System.Drawing.Size(150, 90);
@@ -205,7 +205,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(436, 292);
+            this.ClientSize = new System.Drawing.Size(436, 263);
             this.Controls.Add(this.CancelPictureBox);
             this.Controls.Add(this.ApplyPictureBox);
             this.Controls.Add(this.tbPowerUpPercent);

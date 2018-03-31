@@ -182,7 +182,7 @@ namespace VangdeVolger
 
             if (Difficulty != Difficulties.Rogue && timeClicker)
             {
-                if (_time % (int)Difficulty == 0 && !_paused)
+                if (_time % ((int)Difficulty*33) == 0 && !_paused)
                 {
                     _enemy.Decide(out _won, out _lost);
 
@@ -253,7 +253,7 @@ namespace VangdeVolger
             _lost = false;
             _won = true;
             randomStartingPos = false;
-            Difficulty = Difficulties.Hard;
+            Difficulty = Difficulties.Medium;
 
             //8bit track
             simpleSound = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\track8bit.wav"));
